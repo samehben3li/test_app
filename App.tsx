@@ -13,11 +13,19 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {isSignedIn ? (
           <>
-            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen
+              name="home"
+              component={HomeScreen}
+              initialParams={{ setIsSignedIn: setIsSignedIn }}
+            />
           </>
         ) : (
           <>
-            <Stack.Screen name="login" component={LoginScreen} />
+            <Stack.Screen
+              name="login"
+              component={LoginScreen}
+              initialParams={{ setIsSignedIn: setIsSignedIn }}
+            />
           </>
         )}
       </Stack.Navigator>
