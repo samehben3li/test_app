@@ -1,34 +1,19 @@
-import { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./screens/home";
-import LoginScreen from "./screens/login";
+import { API_URI } from "@env";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import AuthProvider from "./context/authContext";
+import Main from "./screens/main";
 
-const Stack = createNativeStackNavigator();
+const client = new ApolloClient({
+  uri: API_URI,
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {isSignedIn ? (
-          <>
-            <Stack.Screen
-              name="home"
-              component={HomeScreen}
-              initialParams={{ setIsSignedIn: setIsSignedIn }}
-            />
-          </>
-        ) : (
-          <>
-            <Stack.Screen
-              name="login"
-              component={LoginScreen}
-              initialParams={{ setIsSignedIn: setIsSignedIn }}
-            />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthProvider>
+      <ApolloProvider client={client}>
+        <Main />
+      </ApolloProvider>
+    </AuthProvider>
   );
 }

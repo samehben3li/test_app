@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/authContext";
 import {
   Poppins_400Regular,
   Poppins_600SemiBold,
@@ -8,17 +9,22 @@ import {
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import { useValidation, defaultMessages } from "react-simple-form-validator";
+import { LOGIN } from "../requests/mutations";
+import { useMutation } from "@apollo/client";
+import { authContextType } from "../types/interfaces";
 
 interface Props {
   route: any;
   messages: any;
 }
 const LoginScreen = ({ route }: Props) => {
+  const [loginUser] = useMutation(LOGIN);
   const [fontsLoaded, error] = useFonts({
     Poppins_400Regular,
     Poppins_600SemiBold,
     Poppins_700Bold,
   });
+  const { setAuth } = useContext(AuthContext) as authContextType;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isFieldInError, getErrorsInField, isFormValid } = useValidation({
@@ -38,7 +44,18 @@ const LoginScreen = ({ route }: Props) => {
     },
   });
 
-  const submitHandler = () => {};
+  const submitHandler = async () => {
+    if (isFormValid) {
+      try {
+        const data = await loginUser({ variables: { email, password } });
+        setAuth(data.data.login);
+      } catch (err) {
+        if (err instanceof Error) {
+          alert(err.message);
+        }
+      }
+    }
+  };
   if (!fontsLoaded) {
     return <AppLoading />;
   }
@@ -80,10 +97,12 @@ const LoginScreen = ({ route }: Props) => {
         style={({ pressed }) => [
           {
             backgroundColor: pressed ? "#f5c000" : "#FFDE6A",
+            opacity: isFormValid ? 1 : 0.7,
           },
           styles.submit,
         ]}
         onPress={submitHandler}
+        disabled={!isFormValid}
       >
         <Text style={styles.submitText}>Login</Text>
       </Pressable>
