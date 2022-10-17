@@ -1,13 +1,10 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import { AuthContext } from "../context/authContext";
 import { useContext } from "react";
 import { authContextType } from "../types/interfaces";
+import styles from "../styles/home.style";
 
-interface Props {
-  route: any;
-}
-
-export default function HomeScreen({ route }: Props) {
+export default function HomeScreen() {
   const { auth, setAuth } = useContext(AuthContext) as authContextType;
   const submitHandler = () => {
     setAuth(null);
@@ -30,16 +27,3 @@ export default function HomeScreen({ route }: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ebecef",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  btn: {
-    padding: 10,
-    marginTop: 30,
-  },
-});

@@ -14,13 +14,9 @@ export default function Main() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {auth ? (
-          <>
-            <Stack.Screen name="home" component={HomeScreen} />
-          </>
+          <Stack.Screen name="home" component={HomeScreen} />
         ) : (
-          <>
-            <Stack.Screen name="login" component={LoginScreen} />
-          </>
+          <Stack.Screen name="login" component={LoginScreen} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
