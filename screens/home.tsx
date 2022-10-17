@@ -3,6 +3,7 @@ import { AuthContext } from "../context/authContext";
 import { useContext } from "react";
 import { authContextType } from "../types/interfaces";
 import styles from "../styles/home.style";
+import colors from "../theme/colors";
 
 export default function HomeScreen() {
   const { auth, setAuth } = useContext(AuthContext) as authContextType;
@@ -16,7 +17,7 @@ export default function HomeScreen() {
       <Pressable
         style={({ pressed }) => [
           {
-            backgroundColor: pressed ? "#f5c000" : "#FFDE6A",
+            backgroundColor: pressed ? colors.primary1dark : colors.primary1,
           },
           styles.btn,
         ]}
