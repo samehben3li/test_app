@@ -5,12 +5,35 @@ import colors from "../theme/colors";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.bgPrimary,
+    backgroundColor: colors.white,
     alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  main: {
+    flex: 1,
     justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
   },
   btn: {
-    padding: 10,
-    marginTop: 30,
+    backgroundColor: colors.white,
+    width: "60%",
+    marginVertical: 10,
+    height: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 75,
+    elevation: 20,
+  },
+  image: {
+    width: "60%",
+    resizeMode: "contain",
   },
 });

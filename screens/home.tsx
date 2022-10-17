@@ -1,30 +1,21 @@
-import { Text, View, Pressable } from "react-native";
-import { AuthContext } from "../context/authContext";
-import { useContext } from "react";
-import { authContextType } from "../types/interfaces";
+import { View, Pressable, Image } from "react-native";
 import styles from "../styles/home.style";
-import colors from "../theme/colors";
+import Header from "../components/header";
+import newFlagIcon from "../assets/newFlag.png";
+import recentFlagsIcon from "../assets/recentFlags.png";
 
 export default function HomeScreen() {
-  const { auth, setAuth } = useContext(AuthContext) as authContextType;
-  const submitHandler = () => {
-    setAuth(null);
-  };
   return (
     <View style={styles.container}>
-      <Text>username: {auth?.user.username}</Text>
-      <Text>username: {auth?.user.email}</Text>
-      <Pressable
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed ? colors.primary1dark : colors.primary1,
-          },
-          styles.btn,
-        ]}
-        onPress={submitHandler}
-      >
-        <Text>Log out</Text>
-      </Pressable>
+      <Header />
+      <View style={styles.main}>
+        <Pressable style={styles.btn} onPress={() => {}}>
+          <Image style={styles.image} source={newFlagIcon} />
+        </Pressable>
+        <Pressable style={styles.btn} onPress={() => {}}>
+          <Image style={styles.image} source={recentFlagsIcon} />
+        </Pressable>
+      </View>
     </View>
   );
 }
