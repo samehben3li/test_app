@@ -7,6 +7,7 @@ import { LOGIN } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
 import { authContextType } from "../types/interfaces";
 import colors from "../theme/colors";
+import i18n from "../i18n/tanslations";
 
 const LoginScreen = () => {
   const [loginUser] = useMutation(LOGIN);
@@ -24,10 +25,10 @@ const LoginScreen = () => {
     messages: {
       en: {
         ...defaultMessages.en,
-        email: "Please enter a valid email",
-        minlength: "Must be longer than {1}",
-        maxlength: "Must be shorter than {1}",
-        required: "Required",
+        email: i18n.t("invalidEmail"),
+        minlength: i18n.t("inputLonger"),
+        maxlength: i18n.t("inputShorter"),
+        required: i18n.t("required"),
       },
     },
   });
@@ -58,7 +59,7 @@ const LoginScreen = () => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
+      <Text style={styles.title}>{i18n.t("welcome")}</Text>
       <View style={styles.errorContainer}>
         {error && (
           <View style={styles.loginError}>
@@ -70,7 +71,7 @@ const LoginScreen = () => {
         value={email}
         onChangeText={(text) => setEmail(text)}
         style={styles.input}
-        placeholder="Email Address"
+        placeholder={i18n.t("email")}
       />
       <View style={styles.error}>
         {isFieldInError("email") &&
@@ -88,7 +89,7 @@ const LoginScreen = () => {
         onChangeText={(text) => setPassword(text)}
         style={styles.input}
         secureTextEntry={true}
-        placeholder="Password"
+        placeholder={i18n.t("password")}
       />
       <View style={styles.error}>
         {isFieldInError("password") &&
@@ -112,7 +113,9 @@ const LoginScreen = () => {
         onPress={submitHandler}
         disabled={!isFormValid || loading}
       >
-        <Text style={styles.submitText}>{loading ? "..." : "Login"}</Text>
+        <Text style={styles.submitText}>
+          {loading ? "..." : i18n.t("login")}
+        </Text>
       </Pressable>
     </View>
   );
