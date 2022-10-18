@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "../screens/home";
+import MainNavigator from "./mainNavigator";
 import LoginScreen from "../screens/login";
 import { AuthContext } from "../context/authContext";
 import { authContextType } from "../types/interfaces";
@@ -14,7 +14,7 @@ export default function Main() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {auth ? (
-          <Stack.Screen name="home" component={HomeScreen} />
+          <Stack.Screen name="mainNavigator" component={MainNavigator} />
         ) : (
           <Stack.Screen name="login" component={LoginScreen} />
         )}

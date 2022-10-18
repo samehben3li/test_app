@@ -12,6 +12,10 @@ const translations = {
     inputShorter: "Must be shorter than {1}",
     TomatoTrolley: "Tomato Trolley",
     loading: "Loading...",
+    riskCategory: "RISK CATEGORY",
+    pestType: "PEST TYPE",
+    plantPart: "PLANT PART",
+    location: "LOCATION",
   },
 };
 const i18n = new I18n(translations);
