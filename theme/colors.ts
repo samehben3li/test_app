@@ -11,6 +11,7 @@ const colors = {
   blackOp: "#00000080",
   gold: "#F3B255",
   goldOp: "#F3B25580",
+  done: "#5CE166",
 };
 
 export default colors;

@@ -26,6 +26,7 @@ export default StyleSheet.create({
     width: 100,
     resizeMode: "contain",
     marginLeft: 5,
+    marginBottom: 5,
   },
   row: {
     flex: 1,
@@ -44,8 +45,12 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.58,
     shadowRadius: 75,
-    elevation: 20,
+    elevation: 10,
     overflow: "hidden",
+    opacity: 0.6,
+  },
+  selected: {
+    opacity: 1,
   },
   title: {
     flex: 1,
@@ -56,6 +61,8 @@ export default StyleSheet.create({
   },
   selection: {
     flex: 2,
+    alignItems: "center",
+    justifyContent: "center",
   },
   name: {
     flex: 1,
@@ -65,7 +72,7 @@ export default StyleSheet.create({
   },
   nameTxt: {
     color: colors.white,
-    fontSize: size.medium,
+    fontSize: size.light,
     fontFamily: type.bold,
   },
   titleTxt: {
@@ -74,5 +81,8 @@ export default StyleSheet.create({
     fontSize: size.small,
     lineHeight: 15,
     width: "90%",
+  },
+  done: {
+    backgroundColor: colors.done,
   },
 });
