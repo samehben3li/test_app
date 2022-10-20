@@ -44,3 +44,69 @@ export const dummyData = [
     location: true,
   },
 ];
+
+export const list = [
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+  {
+    risk: "PEST",
+    type: "RUSSET MITES",
+    part: "LEAF",
+    location: "LEFT: M \n RIGHT: T, B",
+    date: "12:07PM",
+  },
+];

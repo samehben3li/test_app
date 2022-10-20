@@ -8,4 +8,5 @@ export const size = {
   medium: 20,
   light: 15,
   small: 12,
+  extraSmall: 8,
 };

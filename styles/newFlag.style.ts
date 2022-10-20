@@ -68,7 +68,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: colors.black,
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
   nameTxt: {
     color: colors.white,
@@ -84,5 +84,34 @@ export default StyleSheet.create({
   },
   done: {
     backgroundColor: colors.done,
+  },
+  selectedTxt: {
+    color: colors.black,
+    fontSize: size.small,
+    textAlign: "center",
+  },
+  locationNameTxt: {
+    color: colors.white,
+    fontSize: size.small,
+    fontFamily: type.bold,
+    textAlign: "center",
+  },
+  grid: {
+    height: "80%",
+    width: "70%",
+    borderWidth: 1,
+    borderRadius: 4,
+    flexDirection: "row",
+    overflow: "hidden",
+  },
+  gridCol: {
+    flex: 1,
+  },
+  gridItem: {
+    borderWidth: 1,
+    flex: 1,
+  },
+  gridSelected: {
+    backgroundColor: colors.gold,
   },
 });

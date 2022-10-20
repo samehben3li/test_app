@@ -79,5 +79,40 @@ export default StyleSheet.create({
   selected: {
     backgroundColor: colors.gold,
     borderWidth: 2,
+    borderColor: colors.black,
+  },
+  locationGrid: {
+    width: "100%",
+    flexDirection: "row",
+    height: "100%",
+  },
+  locationCol: {
+    flex: 1,
+    alignItems: "center",
+  },
+  locationBtn: {
+    backgroundColor: colors.white,
+    width: "95%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 5.62,
+    elevation: 10,
+    marginBottom: 5,
+    paddingVertical: 10,
+    borderWidth: 2,
+    borderColor: colors.white,
+  },
+  gridText: {
+    fontFamily: type.bold,
+    fontSize: size.small,
+    color: colors.blackOp,
+    marginTop: 10,
   },
 });

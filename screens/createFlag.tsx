@@ -5,6 +5,7 @@ import styles from "../styles/createFlag.style";
 import ScreenSwitch from "../components/screenSwitch";
 import FlagOptions from "../components/flagOptions";
 import NewFlag from "../components/newFlag";
+import FlagReady from "../components/flagReady";
 import { dummyData } from "./dummy";
 
 export interface option {
@@ -23,7 +24,10 @@ export interface flag {
   risk: option | null;
   pest: option | null;
   plantPart: option | null;
-  location: option | null;
+  location: {
+    left: string[];
+    right: string[];
+  };
 }
 
 export default function CreateFlagScreen({ navigation }) {
@@ -32,8 +36,12 @@ export default function CreateFlagScreen({ navigation }) {
     risk: null,
     pest: null,
     plantPart: null,
-    location: null,
+    location: {
+      left: [],
+      right: [],
+    },
   });
+  const [completed, setCompleted] = useState(false);
   useEffect(() => {
     console.log(flagData);
   }, [flagData]);
@@ -46,11 +54,16 @@ export default function CreateFlagScreen({ navigation }) {
         flagData={flagData}
         setSelectedTab={setSelectedTab}
       />
-      <FlagOptions
-        flagData={flagData}
-        setFlagData={setFlagData}
-        data={seletedTab}
-      />
+      {!completed ? (
+        <FlagOptions
+          setCompleted={setCompleted}
+          flagData={flagData}
+          setFlagData={setFlagData}
+          data={seletedTab}
+        />
+      ) : (
+        <FlagReady setCompleted={setCompleted} />
+      )}
     </View>
   );
 }

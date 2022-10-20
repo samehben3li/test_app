@@ -17,6 +17,7 @@ export default function NewFlag({
   selectedTab,
 }: Props) {
   const { risk, location, pest, plantPart } = flagData;
+  const locations = ["TOP", "MIDDLE", "BOTTOM"];
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={newFlagIcon} />
@@ -35,7 +36,9 @@ export default function NewFlag({
             <Image style={styles.image} source={flagData.risk?.icon} />
           </View>
           <View style={[styles.name, risk && styles.done]}>
-            <Text style={styles.nameTxt}>{risk ? risk.name : "?"}</Text>
+            <Text style={[styles.nameTxt, risk && styles.selectedTxt]}>
+              {risk ? risk.name : "?"}
+            </Text>
           </View>
         </Pressable>
         <Pressable
@@ -52,7 +55,9 @@ export default function NewFlag({
             <Image style={styles.image} source={flagData.pest?.icon} />
           </View>
           <View style={[styles.name, pest && styles.done]}>
-            <Text style={styles.nameTxt}>{pest ? pest.name : "?"}</Text>
+            <Text style={[styles.nameTxt, pest && styles.selectedTxt]}>
+              {pest ? pest.name : "?"}
+            </Text>
           </View>
         </Pressable>
         <Pressable
@@ -69,7 +74,7 @@ export default function NewFlag({
             <Image style={styles.image} source={flagData.plantPart?.icon} />
           </View>
           <View style={[styles.name, plantPart && styles.done]}>
-            <Text style={styles.nameTxt}>
+            <Text style={[styles.nameTxt, plantPart && styles.selectedTxt]}>
               {plantPart ? plantPart.name : "?"}
             </Text>
           </View>
@@ -78,15 +83,71 @@ export default function NewFlag({
           onPress={() => setSelectedTab(dummyData[3])}
           style={[
             styles.col,
-            (selectedTab.name === "location" || location) && styles.selected,
+            (selectedTab.name === "location" ||
+              location.left.length > 0 ||
+              location.right.length > 0) &&
+              styles.selected,
           ]}
         >
           <View style={styles.title}>
             <Text style={styles.titleTxt}>{i18n.t("location")}</Text>
           </View>
-          <View style={styles.selection}></View>
-          <View style={[styles.name, location && styles.done]}>
-            <Text style={styles.nameTxt}>?</Text>
+          <View style={styles.selection}>
+            <View style={styles.grid}>
+              <View style={styles.gridCol}>
+                {locations.map((item: string, index: number) => (
+                  <View
+                    key={index}
+                    style={[
+                      styles.gridItem,
+                      flagData.location.left.includes(item) &&
+                        styles.gridSelected,
+                    ]}
+                  ></View>
+                ))}
+              </View>
+              <View style={styles.gridCol}>
+                {locations.map((item: string, index: number) => (
+                  <View
+                    key={index}
+                    style={[
+                      styles.gridItem,
+                      flagData.location.right.includes(item) &&
+                        styles.gridSelected,
+                    ]}
+                  ></View>
+                ))}
+              </View>
+            </View>
+          </View>
+          <View
+            style={[
+              styles.name,
+              (location.left.length > 0 || location.right.length > 0) &&
+                styles.done,
+            ]}
+          >
+            <Text
+              style={[
+                styles.locationNameTxt,
+                (location.left.length > 0 || location.right.length > 0) &&
+                  styles.selectedTxt,
+              ]}
+            >
+              <Text>
+                LEFT:{" "}
+                {location.left.map(
+                  (item: string, index: number) => `${item.charAt(0)}`
+                )}
+              </Text>
+              {"\n"}
+              <Text>
+                RIGHT:{" "}
+                {location.right.map(
+                  (item: string, index: number) => `${item.charAt(0)}`
+                )}
+              </Text>
+            </Text>
           </View>
         </Pressable>
       </View>
