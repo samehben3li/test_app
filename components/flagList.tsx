@@ -9,7 +9,7 @@ export default function FlagList() {
   return (
     <ScrollView style={styles.container}>
       {list.map((item, index) => (
-        <View style={styles.flagContainer}>
+        <View key={index} style={styles.flagContainer}>
           <View style={styles.header}>
             <Image source={flagIcon} style={styles.img} />
             <Text style={styles.date}>{item.date}</Text>

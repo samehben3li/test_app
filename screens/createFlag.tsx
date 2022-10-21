@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "../components/header";
 import styles from "../styles/createFlag.style";
 import ScreenSwitch from "../components/screenSwitch";
@@ -42,9 +42,6 @@ export default function CreateFlagScreen({ navigation, route }) {
     },
   });
   const [completed, setCompleted] = useState(false);
-  useEffect(() => {
-    console.log(flagData);
-  }, [flagData]);
   return (
     <View style={styles.container}>
       <Header />
