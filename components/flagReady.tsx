@@ -14,18 +14,13 @@ export default function FlagReady() {
             <Image source={lunaHelperIcon} style={styles.imgWide} />
             <Image source={helpIcon} style={styles.imgIcon} />
           </View>
-          <Text style={styles.helpText}>
-            If you need to make any changes, tap the buttons above to be taken
-            back to that section
-          </Text>
+          <Text style={styles.helpText}>{i18n.t("makeChangesHelp")}</Text>
         </View>
       </View>
       <View style={styles.bottomPart}>
-        <Text style={styles.confirmText}>
-          Please confirm that the submission above is correct
-        </Text>
+        <Text style={styles.confirmText}>{i18n.t("confirmSelection")}</Text>
         <Pressable style={styles.btn}>
-          <Text style={styles.btnText}>CREATE FLAG</Text>
+          <Text style={styles.btnText}>{i18n.t("createFlag")}</Text>
         </Pressable>
       </View>
     </View>

@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { useState, useEffect } from "react";
 import Header from "../components/header";
 import styles from "../styles/createFlag.style";
@@ -30,7 +30,7 @@ export interface flag {
   };
 }
 
-export default function CreateFlagScreen({ navigation }) {
+export default function CreateFlagScreen({ navigation, route }) {
   const [seletedTab, setSelectedTab] = useState<selectedTab>(dummyData[0]);
   const [flagData, setFlagData] = useState<flag>({
     risk: null,
@@ -48,7 +48,7 @@ export default function CreateFlagScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Header />
-      <ScreenSwitch navigation={navigation} />
+      <ScreenSwitch navigation={navigation} route={route} />
       <NewFlag
         selectedTab={seletedTab}
         flagData={flagData}

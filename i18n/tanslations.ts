@@ -16,6 +16,15 @@ const translations = {
     pestType: "PEST TYPE",
     plantPart: "PLANT PART",
     location: "LOCATION",
+    top: "TOP",
+    bottom: "BOTTOM",
+    middle: "MIDDLE",
+    left: "LEFT",
+    right: "RIGHT",
+    makeChangesHelp:
+      "If you need to make any changes, tap the buttons above to be taken back to that section",
+    confirmSelection: "Please confirm that the submission above is correct",
+    createFlag: "CREATE FLAG",
   },
 };
 const i18n = new I18n(translations);

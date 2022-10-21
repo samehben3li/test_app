@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "../theme/colors";
-import { type, size } from "../theme/fonts";
+// import { type, size } from "../theme/fonts";
 
 export default StyleSheet.create({
   container: {
@@ -27,5 +27,8 @@ export default StyleSheet.create({
     tintColor: colors.gold,
     height: "30%",
     resizeMode: "contain",
+  },
+  selected: {
+    opacity: 0.5,
   },
 });

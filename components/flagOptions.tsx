@@ -45,7 +45,7 @@ export default function FlagOptions({
       return { ...prev, location: newValue };
     });
   };
-  const locations = ["TOP", "MIDDLE", "BOTTOM"];
+  const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
   return (
     <GestureRecognizer
       onSwipeDown={() => setCompleted(true)}
@@ -85,7 +85,7 @@ export default function FlagOptions({
                     <Text style={styles.optionName}>{item}</Text>
                   </Pressable>
                 ))}
-                <Text style={styles.gridText}>LEFT</Text>
+                <Text style={styles.gridText}>{i18n.t("left")}</Text>
               </View>
               <View style={styles.locationCol}>
                 {locations.map((item: string, index: number) => (
@@ -100,7 +100,7 @@ export default function FlagOptions({
                     <Text style={styles.optionName}>{item}</Text>
                   </Pressable>
                 ))}
-                <Text style={styles.gridText}>RIGHT</Text>
+                <Text style={styles.gridText}>{i18n.t("right")}</Text>
               </View>
             </View>
           )}

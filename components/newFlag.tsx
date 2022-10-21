@@ -17,7 +17,7 @@ export default function NewFlag({
   selectedTab,
 }: Props) {
   const { risk, location, pest, plantPart } = flagData;
-  const locations = ["TOP", "MIDDLE", "BOTTOM"];
+  const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={newFlagIcon} />
@@ -139,8 +139,8 @@ export default function NewFlag({
                 {location.left.map(
                   (item: string, index: number) => `${item.charAt(0)}`
                 )}
+                {"\n"}
               </Text>
-              {"\n"}
               <Text>
                 RIGHT:{" "}
                 {location.right.map(
