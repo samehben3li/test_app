@@ -1,4 +1,5 @@
 import { Text, View, Image, Pressable } from "react-native";
+import { API_URI } from "@env";
 import { useState, useEffect } from "react";
 import i18n from "../i18n/tanslations";
 import styles from "../styles/flagOptions.style";
@@ -10,6 +11,7 @@ interface Props {
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;
   flagData: flag;
   setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  options: option[];
 }
 
 export default function FlagOptions({
@@ -17,11 +19,12 @@ export default function FlagOptions({
   setFlagData,
   flagData,
   setCompleted,
+  options,
 }: Props) {
   const [selected, setSelected] = useState(0);
-  const [touchY, setTouchY] = useState(0);
   useEffect(() => {
     if (flagData[data.name]) {
+      console.log(flagData[data.name].id);
       setSelected(flagData[data.name].id);
     }
   }, [data]);
@@ -48,7 +51,12 @@ export default function FlagOptions({
   const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
   return (
     <GestureRecognizer
-      onSwipeDown={() => setCompleted(true)}
+      onSwipeDown={() => {
+        const { risk, plantPart, location, pest } = flagData;
+        if (risk && plantPart && location && pest) {
+          setCompleted(true);
+        }
+      }}
       style={styles.container}
     >
       <Text style={styles.hint}>{data.hint}</Text>
@@ -56,7 +64,7 @@ export default function FlagOptions({
         <Text style={styles.title}>{data.title}</Text>
         <View style={styles.options}>
           {!data.location ? (
-            data.options?.map((option) => (
+            options?.map((option) => (
               <View key={option.id} style={styles.optionContainer}>
                 <Pressable
                   onPress={() => choose(option)}
@@ -65,7 +73,10 @@ export default function FlagOptions({
                     selected === option.id && styles.selected,
                   ]}
                 >
-                  <Image source={option.icon} style={styles.image} />
+                  <Image
+                    source={{ uri: `${API_URI}${option.imgUrl}` }}
+                    style={styles.image}
+                  />
                 </Pressable>
                 <Text style={styles.optionName}>{option.name}</Text>
               </View>

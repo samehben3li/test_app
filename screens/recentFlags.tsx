@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import Header from "../components/header";
 import ScreenSwitch from "../components/screenSwitch";
 import styles from "../styles/recentFlags.style";
@@ -9,6 +9,7 @@ export default function RecentFlagsScreen({ navigation, route }) {
     <View style={styles.container}>
       <Header />
       <ScreenSwitch navigation={navigation} route={route} />
+      <Text>{route.name}</Text>
       <FlagList />
     </View>
   );

@@ -70,6 +70,7 @@ export default StyleSheet.create({
   },
   image: {
     height: "55%",
+    width: "100%",
     resizeMode: "contain",
   },
   optionName: {

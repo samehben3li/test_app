@@ -1,9 +1,10 @@
 import { Text, View, Image, Pressable } from "react-native";
+import { API_URI } from "@env";
 import i18n from "../i18n/tanslations";
 import styles from "../styles/newFlag.style";
 import newFlagIcon from "../assets/newFlag.png";
 import { selectedTab, flag } from "../screens/createFlag";
-import { dummyData } from "../screens/dummy";
+import { optionsData } from "../screens/options";
 
 interface Props {
   setSelectedTab: React.Dispatch<React.SetStateAction<selectedTab>>;
@@ -23,7 +24,7 @@ export default function NewFlag({
       <Image style={styles.image} source={newFlagIcon} />
       <View style={styles.row}>
         <Pressable
-          onPress={() => setSelectedTab(dummyData[0])}
+          onPress={() => setSelectedTab(optionsData[0])}
           style={[
             styles.col,
             (selectedTab.name === "risk" || risk) && styles.selected,
@@ -33,7 +34,10 @@ export default function NewFlag({
             <Text style={styles.titleTxt}>{i18n.t("riskCategory")}</Text>
           </View>
           <View style={styles.selection}>
-            <Image style={styles.image} source={flagData.risk?.icon} />
+            <Image
+              style={styles.image}
+              source={{ uri: `${API_URI}${flagData.risk?.imgUrl}` }}
+            />
           </View>
           <View style={[styles.name, risk && styles.done]}>
             <Text style={[styles.nameTxt, risk && styles.selectedTxt]}>
@@ -42,7 +46,7 @@ export default function NewFlag({
           </View>
         </Pressable>
         <Pressable
-          onPress={() => setSelectedTab(dummyData[1])}
+          onPress={() => setSelectedTab(optionsData[1])}
           style={[
             styles.col,
             (selectedTab.name === "pest" || pest) && styles.selected,
@@ -52,7 +56,10 @@ export default function NewFlag({
             <Text style={styles.titleTxt}>{i18n.t("pestType")}</Text>
           </View>
           <View style={styles.selection}>
-            <Image style={styles.image} source={flagData.pest?.icon} />
+            <Image
+              style={styles.image}
+              source={{ uri: `${API_URI}${flagData.pest?.imgUrl}` }}
+            />
           </View>
           <View style={[styles.name, pest && styles.done]}>
             <Text style={[styles.nameTxt, pest && styles.selectedTxt]}>
@@ -61,7 +68,7 @@ export default function NewFlag({
           </View>
         </Pressable>
         <Pressable
-          onPress={() => setSelectedTab(dummyData[2])}
+          onPress={() => setSelectedTab(optionsData[2])}
           style={[
             styles.col,
             (selectedTab.name === "plantPart" || plantPart) && styles.selected,
@@ -71,7 +78,10 @@ export default function NewFlag({
             <Text style={styles.titleTxt}>{i18n.t("plantPart")}</Text>
           </View>
           <View style={styles.selection}>
-            <Image style={styles.image} source={flagData.plantPart?.icon} />
+            <Image
+              style={styles.image}
+              source={{ uri: `${API_URI}${flagData.plantPart?.imgUrl}` }}
+            />
           </View>
           <View style={[styles.name, plantPart && styles.done]}>
             <Text style={[styles.nameTxt, plantPart && styles.selectedTxt]}>
@@ -80,7 +90,7 @@ export default function NewFlag({
           </View>
         </Pressable>
         <Pressable
-          onPress={() => setSelectedTab(dummyData[3])}
+          onPress={() => setSelectedTab(optionsData[3])}
           style={[
             styles.col,
             (selectedTab.name === "location" ||

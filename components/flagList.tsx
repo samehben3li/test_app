@@ -3,7 +3,7 @@ import i18n from "../i18n/tanslations";
 import styles from "../styles/flagList.style";
 import flagIcon from "../assets/flag.png";
 import bugIcon from "../assets/bug.png";
-import { list } from "../screens/dummy";
+import { list } from "../screens/options";
 
 export default function FlagList() {
   return (

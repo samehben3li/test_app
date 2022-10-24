@@ -25,6 +25,7 @@ const translations = {
       "If you need to make any changes, tap the buttons above to be taken back to that section",
     confirmSelection: "Please confirm that the submission above is correct",
     createFlag: "CREATE FLAG",
+    swipeHint: "Swipe down to cancel",
   },
 };
 const i18n = new I18n(translations);

@@ -1,16 +1,18 @@
 import { View } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/header";
 import styles from "../styles/createFlag.style";
 import ScreenSwitch from "../components/screenSwitch";
 import FlagOptions from "../components/flagOptions";
 import NewFlag from "../components/newFlag";
 import FlagReady from "../components/flagReady";
-import { dummyData } from "./dummy";
+import { optionsData } from "./options";
+import { GET_RISKS, GET_PLANT_PARTS } from "../requests/queries";
+import { useQuery } from "@apollo/client";
 
 export interface option {
   id: number;
-  icon: any;
+  imgUrl: string;
   name: string;
 }
 export interface selectedTab {
@@ -31,7 +33,8 @@ export interface flag {
 }
 
 export default function CreateFlagScreen({ navigation, route }) {
-  const [seletedTab, setSelectedTab] = useState<selectedTab>(dummyData[0]);
+  const [selectedTab, setSelectedTab] = useState<selectedTab>(optionsData[0]);
+  const [options, setOptions] = useState<option[]>([]);
   const [flagData, setFlagData] = useState<flag>({
     risk: null,
     pest: null,
@@ -42,12 +45,52 @@ export default function CreateFlagScreen({ navigation, route }) {
     },
   });
   const [completed, setCompleted] = useState(false);
+  const risks = useQuery(GET_RISKS);
+  const plantParts = useQuery(GET_PLANT_PARTS);
+  // useEffect(() => {
+  //   if (risks.data) {
+  //     setOptions(risks.data.getRiskCategories);
+  //   }
+  // }, [risks]);
+  useEffect(() => {
+    // console.log(options);
+  }, [options]);
+  useEffect(() => {
+    if (risks.data) {
+      if (selectedTab.name === "risk") {
+        const arr = risks.data.getRiskCategories.map((item: any) => {
+          return { id: item.id, name: item.name, imgUrl: item.imgUrl };
+        });
+        setOptions(arr);
+      } else if (selectedTab.name === "pest") {
+        if (flagData.risk) {
+          setOptions(
+            risks.data.getRiskCategories.find(
+              (item: option) => item.name === flagData?.risk?.name
+            ).riskCategoryTypes
+          );
+        } else {
+          setOptions([]);
+        }
+      } else if (selectedTab.name === "plantPart") {
+        setOptions(plantParts.data.getPlantPart);
+      }
+    }
+  }, [selectedTab, risks]);
+  useEffect(() => {
+    const currentIndex = optionsData.findIndex(
+      (item) => item.name === selectedTab.name
+    );
+    if (currentIndex < 3 && flagData.risk) {
+      setSelectedTab(optionsData[currentIndex + 1]);
+    }
+  }, [flagData]);
   return (
     <View style={styles.container}>
       <Header />
       <ScreenSwitch navigation={navigation} route={route} />
       <NewFlag
-        selectedTab={seletedTab}
+        selectedTab={selectedTab}
         flagData={flagData}
         setSelectedTab={setSelectedTab}
       />
@@ -56,10 +99,11 @@ export default function CreateFlagScreen({ navigation, route }) {
           setCompleted={setCompleted}
           flagData={flagData}
           setFlagData={setFlagData}
-          data={seletedTab}
+          data={selectedTab}
+          options={options}
         />
       ) : (
-        <FlagReady setCompleted={setCompleted} />
+        <FlagReady setCompleted={setCompleted} flagData={flagData} />
       )}
     </View>
   );

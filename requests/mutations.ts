@@ -12,3 +12,20 @@ export const LOGIN = gql`
     }
   }
 `;
+export const CREATE_FLAG = gql`
+  mutation (
+    $riskCategory: InputOption!
+    $riskCategoryType: InputOption!
+    $plantPart: InputOption!
+    $location: LocationInput
+  ) {
+    addFlag(
+      riskCategory: $riskCategory
+      riskCategoryType: $riskCategoryType
+      plantPart: $plantPart
+      location: $location
+    ) {
+      id
+    }
+  }
+`;

@@ -87,4 +87,11 @@ export default StyleSheet.create({
     fontFamily: type.bold,
     fontSize: size.medium,
   },
+  hint: {
+    fontFamily: type.bold,
+    fontSize: size.small,
+    textAlign: "center",
+    opacity: 0.5,
+    marginTop: 10,
+  },
 });
