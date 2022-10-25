@@ -41,13 +41,13 @@ export default StyleSheet.create({
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
-      height: 12,
+      height: 6,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 75,
+    shadowOpacity: 0.39,
+    shadowRadius: 8.3,
     elevation: 10,
-    overflow: "hidden",
     opacity: 0.6,
+    zIndex: 10,
   },
   selected: {
     opacity: 1,
@@ -57,7 +57,7 @@ export default StyleSheet.create({
     borderBottomColor: colors.blackOp,
     borderBottomWidth: 2,
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
   selection: {
     flex: 2,
@@ -69,6 +69,8 @@ export default StyleSheet.create({
     backgroundColor: colors.black,
     alignItems: "center",
     justifyContent: "center",
+    borderBottomEndRadius: 5,
+    borderBottomStartRadius: 5,
   },
   nameTxt: {
     color: colors.white,

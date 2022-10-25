@@ -40,7 +40,10 @@ export default function NewFlag({
             />
           </View>
           <View style={[styles.name, risk && styles.done]}>
-            <Text style={[styles.nameTxt, risk && styles.selectedTxt]}>
+            <Text
+              numberOfLines={1}
+              style={[styles.nameTxt, risk && styles.selectedTxt]}
+            >
               {risk ? risk.name : "?"}
             </Text>
           </View>
@@ -144,19 +147,22 @@ export default function NewFlag({
                   styles.selectedTxt,
               ]}
             >
-              <Text>
-                LEFT:{" "}
-                {location.left.map(
-                  (item: string, index: number) => `${item.charAt(0)}`
-                )}
-                {"\n"}
-              </Text>
-              <Text>
-                RIGHT:{" "}
-                {location.right.map(
-                  (item: string, index: number) => `${item.charAt(0)}`
-                )}
-              </Text>
+              LEFT:{" "}
+              {location.left.map(
+                (item: string, index: number) => `${item.charAt(0)}`
+              )}
+            </Text>
+            <Text
+              style={[
+                styles.locationNameTxt,
+                (location.left.length > 0 || location.right.length > 0) &&
+                  styles.selectedTxt,
+              ]}
+            >
+              RIGHT:{" "}
+              {location.right.map(
+                (item: string, index: number) => `${item.charAt(0)}`
+              )}
             </Text>
           </View>
         </Pressable>

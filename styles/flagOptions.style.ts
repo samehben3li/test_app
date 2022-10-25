@@ -11,6 +11,12 @@ export default StyleSheet.create({
     borderTopEndRadius: 40,
     borderTopLeftRadius: 40,
   },
+  innerContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+  },
   hint: {
     width: "90%",
     textAlign: "center",

@@ -23,6 +23,12 @@ export default StyleSheet.create({
     shadowRadius: 75,
     elevation: 40,
   },
+  bg: {
+    width: "100%",
+  },
+  black: {
+    backgroundColor: colors.black,
+  },
   logoTitle: {
     fontFamily: type.regular,
     fontSize: size.small,

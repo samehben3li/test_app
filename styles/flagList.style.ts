@@ -21,6 +21,13 @@ export default StyleSheet.create({
     height: 160,
     borderRadius: 10,
     elevation: 40,
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
     padding: 10,
   },
   header: {
@@ -88,5 +95,45 @@ export default StyleSheet.create({
     resizeMode: "contain",
     marginLeft: 5,
     marginBottom: 5,
+  },
+  locationNameTxt: {
+    color: colors.black,
+    fontSize: size.small,
+    fontFamily: type.bold,
+    textAlign: "center",
+    lineHeight: 10,
+  },
+  locationGrid: {
+    height: "80%",
+    width: "60%",
+    borderWidth: 1,
+    borderRadius: 4,
+    flexDirection: "row",
+    overflow: "hidden",
+  },
+  gridCol: {
+    flex: 1,
+  },
+  gridItem: {
+    borderWidth: 1,
+    flex: 1,
+  },
+  gridSelected: {
+    backgroundColor: colors.gold,
+  },
+  day: {
+    backgroundColor: colors.black,
+    width: 140,
+    marginLeft: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 2,
+    marginTop: 10,
+    borderRadius: 20,
+  },
+  dayText: {
+    color: colors.white,
+    fontSize: size.light,
+    fontFamily: type.semiBold,
   },
 });

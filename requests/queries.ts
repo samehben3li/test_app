@@ -5,6 +5,7 @@ export const GET_FLAGS = gql`
     getFlags {
       id
       userId
+      createdAt
       riskCategory {
         name
         imgUrl

@@ -7,7 +7,7 @@ import recentFlagsIcon from "../assets/recentFlags.png";
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Header />
+      <Header home={true} />
       <View style={styles.main}>
         <Pressable
           style={styles.btn}

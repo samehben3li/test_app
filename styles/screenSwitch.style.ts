@@ -4,10 +4,10 @@ import colors from "../theme/colors";
 
 export default StyleSheet.create({
   container: {
-    height: 100,
+    height: 60,
     backgroundColor: colors.black,
-    marginTop: -40,
-    paddingTop: 40,
+    // marginTop: -40,
+    // paddingTop: 40,
     zIndex: -1,
     borderBottomEndRadius: 40,
     borderBottomStartRadius: 40,

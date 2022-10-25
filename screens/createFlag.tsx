@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Text, Image } from "react-native";
 import { useState, useEffect } from "react";
 import Header from "../components/header";
 import styles from "../styles/createFlag.style";
@@ -9,6 +9,8 @@ import FlagReady from "../components/flagReady";
 import { optionsData } from "./options";
 import { GET_RISKS, GET_PLANT_PARTS } from "../requests/queries";
 import { useQuery } from "@apollo/client";
+import flagIcon from "../assets/flag.png";
+import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
 
 export interface option {
   id: number;
@@ -45,16 +47,22 @@ export default function CreateFlagScreen({ navigation, route }) {
     },
   });
   const [completed, setCompleted] = useState(false);
+  const [done, setDone] = useState(false);
   const risks = useQuery(GET_RISKS);
   const plantParts = useQuery(GET_PLANT_PARTS);
-  // useEffect(() => {
-  //   if (risks.data) {
-  //     setOptions(risks.data.getRiskCategories);
-  //   }
-  // }, [risks]);
   useEffect(() => {
-    // console.log(options);
-  }, [options]);
+    let timer: any;
+    if (done) {
+      timer = setTimeout(() => {
+        setDone(false);
+        setCompleted(false);
+        setSelectedTab(optionsData[0]);
+      }, 3000);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [done]);
   useEffect(() => {
     if (risks.data) {
       if (selectedTab.name === "risk") {
@@ -87,13 +95,25 @@ export default function CreateFlagScreen({ navigation, route }) {
   }, [flagData]);
   return (
     <View style={styles.container}>
-      <Header />
+      <Header home={false} />
       <ScreenSwitch navigation={navigation} route={route} />
-      <NewFlag
-        selectedTab={selectedTab}
-        flagData={flagData}
-        setSelectedTab={setSelectedTab}
-      />
+      {done ? (
+        <View style={styles.done}>
+          <Animated.View
+            entering={ZoomIn}
+            exiting={ZoomOut}
+            style={styles.doneImgContainer}
+          >
+            <Image source={flagIcon} style={styles.img} />
+          </Animated.View>
+        </View>
+      ) : (
+        <NewFlag
+          selectedTab={selectedTab}
+          flagData={flagData}
+          setSelectedTab={setSelectedTab}
+        />
+      )}
       {!completed ? (
         <FlagOptions
           setCompleted={setCompleted}
@@ -103,7 +123,13 @@ export default function CreateFlagScreen({ navigation, route }) {
           options={options}
         />
       ) : (
-        <FlagReady setCompleted={setCompleted} flagData={flagData} />
+        <FlagReady
+          done={done}
+          setDone={setDone}
+          setFlagData={setFlagData}
+          setCompleted={setCompleted}
+          flagData={flagData}
+        />
       )}
     </View>
   );

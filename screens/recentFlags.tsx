@@ -7,9 +7,8 @@ import FlagList from "../components/flagList";
 export default function RecentFlagsScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
-      <Header />
+      <Header home={false} />
       <ScreenSwitch navigation={navigation} route={route} />
-      <Text>{route.name}</Text>
       <FlagList />
     </View>
   );
