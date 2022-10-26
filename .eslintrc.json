@@ -20,6 +20,7 @@
   },
   "rules": {
     "import/no-unresolved": 0,
+    "@typescript-eslint/no-explicit-any": "warn",
     "react/jsx-filename-extension": [
       1,
       {

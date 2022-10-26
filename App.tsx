@@ -1,8 +1,8 @@
+import { API_URI } from "@env";
 import { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./screens/home";
-import LoginScreen from "./screens/login";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import AuthProvider from "./context/authContext";
+import Main from "./screens/main";
 import {
   Poppins_400Regular,
   Poppins_600SemiBold,
@@ -11,7 +11,10 @@ import {
 import { useFonts } from "expo-font";
 import LoadingScreen from "./screens/loading";
 
-const Stack = createNativeStackNavigator();
+const client = new ApolloClient({
+  uri: API_URI,
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -23,15 +26,12 @@ export default function App() {
   if (!fontsLoaded) {
     return <LoadingScreen />;
   }
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {isSignedIn ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
-        ) : (
-          <Stack.Screen name="login" component={LoginScreen} />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthProvider>
+      <ApolloProvider client={client}>
+        <Main />
+      </ApolloProvider>
+    </AuthProvider>
   );
 }

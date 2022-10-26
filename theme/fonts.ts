@@ -6,4 +6,5 @@ export const type = {
 export const size = {
   large: 40,
   medium: 20,
+  small: 12,
 };
