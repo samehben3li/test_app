@@ -25,7 +25,6 @@ export default function FlagOptions({
   const [selected, setSelected] = useState(0);
   useEffect(() => {
     if (flagData[data.name]) {
-      console.log(flagData[data.name].id);
       setSelected(flagData[data.name].id);
     }
   }, [data]);

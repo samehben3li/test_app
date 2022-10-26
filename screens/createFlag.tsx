@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Image } from "react-native";
 import { useState, useEffect } from "react";
 import Header from "../components/header";
 import styles from "../styles/createFlag.style";

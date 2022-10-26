@@ -1,11 +1,11 @@
 import { Text, View, Image, Pressable } from "react-native";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import i18n from "../i18n/tanslations";
 import styles from "../styles/flagReady.style";
 import helpIcon from "../assets/help.png";
 import lunaHelperIcon from "../assets/lunaHelper.png";
 import GestureRecognizer from "react-native-swipe-gestures";
-import { selectedTab, flag, option } from "../screens/createFlag";
+import { flag } from "../screens/createFlag";
 import { CREATE_FLAG } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
 
@@ -44,7 +44,6 @@ export default function FlagReady({
       },
       location: location,
     };
-    console.log(inputValues);
     try {
       const data = await createFlag({ variables: inputValues });
       if (data) {

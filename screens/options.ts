@@ -1,5 +1,3 @@
-import newFlagIcon from "../assets/bug.png";
-
 export const optionsData = [
   {
     name: "risk",

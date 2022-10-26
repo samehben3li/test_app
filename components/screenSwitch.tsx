@@ -1,12 +1,11 @@
-import { View, Pressable, Image, Text } from "react-native";
+import { View, Pressable, Image } from "react-native";
 import styles from "../styles/screenSwitch.style";
 import newFlagIcon from "../assets/newFlag.png";
 import recentFlagsIcon from "../assets/recentFlags.png";
-import Animated, { SlideInUp } from "react-native-reanimated";
 
 export default function ScreenSwitch({ navigation, route }) {
   return (
-    <Animated.View style={styles.container}>
+    <View style={styles.container}>
       <Pressable
         style={styles.btn}
         onPress={() => navigation.navigate("createFlag")}
@@ -28,6 +27,6 @@ export default function ScreenSwitch({ navigation, route }) {
           source={recentFlagsIcon}
         />
       </Pressable>
-    </Animated.View>
+    </View>
   );
 }

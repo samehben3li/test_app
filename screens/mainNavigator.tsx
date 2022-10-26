@@ -2,11 +2,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CreateFlagScreen from "./createFlag";
 import RecentFlagsScreen from "./recentFlags";
 import HomeScreen from "./home";
-import Header from "../components/header";
 
 const Stack = createNativeStackNavigator();
 
-const MainNavigator = ({ navigation, route }) => {
+const MainNavigator = () => {
   return (
     <>
       <Stack.Navigator

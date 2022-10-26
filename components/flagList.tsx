@@ -1,5 +1,4 @@
 import { Text, View, ScrollView, Image } from "react-native";
-import { useEffect } from "react";
 import i18n from "../i18n/tanslations";
 import styles from "../styles/flagList.style";
 import flagIcon from "../assets/flag.png";
@@ -9,15 +8,7 @@ import { API_URI } from "@env";
 import moment from "moment";
 
 export default function FlagList() {
-  const { data, loading, error } = useQuery(GET_FLAGS, { pollInterval: 1000 });
-  useEffect(() => {
-    if (data) {
-      const date = new Date(Number(data.getFlags[13].createdAt));
-      console.log(moment(date).format("MMMM Do YYYY, h:mm:ss a"));
-      console.log(date.getDate());
-      console.log(date.toLocaleTimeString());
-    }
-  }, [data]);
+  const { data } = useQuery(GET_FLAGS, { pollInterval: 1000 });
   const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
   return (
     <ScrollView style={styles.container}>

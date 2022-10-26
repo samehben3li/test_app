@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import Header from "../components/header";
 import ScreenSwitch from "../components/screenSwitch";
 import styles from "../styles/recentFlags.style";
