@@ -1,9 +1,8 @@
 import { Text, View, ScrollView, Image } from "react-native";
 import i18n from "../i18n/tanslations";
-import styles from "../styles/flagList.style";
-import flagIcon from "../assets/flag.png";
-import bugIcon from "../assets/bug.png";
-import { list } from "../screens/dummy";
+import { flagListStyles as styles } from "../styles";
+import { flagIcon, bugIcon } from "../assets";
+import { list } from "../data/dummy";
 
 export default function FlagList() {
   return (

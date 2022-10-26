@@ -1,7 +1,6 @@
 import { View, Text, Image, Pressable } from "react-native";
-import styles from "../styles/header.style";
-import lunaLogo from "../assets/luna-logo.png";
-import exitIcon from "../assets/exit.png";
+import { headerStyles as styles } from "../styles";
+import { lunaLogo, exitIcon } from "../assets";
 import { AuthContext } from "../context/authContext";
 import { useContext } from "react";
 import { authContextType } from "../types/interfaces";

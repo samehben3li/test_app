@@ -1,7 +1,7 @@
 import { Text, View, Image, Pressable } from "react-native";
 import { useState, useEffect } from "react";
 import i18n from "../i18n/tanslations";
-import styles from "../styles/flagOptions.style";
+import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/createFlag";
 import GestureRecognizer from "react-native-swipe-gestures";
 
@@ -20,6 +20,7 @@ export default function FlagOptions({
 }: Props) {
   const [selected, setSelected] = useState(0);
   const [touchY, setTouchY] = useState(0);
+
   useEffect(() => {
     if (flagData[data.name]) {
       setSelected(flagData[data.name].id);
@@ -32,6 +33,7 @@ export default function FlagOptions({
     });
     setSelected(selection.id);
   };
+
   const addLocation = (location: string, side: string) => {
     let arr = flagData.location[side];
     const index = arr.indexOf(location);
@@ -45,7 +47,9 @@ export default function FlagOptions({
       return { ...prev, location: newValue };
     });
   };
+
   const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
+
   return (
     <GestureRecognizer
       onSwipeDown={() => setCompleted(true)}

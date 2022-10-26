@@ -1,9 +1,9 @@
 import { Text, View, Image, Pressable } from "react-native";
 import i18n from "../i18n/tanslations";
-import styles from "../styles/newFlag.style";
-import newFlagIcon from "../assets/newFlag.png";
+import { newFlagStyles as styles } from "../styles";
+import { newFlagIcon } from "../assets";
 import { selectedTab, flag } from "../screens/createFlag";
-import { dummyData } from "../screens/dummy";
+import { dummyData } from "../data/dummy";
 
 interface Props {
   setSelectedTab: React.Dispatch<React.SetStateAction<selectedTab>>;

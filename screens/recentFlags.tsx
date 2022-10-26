@@ -1,8 +1,6 @@
 import { View } from "react-native";
-import Header from "../components/header";
-import ScreenSwitch from "../components/screenSwitch";
-import styles from "../styles/recentFlags.style";
-import FlagList from "../components/flagList";
+import { Header, ScreenSwitch, FlagList } from "../components";
+import { recentFlagsStyles as styles } from "../styles";
 
 export default function RecentFlagsScreen({ navigation, route }) {
   return (

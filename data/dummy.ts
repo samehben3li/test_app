@@ -1,4 +1,4 @@
-import newFlagIcon from "../assets/bug.png";
+import { newFlagIcon } from "../assets";
 
 export const dummyData = [
   {

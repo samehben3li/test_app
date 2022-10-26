@@ -1,16 +1,18 @@
 import { View } from "react-native";
 import { useState } from "react";
-import Header from "../components/header";
-import styles from "../styles/createFlag.style";
-import ScreenSwitch from "../components/screenSwitch";
-import FlagOptions from "../components/flagOptions";
-import NewFlag from "../components/newFlag";
-import FlagReady from "../components/flagReady";
-import { dummyData } from "./dummy";
+import {
+  Header,
+  ScreenSwitch,
+  FlagOptions,
+  NewFlag,
+  FlagReady,
+} from "../components";
+import { createFlagStyles as styles } from "../styles";
+import { dummyData } from "../data/dummy";
 
 export interface option {
   id: number;
-  icon: any;
+  icon: string;
   name: string;
 }
 export interface selectedTab {

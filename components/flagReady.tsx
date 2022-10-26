@@ -1,8 +1,7 @@
 import { Text, View, Image, Pressable } from "react-native";
 import i18n from "../i18n/tanslations";
-import styles from "../styles/flagReady.style";
-import helpIcon from "../assets/help.png";
-import lunaHelperIcon from "../assets/lunaHelper.png";
+import { flagReadyStyles as styles } from "../styles";
+import { helpIcon, lunaHelperIcon } from "../assets";
 
 export default function FlagReady() {
   return (
