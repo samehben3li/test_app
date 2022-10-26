@@ -1,8 +1,7 @@
 import { View, Pressable, Image } from "react-native";
 import styles from "../styles/home.style";
-import Header from "../components/header";
-import newFlagIcon from "../assets/newFlag.png";
-import recentFlagsIcon from "../assets/recentFlags.png";
+import { Header } from "../components";
+import { newFlagIcon, recentFlagsIcon } from "../assets";
 
 export default function HomeScreen() {
   return (

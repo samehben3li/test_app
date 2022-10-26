@@ -49,8 +49,8 @@ const LoginScreen = () => {
         setAuth(data.data.login);
         setLoading(false);
       } catch (err) {
+        setLoading(false);
         if (err instanceof Error) {
-          setLoading(false);
           setError(err.message);
         }
       }
