@@ -7,7 +7,7 @@ import { LOGIN } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
 import { authContextType } from "../types/interfaces";
 import colors from "../theme/colors";
-import i18n from "../i18n/tanslations";
+import i18n from "../i18n/translations";
 
 const LoginScreen = () => {
   const [loginUser] = useMutation(LOGIN);
@@ -25,10 +25,10 @@ const LoginScreen = () => {
     messages: {
       en: {
         ...defaultMessages.en,
-        email: i18n.t("invalidEmail"),
-        minlength: i18n.t("inputLonger"),
-        maxlength: i18n.t("inputShorter"),
-        required: i18n.t("required"),
+        email: i18n.t("login.invalidEmail"),
+        minlength: i18n.t("login.inputLonger"),
+        maxlength: i18n.t("login.inputShorter"),
+        required: i18n.t("login.required"),
       },
     },
   });
@@ -59,7 +59,7 @@ const LoginScreen = () => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{i18n.t("welcome")}</Text>
+      <Text style={styles.title}>{i18n.t("login.welcome")}</Text>
       <View style={styles.errorContainer}>
         {error && (
           <View style={styles.loginError}>
@@ -71,7 +71,7 @@ const LoginScreen = () => {
         value={email}
         onChangeText={(text) => setEmail(text)}
         style={styles.input}
-        placeholder={i18n.t("email")}
+        placeholder={i18n.t("login.email")}
       />
       <View style={styles.error}>
         {isFieldInError("email") &&
@@ -89,7 +89,7 @@ const LoginScreen = () => {
         onChangeText={(text) => setPassword(text)}
         style={styles.input}
         secureTextEntry={true}
-        placeholder={i18n.t("password")}
+        placeholder={i18n.t("login.password")}
       />
       <View style={styles.error}>
         {isFieldInError("password") &&
@@ -114,7 +114,7 @@ const LoginScreen = () => {
         disabled={!isFormValid || loading}
       >
         <Text style={styles.submitText}>
-          {loading ? "..." : i18n.t("login")}
+          {loading ? "..." : i18n.t("login.login")}
         </Text>
       </Pressable>
     </View>
