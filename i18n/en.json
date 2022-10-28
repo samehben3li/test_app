@@ -12,7 +12,7 @@
   "header": {
     "TomatoTrolley": "Tomato Trolley"
   },
-  "utils": {
+  "loading": {
     "loading": "Loading..."
   }
 }
