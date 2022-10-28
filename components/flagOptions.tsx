@@ -2,7 +2,7 @@ import { Text, View, Image, Pressable } from "react-native";
 import { useState, useEffect } from "react";
 import i18n from "../i18n/tanslations";
 import { flagOptionsStyles as styles } from "../styles";
-import { selectedTab, flag, option } from "../screens/createFlag";
+import { selectedTab, flag, option } from "../screens/CreateFlag";
 import GestureRecognizer from "react-native-swipe-gestures";
 
 interface Props {

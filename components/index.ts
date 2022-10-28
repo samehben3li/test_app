@@ -1,6 +1,6 @@
-export { default as Header } from "./header";
-export { default as FlagList } from "./flagList";
-export { default as FlagOptions } from "./flagOptions";
-export { default as FlagReady } from "./flagReady";
-export { default as NewFlag } from "./newFlag";
-export { default as ScreenSwitch } from "./screenSwitch";
+export { default as Header } from "./Header";
+export { default as FlagList } from "./FlagList";
+export { default as FlagOptions } from "./FlagOptions";
+export { default as FlagReady } from "./FlagReady";
+export { default as NewFlag } from "./NewFlag";
+export { default as ScreenSwitch } from "./ScreenSwitch";

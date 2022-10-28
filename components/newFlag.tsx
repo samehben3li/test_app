@@ -2,7 +2,7 @@ import { Text, View, Image, Pressable } from "react-native";
 import i18n from "../i18n/tanslations";
 import { newFlagStyles as styles } from "../styles";
 import { newFlagIcon } from "../assets";
-import { selectedTab, flag } from "../screens/createFlag";
+import { selectedTab, flag } from "../screens/CreateFlag";
 import { dummyData } from "../data/dummy";
 
 interface Props {
