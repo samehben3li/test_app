@@ -5,7 +5,8 @@ const colors = {
   white: "#fff",
   errorTxt: "#AE0A04",
   errorBg: "#FFE7E7",
-  red: "#f44336",
+  primary2: "#f44336",
+  primary3: "#000",
 };
 
 export default colors;

@@ -42,7 +42,7 @@ export default StyleSheet.create({
     marginVertical: 5,
   },
   errorText: {
-    color: colors.red,
+    color: colors.primary2,
     fontSize: size.small,
   },
   errorContainer: {

@@ -14,6 +14,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { isFieldInError, getErrorsInField, isFormValid } = useValidation({
     fieldsRules: {
       email: { email: true, required: true },
@@ -43,9 +44,12 @@ const LoginScreen = () => {
   const submitHandler = async () => {
     if (isFormValid) {
       try {
+        setLoading(true);
         const data = await loginUser({ variables: { email, password } });
         setAuth(data.data.login);
+        setLoading(false);
       } catch (err) {
+        setLoading(false);
         if (err instanceof Error) {
           setError(err.message);
         }
@@ -106,9 +110,9 @@ const LoginScreen = () => {
           styles.submit,
         ]}
         onPress={submitHandler}
-        disabled={!isFormValid}
+        disabled={!isFormValid || loading}
       >
-        <Text style={styles.submitText}>Login</Text>
+        <Text style={styles.submitText}>{loading ? "..." : "Login"}</Text>
       </Pressable>
     </View>
   );
