@@ -1,9 +1,10 @@
 import { Text, View, StyleSheet } from "react-native";
+import i18n from "../i18n/translations";
 
 export default function LoadingScreen() {
   return (
     <View style={styles.container}>
-      <Text>Loading...</Text>
+      <Text>{i18n.t("loading.loading")}</Text>
     </View>
   );
 }

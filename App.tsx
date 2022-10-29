@@ -10,6 +10,11 @@ import {
 } from "@expo-google-fonts/poppins";
 import { useFonts } from "expo-font";
 import LoadingScreen from "./screens/loading";
+import * as Localization from "expo-localization";
+import i18n from "./i18n/translations";
+
+i18n.locale = Localization.locale;
+i18n.enableFallback = true;
 
 const client = new ApolloClient({
   uri: API_URI,
