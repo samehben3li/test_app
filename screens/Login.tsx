@@ -1,7 +1,7 @@
 import { Text, View, TextInput, Pressable } from "react-native";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/authContext";
-import styles from "../styles/login.style";
+import { loginStyles as styles } from "../styles";
 import { useValidation, defaultMessages } from "react-simple-form-validator";
 import { LOGIN } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
