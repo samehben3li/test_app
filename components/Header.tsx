@@ -1,13 +1,16 @@
 import { View, Text, Image, Pressable } from "react-native";
-import styles from "../styles/header.style";
-import lunaLogo from "../assets/luna-logo.png";
-import exitIcon from "../assets/exit.png";
+import { headerStyles as styles } from "../styles";
+import { lunaLogo, exitIcon } from "../assets";
 import { AuthContext } from "../context/authContext";
 import { useContext } from "react";
 import { authContextType } from "../types/interfaces";
-import i18n from "../i18n/tanslations";
+import i18n from "../i18n/translations";
 
-const Header = ({ home }) => {
+interface Props {
+  home: boolean;
+}
+
+const Header = ({ home }: Props) => {
   const { setAuth } = useContext(AuthContext) as authContextType;
   const submitHandler = () => {
     setAuth(null);
@@ -17,7 +20,7 @@ const Header = ({ home }) => {
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Image style={styles.image} source={lunaLogo} />
-          <Text style={styles.logoTitle}>{i18n.t("TomatoTrolley")}</Text>
+          <Text style={styles.logoTitle}>{i18n.t("header.TomatoTrolley")}</Text>
         </View>
         <Pressable style={styles.btn} onPress={submitHandler}>
           <Image style={styles.image} source={exitIcon} />

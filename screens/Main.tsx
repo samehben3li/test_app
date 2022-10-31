@@ -9,8 +9,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MainNavigator from "./mainNavigator";
-import LoginScreen from "../screens/login";
+import MainNavigator from "./MainNavigator";
+import LoginScreen from "./Login";
 import { AuthContext } from "../context/authContext";
 import { authContextType } from "../types/interfaces";
 

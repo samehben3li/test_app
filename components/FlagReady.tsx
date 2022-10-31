@@ -1,11 +1,10 @@
 import { Text, View, Image, Pressable } from "react-native";
 import { useState } from "react";
-import i18n from "../i18n/tanslations";
-import styles from "../styles/flagReady.style";
-import helpIcon from "../assets/help.png";
-import lunaHelperIcon from "../assets/lunaHelper.png";
+import i18n from "../i18n/translations";
+import { flagReadyStyles as styles } from "../styles";
+import { helpIcon, lunaHelperIcon } from "../assets";
 import GestureRecognizer from "react-native-swipe-gestures";
-import { flag } from "../screens/createFlag";
+import { flag } from "../screens/CreateFlag";
 import { CREATE_FLAG } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
 
@@ -76,14 +75,18 @@ export default function FlagReady({
               <Image source={lunaHelperIcon} style={styles.imgWide} />
               <Image source={helpIcon} style={styles.imgIcon} />
             </View>
-            <Text style={styles.helpText}>{i18n.t("makeChangesHelp")}</Text>
+            <Text style={styles.helpText}>
+              {i18n.t("flagReady.makeChangesHelp")}
+            </Text>
           </View>
         </View>
         <GestureRecognizer
           onSwipeDown={() => setCompleted(false)}
           style={styles.bottomPart}
         >
-          <Text style={styles.confirmText}>{i18n.t("confirmSelection")}</Text>
+          <Text style={styles.confirmText}>
+            {i18n.t("flagReady.confirmSelection")}
+          </Text>
           <Pressable
             onPress={submit}
             style={[
@@ -93,9 +96,9 @@ export default function FlagReady({
               },
             ]}
           >
-            <Text style={styles.btnText}>{i18n.t("createFlag")}</Text>
+            <Text style={styles.btnText}>{i18n.t("flagReady.createFlag")}</Text>
           </Pressable>
-          <Text style={styles.hint}>{i18n.t("swipeHint")}</Text>
+          <Text style={styles.hint}>{i18n.t("flagReady.swipeHint")}</Text>
         </GestureRecognizer>
       </View>
     );

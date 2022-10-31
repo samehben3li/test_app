@@ -1,7 +1,7 @@
 import { Text, View, ScrollView, Image } from "react-native";
-import i18n from "../i18n/tanslations";
-import styles from "../styles/flagList.style";
-import flagIcon from "../assets/flag.png";
+import i18n from "../i18n/translations";
+import { flagListStyles as styles } from "../styles";
+import { flagIcon } from "../assets";
 import { GET_FLAGS } from "../requests/queries";
 import { useQuery } from "@apollo/client";
 import { API_URI } from "@env";
@@ -9,7 +9,11 @@ import moment from "moment";
 
 export default function FlagList() {
   const { data } = useQuery(GET_FLAGS, { pollInterval: 1000 });
-  const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
+  const locations = [
+    i18n.t("flag.top"),
+    i18n.t("flag.middle"),
+    i18n.t("flag.bottom"),
+  ];
   return (
     <ScrollView style={styles.container}>
       {data?.getFlags?.map((item, index) => (
@@ -33,7 +37,9 @@ export default function FlagList() {
             <View style={styles.grid}>
               <View style={styles.col}>
                 <View style={styles.title}>
-                  <Text style={styles.titleTxt}>{i18n.t("riskCategory")}</Text>
+                  <Text style={styles.titleTxt}>
+                    {i18n.t("flag.riskCategory")}
+                  </Text>
                 </View>
                 <View style={styles.selection}>
                   <Image
@@ -47,7 +53,7 @@ export default function FlagList() {
               </View>
               <View style={styles.col}>
                 <View style={styles.title}>
-                  <Text style={styles.titleTxt}>{i18n.t("pestType")}</Text>
+                  <Text style={styles.titleTxt}>{i18n.t("flag.pestType")}</Text>
                 </View>
                 <View style={styles.selection}>
                   <Image
@@ -65,7 +71,9 @@ export default function FlagList() {
               </View>
               <View style={styles.col}>
                 <View style={styles.title}>
-                  <Text style={styles.titleTxt}>{i18n.t("plantPart")}</Text>
+                  <Text style={styles.titleTxt}>
+                    {i18n.t("flag.plantPart")}
+                  </Text>
                 </View>
                 <View style={styles.selection}>
                   <Image
@@ -79,7 +87,7 @@ export default function FlagList() {
               </View>
               <View style={styles.col}>
                 <View style={styles.title}>
-                  <Text style={styles.titleTxt}>{i18n.t("location")}</Text>
+                  <Text style={styles.titleTxt}>{i18n.t("flag.location")}</Text>
                 </View>
                 <View style={styles.selection}>
                   <View style={styles.locationGrid}>

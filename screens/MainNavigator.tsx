@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import CreateFlagScreen from "./createFlag";
-import RecentFlagsScreen from "./recentFlags";
-import HomeScreen from "./home";
+import CreateFlagScreen from "./CreateFlag";
+import RecentFlagsScreen from "./RecentFlags";
+import HomeScreen from "./Home";
 
 const Stack = createNativeStackNavigator();
 

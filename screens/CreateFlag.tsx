@@ -1,15 +1,17 @@
 import { View, Image } from "react-native";
 import { useState, useEffect } from "react";
-import Header from "../components/header";
-import styles from "../styles/createFlag.style";
-import ScreenSwitch from "../components/screenSwitch";
-import FlagOptions from "../components/flagOptions";
-import NewFlag from "../components/newFlag";
-import FlagReady from "../components/flagReady";
-import { optionsData } from "./options";
+import {
+  Header,
+  ScreenSwitch,
+  FlagOptions,
+  NewFlag,
+  FlagReady,
+} from "../components";
+import { createFlagStyles as styles } from "../styles";
+import { optionsData } from "../data/options";
 import { GET_RISKS, GET_PLANT_PARTS } from "../requests/queries";
 import { useQuery } from "@apollo/client";
-import flagIcon from "../assets/flag.png";
+import { flagIcon } from "../assets";
 import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
 
 export interface option {

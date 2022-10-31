@@ -1,7 +1,6 @@
 import { View, Pressable, Image } from "react-native";
-import styles from "../styles/screenSwitch.style";
-import newFlagIcon from "../assets/newFlag.png";
-import recentFlagsIcon from "../assets/recentFlags.png";
+import { screenSwitchStyles as styles } from "../styles";
+import { newFlagIcon, recentFlagsIcon } from "../assets";
 
 export default function ScreenSwitch({ navigation, route }) {
   return (

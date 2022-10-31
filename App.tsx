@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 import AuthProvider from "./context/authContext";
-import Main from "./screens/main";
+import Main from "./screens/Main";
 import {
   Poppins_400Regular,
   Poppins_600SemiBold,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
 import { useFonts } from "expo-font";
-import LoadingScreen from "./screens/loading";
+import LoadingScreen from "./screens/Loading";
 import * as Localization from "expo-localization";
-import i18n from "./i18n/tanslations";
+import i18n from "./i18n/translations";
 
 i18n.locale = Localization.locale;
 i18n.enableFallback = true;

@@ -1,10 +1,10 @@
 import { Text, View, Image, Pressable } from "react-native";
 import { API_URI } from "@env";
-import i18n from "../i18n/tanslations";
-import styles from "../styles/newFlag.style";
-import newFlagIcon from "../assets/newFlag.png";
-import { selectedTab, flag } from "../screens/createFlag";
-import { optionsData } from "../screens/options";
+import i18n from "../i18n/translations";
+import { newFlagStyles as styles } from "../styles";
+import { newFlagIcon } from "../assets";
+import { selectedTab, flag } from "../screens/CreateFlag";
+import { optionsData } from "../data/options";
 
 interface Props {
   setSelectedTab: React.Dispatch<React.SetStateAction<selectedTab>>;
@@ -18,7 +18,11 @@ export default function NewFlag({
   selectedTab,
 }: Props) {
   const { risk, location, pest, plantPart } = flagData;
-  const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
+  const locations = [
+    i18n.t("flag.top"),
+    i18n.t("flag.middle"),
+    i18n.t("flag.bottom"),
+  ];
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={newFlagIcon} />
@@ -31,7 +35,7 @@ export default function NewFlag({
           ]}
         >
           <View style={styles.title}>
-            <Text style={styles.titleTxt}>{i18n.t("riskCategory")}</Text>
+            <Text style={styles.titleTxt}>{i18n.t("flag.riskCategory")}</Text>
           </View>
           <View style={styles.selection}>
             <Image
@@ -56,7 +60,7 @@ export default function NewFlag({
           ]}
         >
           <View style={styles.title}>
-            <Text style={styles.titleTxt}>{i18n.t("pestType")}</Text>
+            <Text style={styles.titleTxt}>{i18n.t("flag.pestType")}</Text>
           </View>
           <View style={styles.selection}>
             <Image
@@ -78,7 +82,7 @@ export default function NewFlag({
           ]}
         >
           <View style={styles.title}>
-            <Text style={styles.titleTxt}>{i18n.t("plantPart")}</Text>
+            <Text style={styles.titleTxt}>{i18n.t("flag.plantPart")}</Text>
           </View>
           <View style={styles.selection}>
             <Image
@@ -103,7 +107,7 @@ export default function NewFlag({
           ]}
         >
           <View style={styles.title}>
-            <Text style={styles.titleTxt}>{i18n.t("location")}</Text>
+            <Text style={styles.titleTxt}>{i18n.t("flag.location")}</Text>
           </View>
           <View style={styles.selection}>
             <View style={styles.grid}>

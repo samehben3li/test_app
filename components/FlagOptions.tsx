@@ -1,9 +1,9 @@
 import { Text, View, Image, Pressable } from "react-native";
 import { API_URI } from "@env";
 import { useState, useEffect } from "react";
-import i18n from "../i18n/tanslations";
-import styles from "../styles/flagOptions.style";
-import { selectedTab, flag, option } from "../screens/createFlag";
+import i18n from "../i18n/translations";
+import { flagOptionsStyles as styles } from "../styles";
+import { selectedTab, flag, option } from "../screens/CreateFlag";
 import GestureRecognizer from "react-native-swipe-gestures";
 import Animated, { SlideInDown, SlideOutDown } from "react-native-reanimated";
 
@@ -48,7 +48,11 @@ export default function FlagOptions({
       return { ...prev, location: newValue };
     });
   };
-  const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
+  const locations = [
+    i18n.t("flag.top"),
+    i18n.t("flag.middle"),
+    i18n.t("flag.bottom"),
+  ];
   return (
     <Animated.View
       entering={SlideInDown}
@@ -102,7 +106,7 @@ export default function FlagOptions({
                       <Text style={styles.optionName}>{item}</Text>
                     </Pressable>
                   ))}
-                  <Text style={styles.gridText}>{i18n.t("left")}</Text>
+                  <Text style={styles.gridText}>{i18n.t("flag.left")}</Text>
                 </View>
                 <View style={styles.locationCol}>
                   {locations.map((item: string, index: number) => (
@@ -118,7 +122,7 @@ export default function FlagOptions({
                       <Text style={styles.optionName}>{item}</Text>
                     </Pressable>
                   ))}
-                  <Text style={styles.gridText}>{i18n.t("right")}</Text>
+                  <Text style={styles.gridText}>{i18n.t("flag.right")}</Text>
                 </View>
               </View>
             )}
