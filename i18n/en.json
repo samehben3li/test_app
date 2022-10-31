@@ -31,5 +31,10 @@
     "confirmSelection": "Please confirm that the submission above is correct",
     "createFlag": "CREATE FLAG",
     "swipeHint": "Swipe down to cancel"
+  },
+  "errors": {
+    "NOT_LOGGED_IN": "Not logged in",
+    "INVALID_TOKEN": "Invalid token",
+    "INCORRECT_CREDENTIALS": "Wrong credentials"
   }
 }
