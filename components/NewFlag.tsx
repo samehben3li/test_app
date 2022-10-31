@@ -1,10 +1,11 @@
 import { Text, View, Image, Pressable } from "react-native";
-import { API_URI } from "@env";
 import i18n from "../i18n/translations";
 import { newFlagStyles as styles } from "../styles";
 import { newFlagIcon } from "../assets";
 import { selectedTab, flag } from "../screens/CreateFlag";
 import { optionsData } from "../data/options";
+
+const API_URI = process.env.apiUrl;
 
 interface Props {
   setSelectedTab: React.Dispatch<React.SetStateAction<selectedTab>>;

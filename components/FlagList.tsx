@@ -4,9 +4,9 @@ import { flagListStyles as styles } from "../styles";
 import { flagIcon } from "../assets";
 import { GET_FLAGS } from "../requests/queries";
 import { useQuery } from "@apollo/client";
-import { API_URI } from "@env";
 import moment from "moment";
 
+const API_URI = process.env.apiUrl;
 const FlagCol = ({ item, name }) => (
   <View style={styles.col}>
     <View style={styles.title}>

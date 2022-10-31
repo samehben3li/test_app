@@ -52,7 +52,9 @@ const LoginScreen = () => {
       } catch (err) {
         if (err instanceof Error) {
           setLoading(false);
-          setError(i18n.t(`errors.${err.message}`, { defaultValue: "Error" }));
+          setError(
+            i18n.t(`errors.${err.message}`, { defaultValue: err.message })
+          );
         }
       }
     }

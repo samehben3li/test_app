@@ -1,5 +1,4 @@
 import { Text, View, Image, Pressable } from "react-native";
-import { API_URI } from "@env";
 import { useState, useEffect } from "react";
 import i18n from "../i18n/translations";
 import { flagOptionsStyles as styles } from "../styles";
@@ -7,6 +6,7 @@ import { selectedTab, flag, option } from "../screens/CreateFlag";
 import GestureRecognizer from "react-native-swipe-gestures";
 import Animated, { SlideInDown, SlideOutDown } from "react-native-reanimated";
 
+const API_URI = process.env.apiUrl;
 interface Props {
   data: selectedTab;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;

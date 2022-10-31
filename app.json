@@ -2,8 +2,9 @@
   "expo": {
     "name": "TomatoTrolley",
     "slug": "tomato-trolley",
+    "privacy": "unlisted",
     "owner": "iunu-tomato-trolley-team",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,16 +18,25 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ranadev.tomatotrolley",
+      "buildNumber": "2"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.ranadev.tomatotrolley"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "935bfe04-32c2-4c7b-a5f8-815128fc55c4",
+        "apiUrl": "https://tomato-trolley.herokuapp.com/"
+      }
     }
   }
 }
