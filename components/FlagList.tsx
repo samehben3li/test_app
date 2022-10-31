@@ -7,6 +7,23 @@ import { useQuery } from "@apollo/client";
 import { API_URI } from "@env";
 import moment from "moment";
 
+const FlagCol = ({ item, name }) => (
+  <View style={styles.col}>
+    <View style={styles.title}>
+      <Text style={styles.titleTxt}>{i18n.t(name)}</Text>
+    </View>
+    <View style={styles.selection}>
+      <Image
+        style={styles.image}
+        source={{ uri: `${API_URI}${item?.imgUrl}` }}
+      />
+    </View>
+    <View style={styles.name}>
+      <Text style={styles.nameTxt}>{item?.name}</Text>
+    </View>
+  </View>
+);
+
 export default function FlagList() {
   const { data } = useQuery(GET_FLAGS, { pollInterval: 1000 });
   const locations = [
@@ -35,56 +52,9 @@ export default function FlagList() {
               </Text>
             </View>
             <View style={styles.grid}>
-              <View style={styles.col}>
-                <View style={styles.title}>
-                  <Text style={styles.titleTxt}>
-                    {i18n.t("flag.riskCategory")}
-                  </Text>
-                </View>
-                <View style={styles.selection}>
-                  <Image
-                    style={styles.image}
-                    source={{ uri: `${API_URI}${item.riskCategory?.imgUrl}` }}
-                  />
-                </View>
-                <View style={styles.name}>
-                  <Text style={styles.nameTxt}>{item.riskCategory?.name}</Text>
-                </View>
-              </View>
-              <View style={styles.col}>
-                <View style={styles.title}>
-                  <Text style={styles.titleTxt}>{i18n.t("flag.pestType")}</Text>
-                </View>
-                <View style={styles.selection}>
-                  <Image
-                    style={styles.image}
-                    source={{
-                      uri: `${API_URI}${item.riskCategoryType?.imgUrl}`,
-                    }}
-                  />
-                </View>
-                <View style={styles.name}>
-                  <Text style={styles.nameTxt}>
-                    {item.riskCategoryType?.name}
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.col}>
-                <View style={styles.title}>
-                  <Text style={styles.titleTxt}>
-                    {i18n.t("flag.plantPart")}
-                  </Text>
-                </View>
-                <View style={styles.selection}>
-                  <Image
-                    style={styles.image}
-                    source={{ uri: `${API_URI}${item.plantPart?.imgUrl}` }}
-                  />
-                </View>
-                <View style={styles.name}>
-                  <Text style={styles.nameTxt}>{item.plantPart?.name}</Text>
-                </View>
-              </View>
+              <FlagCol item={item.riskCategory} name="flag.riskCategory" />
+              <FlagCol item={item.riskCategoryType} name="flag.pestType" />
+              <FlagCol item={item.plantPart} name="flag.plantPart" />
               <View style={styles.col}>
                 <View style={styles.title}>
                   <Text style={styles.titleTxt}>{i18n.t("flag.location")}</Text>
@@ -119,15 +89,15 @@ export default function FlagList() {
                 </View>
                 <View style={styles.name}>
                   <Text style={styles.locationNameTxt}>
-                    LEFT:{" "}
+                    LEFT:
                     {item.location?.left.map(
-                      (item: string, index: number) => `${item.charAt(0)}`
+                      (item: string, index: number) => ` ${item.charAt(0)}`
                     )}
                   </Text>
                   <Text style={styles.locationNameTxt}>
-                    RIGHT:{" "}
+                    RIGHT:
                     {item.location?.right.map(
-                      (item: string, index: number) => `${item.charAt(0)}`
+                      (item: string, index: number) => ` ${item.charAt(0)}`
                     )}
                   </Text>
                 </View>
