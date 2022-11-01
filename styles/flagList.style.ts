@@ -56,7 +56,6 @@ export default StyleSheet.create({
     shadowOpacity: 0.58,
     shadowRadius: 75,
     elevation: 10,
-    overflow: "hidden",
   },
   title: {
     flex: 1,
@@ -75,6 +74,8 @@ export default StyleSheet.create({
     backgroundColor: colors.done,
     alignItems: "center",
     justifyContent: "center",
+    borderBottomEndRadius: 5,
+    borderBottomStartRadius: 5,
   },
   nameTxt: {
     color: colors.black,
