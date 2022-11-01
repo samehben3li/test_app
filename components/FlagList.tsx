@@ -5,24 +5,8 @@ import { flagIcon } from "../assets";
 import { GET_FLAGS } from "../requests/queries";
 import { useQuery } from "@apollo/client";
 import moment from "moment";
-
-const API_URI = process.env.apiUrl;
-const FlagCol = ({ item, name }) => (
-  <View style={styles.col}>
-    <View style={styles.title}>
-      <Text style={styles.titleTxt}>{i18n.t(name)}</Text>
-    </View>
-    <View style={styles.selection}>
-      <Image
-        style={styles.image}
-        source={{ uri: `${API_URI}${item?.imgUrl}` }}
-      />
-    </View>
-    <View style={styles.name}>
-      <Text style={styles.nameTxt}>{item?.name}</Text>
-    </View>
-  </View>
-);
+import { flag } from "../types/interfaces";
+import { FlagCol } from ".";
 
 export default function FlagList() {
   const { data } = useQuery(GET_FLAGS, { pollInterval: 1000 });
@@ -33,7 +17,7 @@ export default function FlagList() {
   ];
   return (
     <ScrollView style={styles.container}>
-      {data?.getFlags?.map((item, index) => (
+      {data?.getFlags?.map((item: flag, index: number) => (
         <View key={item.id}>
           {(new Date(Number(item.createdAt)).getDate() <
             new Date(Number(data?.getFlags[index - 1]?.createdAt)).getDate() ||
