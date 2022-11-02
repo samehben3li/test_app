@@ -40,7 +40,7 @@ export default function NewFlag({
           </View>
           <View style={styles.selection}>
             <Image
-              style={styles.image}
+              style={styles.selectionImage}
               source={{ uri: `${API_URI}${flagData.risk?.imgUrl}` }}
             />
           </View>
@@ -65,7 +65,7 @@ export default function NewFlag({
           </View>
           <View style={styles.selection}>
             <Image
-              style={styles.image}
+              style={styles.selectionImage}
               source={{ uri: `${API_URI}${flagData.pest?.imgUrl}` }}
             />
           </View>
@@ -87,7 +87,7 @@ export default function NewFlag({
           </View>
           <View style={styles.selection}>
             <Image
-              style={styles.image}
+              style={styles.selectionImage}
               source={{ uri: `${API_URI}${flagData.plantPart?.imgUrl}` }}
             />
           </View>

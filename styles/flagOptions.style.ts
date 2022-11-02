@@ -36,7 +36,7 @@ export default StyleSheet.create({
   title: {
     color: colors.white,
     textAlign: "center",
-    paddingVertical: 7,
+    paddingVertical: 15,
     fontFamily: type.bold,
     fontSize: size.medium,
   },
@@ -68,11 +68,12 @@ export default StyleSheet.create({
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 7,
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 5.62,
-    elevation: 5,
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
+    elevation: 15,
+    marginBottom: 5,
   },
   image: {
     height: "55%",
@@ -96,6 +97,7 @@ export default StyleSheet.create({
   locationCol: {
     flex: 1,
     alignItems: "center",
+    height: "100%",
   },
   locationBtn: {
     backgroundColor: colors.white,
@@ -106,15 +108,16 @@ export default StyleSheet.create({
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 5,
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 5.62,
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
     elevation: 10,
-    marginBottom: 5,
+    marginBottom: 10,
     paddingVertical: 10,
     borderWidth: 2,
     borderColor: colors.white,
+    flex: 1,
   },
   gridText: {
     fontFamily: type.bold,

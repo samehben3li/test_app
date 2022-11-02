@@ -22,7 +22,7 @@ export const optionsData = [
   },
   {
     name: "location",
-    title: "Location",
+    title: "LOCATION",
     hint: "Please choose the affected location on the plant, Select multiple locations if needed",
     location: true,
   },

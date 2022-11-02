@@ -6,7 +6,7 @@ import { GET_FLAGS } from "../requests/queries";
 import { useQuery } from "@apollo/client";
 import moment from "moment";
 import { flag } from "../types/interfaces";
-import { FlagCol } from ".";
+import FlagCol from "./FlagCol";
 
 export default function FlagList() {
   const { data } = useQuery(GET_FLAGS, { pollInterval: 1000 });

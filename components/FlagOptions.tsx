@@ -87,7 +87,9 @@ export default function FlagOptions({
                       style={styles.image}
                     />
                   </Pressable>
-                  <Text style={styles.optionName}>{option.name}</Text>
+                  <Text numberOfLines={1} style={styles.optionName}>
+                    {option.name}
+                  </Text>
                 </View>
               ))
             ) : (

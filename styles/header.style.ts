@@ -20,8 +20,8 @@ export default StyleSheet.create({
       height: 12,
     },
     shadowOpacity: 0.58,
-    shadowRadius: 75,
-    elevation: 40,
+    shadowRadius: 16.0,
+    elevation: 24,
   },
   bg: {
     width: "100%",

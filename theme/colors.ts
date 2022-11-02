@@ -9,7 +9,7 @@ const colors = {
   red: "#f44336",
   black: "#000",
   blackOp: "#00000080",
-  gold: "#F3B255",
+  gold: "#FFB955",
   goldOp: "#F3B25580",
   done: "#5CE166",
 };

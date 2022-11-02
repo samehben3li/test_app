@@ -2,11 +2,6 @@ import { useState } from "react";
 
 import AuthProvider from "./context/authContext";
 import Main from "./screens/Main";
-import {
-  Poppins_400Regular,
-  Poppins_600SemiBold,
-  Poppins_700Bold,
-} from "@expo-google-fonts/poppins";
 import { useFonts } from "expo-font";
 import LoadingScreen from "./screens/Loading";
 import * as Localization from "expo-localization";
@@ -18,9 +13,9 @@ i18n.enableFallback = true;
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [fontsLoaded, error] = useFonts({
-    Poppins_400Regular,
-    Poppins_600SemiBold,
-    Poppins_700Bold,
+    medium: require("./assets/fonts/gotham/GothamMedium.ttf"),
+    bold: require("./assets/fonts/gotham/Gotham-Bold.otf"),
+    black: require("./assets/fonts/gotham/Gotham-Black.otf"),
   });
   if (!fontsLoaded) {
     return <LoadingScreen />;

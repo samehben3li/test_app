@@ -26,11 +26,11 @@ export default StyleSheet.create({
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
-      height: 12,
+      height: 7,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 75,
-    elevation: 20,
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
+    elevation: 15,
   },
   image: {
     width: "60%",

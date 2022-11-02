@@ -1,7 +1,7 @@
 export const type = {
-  bold: "Poppins_700Bold",
-  semiBold: "Poppins_600SemiBold",
-  regular: "Poppins_400Regular",
+  bold: "black",
+  semiBold: "bold",
+  regular: "medium",
 };
 export const size = {
   large: 40,

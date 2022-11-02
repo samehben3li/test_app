@@ -27,8 +27,9 @@ export default StyleSheet.create({
     tintColor: colors.gold,
     height: "30%",
     resizeMode: "contain",
+    opacity: 0.5,
   },
   selected: {
-    opacity: 0.5,
+    opacity: 1,
   },
 });
