@@ -4,6 +4,23 @@ import { newFlagStyles as styles } from "../styles";
 import { newFlagIcon } from "../assets";
 import { selectedTab, flag } from "../screens/CreateFlag";
 import { optionsData } from "../data/options";
+import Animated, {
+  SlideInUp,
+  SlideOutUp,
+  Keyframe,
+  Easing,
+} from "react-native-reanimated";
+
+const keyframe = new Keyframe({
+  0: {
+    opacity: 0,
+    transform: [{ translateY: -100 }],
+  },
+  100: {
+    opacity: 1,
+    transform: [{ translateY: 0 }],
+  },
+});
 
 const API_URI = process.env.apiUrl;
 
@@ -25,7 +42,11 @@ export default function NewFlag({
     i18n.t("flag.bottom"),
   ];
   return (
-    <View style={styles.container}>
+    <Animated.View
+      entering={keyframe.duration(600)}
+      exiting={SlideOutUp.duration(600)}
+      style={styles.container}
+    >
       <Image style={styles.image} source={newFlagIcon} />
       <View style={styles.row}>
         <Pressable
@@ -172,6 +193,6 @@ export default function NewFlag({
           </View>
         </Pressable>
       </View>
-    </View>
+    </Animated.View>
   );
 }

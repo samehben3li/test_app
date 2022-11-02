@@ -21,7 +21,6 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 7,
     marginTop: 15,
-    fontFamily: type.regular,
   },
   submit: {
     borderRadius: 7,

@@ -99,40 +99,42 @@ export default function CreateFlagScreen({ navigation, route }) {
     <View style={styles.container}>
       <Header home={false} />
       <ScreenSwitch navigation={navigation} route={route} />
-      {done ? (
-        <View style={styles.done}>
-          <Animated.View
-            entering={ZoomIn}
-            exiting={ZoomOut}
-            style={styles.doneImgContainer}
-          >
-            <Image source={flagIcon} style={styles.img} />
-          </Animated.View>
-        </View>
-      ) : (
-        <NewFlag
-          selectedTab={selectedTab}
-          flagData={flagData}
-          setSelectedTab={setSelectedTab}
-        />
-      )}
-      {!completed ? (
-        <FlagOptions
-          setCompleted={setCompleted}
-          flagData={flagData}
-          setFlagData={setFlagData}
-          data={selectedTab}
-          options={options}
-        />
-      ) : (
-        <FlagReady
-          done={done}
-          setDone={setDone}
-          setFlagData={setFlagData}
-          setCompleted={setCompleted}
-          flagData={flagData}
-        />
-      )}
+      <View style={{ flex: 1, overflow: "hidden" }}>
+        {done ? (
+          <View style={styles.done}>
+            <Animated.View
+              entering={ZoomIn}
+              exiting={ZoomOut}
+              style={styles.doneImgContainer}
+            >
+              <Image source={flagIcon} style={styles.img} />
+            </Animated.View>
+          </View>
+        ) : (
+          <NewFlag
+            selectedTab={selectedTab}
+            flagData={flagData}
+            setSelectedTab={setSelectedTab}
+          />
+        )}
+        {!completed ? (
+          <FlagOptions
+            setCompleted={setCompleted}
+            flagData={flagData}
+            setFlagData={setFlagData}
+            data={selectedTab}
+            options={options}
+          />
+        ) : (
+          <FlagReady
+            done={done}
+            setDone={setDone}
+            setFlagData={setFlagData}
+            setCompleted={setCompleted}
+            flagData={flagData}
+          />
+        )}
+      </View>
     </View>
   );
 }

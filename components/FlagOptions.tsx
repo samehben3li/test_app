@@ -4,7 +4,23 @@ import i18n from "../i18n/translations";
 import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
 import GestureRecognizer from "react-native-swipe-gestures";
-import Animated, { SlideInDown, SlideOutDown } from "react-native-reanimated";
+import Animated, {
+  SlideInDown,
+  SlideOutDown,
+  Keyframe,
+  FadeIn,
+} from "react-native-reanimated";
+
+const keyframe = new Keyframe({
+  0: {
+    opacity: 0,
+    transform: [{ translateY: 10 }],
+  },
+  100: {
+    opacity: 1,
+    transform: [{ translateY: 0 }],
+  },
+});
 
 const API_URI = process.env.apiUrl;
 interface Props {
@@ -55,8 +71,8 @@ export default function FlagOptions({
   ];
   return (
     <Animated.View
-      entering={SlideInDown}
-      exiting={SlideOutDown}
+      entering={SlideInDown.duration(600)}
+      exiting={SlideOutDown.duration(600)}
       style={styles.container}
     >
       <GestureRecognizer
@@ -68,9 +84,16 @@ export default function FlagOptions({
         }}
         style={styles.innerContainer}
       >
-        <Text style={styles.hint}>{data.hint}</Text>
+        <Animated.Text
+          entering={keyframe.duration(400).delay(700)}
+          style={styles.hint}
+        >
+          {data.hint}
+        </Animated.Text>
         <View style={styles.optionsContainer}>
-          <Text style={styles.title}>{data.title}</Text>
+          <Animated.Text entering={SlideInDown} style={styles.title}>
+            {data.title}
+          </Animated.Text>
           <View style={styles.options}>
             {!data.location ? (
               options?.map((option) => (
