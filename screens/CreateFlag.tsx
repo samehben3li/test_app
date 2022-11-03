@@ -12,7 +12,7 @@ import { optionsData } from "../data/options";
 import { GET_RISKS, GET_PLANT_PARTS } from "../requests/queries";
 import { useQuery } from "@apollo/client";
 import { flagIcon } from "../assets";
-import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
+import Animated, { Keyframe, Easing } from "react-native-reanimated";
 
 export interface option {
   id: number;
@@ -35,6 +35,43 @@ export interface flag {
     right: string[];
   };
 }
+
+const entering = new Keyframe({
+  0: {
+    width: 200,
+    transform: [{ translateX: 0 }, { scale: 1 }, { translateY: 0 }],
+    borderRadius: 10,
+    opacity: 1,
+  },
+  20: {
+    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 0 }],
+    width: 80,
+    borderRadius: 50,
+    easing: Easing.ease,
+  },
+  70: {
+    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 0 }],
+    width: 80,
+    borderRadius: 50,
+    opacity: 1,
+  },
+  100: {
+    transform: [{ translateX: -300 }, { scale: 0 }, { translateY: -2500 }],
+    opacity: 0,
+    easing: Easing.ease,
+  },
+});
+const enteringImg = new Keyframe({
+  0: {
+    transform: [{ translateX: -60 }, { scale: 0 }],
+    opacity: 0,
+  },
+  100: {
+    transform: [{ translateX: -60 }, { scale: 1 }],
+    opacity: 1,
+    easing: Easing.bounce,
+  },
+});
 
 export default function CreateFlagScreen({ navigation, route }) {
   const [selectedTab, setSelectedTab] = useState<selectedTab>(optionsData[0]);
@@ -103,11 +140,14 @@ export default function CreateFlagScreen({ navigation, route }) {
         {done ? (
           <View style={styles.done}>
             <Animated.View
-              entering={ZoomIn}
-              exiting={ZoomOut}
+              entering={entering.duration(2500)}
               style={styles.doneImgContainer}
             >
-              <Image source={flagIcon} style={styles.img} />
+              <Animated.Image
+                entering={enteringImg.duration(500).delay(400)}
+                source={flagIcon}
+                style={styles.img}
+              />
             </Animated.View>
           </View>
         ) : (

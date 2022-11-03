@@ -10,12 +10,18 @@ export default StyleSheet.create({
   done: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
   },
   doneImgContainer: {
     backgroundColor: colors.done,
-    borderRadius: 200,
-    padding: 50,
+    // padding: 50,
+    // paddingVertical: 10,
+    // paddingHorizontal: 70,
+    width: 200,
+    alignItems: "center",
+    justifyContent: "center",
+    height: 80,
+    borderRadius: 10,
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
@@ -24,9 +30,10 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    marginBottom: 50,
   },
   img: {
-    height: 70,
+    height: 40,
     width: 70,
     resizeMode: "contain",
   },

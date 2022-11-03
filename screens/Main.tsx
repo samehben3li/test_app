@@ -16,7 +16,6 @@ import { authContextType } from "../types/interfaces";
 const Stack = createNativeStackNavigator();
 
 const apiUrl = process.env.apiUrl;
-console.log(apiUrl);
 export default function Main() {
   const { auth } = useContext(AuthContext) as authContextType;
   const httpLink = createHttpLink({

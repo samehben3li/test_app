@@ -87,7 +87,7 @@ export default StyleSheet.create({
     textAlign: "center",
     fontFamily: type.semiBold,
     fontSize: size.extraSmall,
-    lineHeight: 15,
+    lineHeight: 10,
     width: "90%",
   },
   image: {
