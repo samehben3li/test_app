@@ -7,15 +7,18 @@ import { useQuery } from "@apollo/client";
 import moment from "moment";
 import { flag } from "../types/interfaces";
 import FlagCol from "./FlagCol";
+import LoadingScreen from "../screens/Loading";
 
 export default function FlagList() {
-  const { data } = useQuery(GET_FLAGS, { pollInterval: 1000 });
+  const { data, loading } = useQuery(GET_FLAGS, { pollInterval: 1000 });
   const locations = [
     i18n.t("flag.top"),
     i18n.t("flag.middle"),
     i18n.t("flag.bottom"),
   ];
-  return (
+  return loading ? (
+    <LoadingScreen />
+  ) : (
     <ScrollView style={styles.container}>
       {data?.getFlags?.map((item: flag, index: number) => (
         <View key={item.id}>

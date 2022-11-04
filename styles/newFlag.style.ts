@@ -20,6 +20,7 @@ export default StyleSheet.create({
     shadowRadius: 16.0,
     elevation: 24,
     borderRadius: 15,
+    zIndex: 9,
   },
   image: {
     height: 25,
@@ -51,15 +52,19 @@ export default StyleSheet.create({
     shadowOpacity: 0.51,
     shadowRadius: 13.16,
     elevation: 20,
-    opacity: 0.6,
+    opacity: 1,
     zIndex: 10,
   },
   selected: {
     opacity: 1,
+    color: colors.black,
+  },
+  selectedName: {
+    backgroundColor: colors.black,
   },
   title: {
     flex: 1,
-    borderBottomColor: colors.blackOp,
+    borderBottomColor: colors.disabled,
     borderBottomWidth: 2,
     alignItems: "center",
     justifyContent: "center",
@@ -71,7 +76,7 @@ export default StyleSheet.create({
   },
   name: {
     flex: 1,
-    backgroundColor: colors.black,
+    backgroundColor: colors.disabled,
     alignItems: "center",
     justifyContent: "center",
     borderBottomEndRadius: 5,
@@ -88,6 +93,7 @@ export default StyleSheet.create({
     fontSize: size.small,
     lineHeight: 15,
     width: "90%",
+    color: colors.disabled,
   },
   done: {
     backgroundColor: colors.done,
@@ -110,6 +116,10 @@ export default StyleSheet.create({
     borderRadius: 4,
     flexDirection: "row",
     overflow: "hidden",
+    opacity: 0.4,
+  },
+  selectedGrid: {
+    opacity: 1,
   },
   gridCol: {
     flex: 1,

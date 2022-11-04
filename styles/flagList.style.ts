@@ -128,7 +128,7 @@ export default StyleSheet.create({
     marginLeft: 20,
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 2,
+    paddingVertical: 10,
     marginTop: 10,
     borderRadius: 20,
   },

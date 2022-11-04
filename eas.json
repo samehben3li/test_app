@@ -7,18 +7,18 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "apiUrl": "https://tomato-trolley.herokuapp.com/"
+        "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
       }
     },
     "preview": {
       "distribution": "internal",
       "env": {
-        "apiUrl": "https://tomato-trolley.herokuapp.com/"
+        "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
       }
     },
     "production": {
       "env": {
-        "apiUrl": "https://tomato-trolley.herokuapp.com/"
+        "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
       }
     },
     "simulator": {
@@ -29,7 +29,7 @@
         "buildType": "apk"
       },
       "env": {
-        "apiUrl": "https://tomato-trolley.herokuapp.com/"
+        "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
       }
     }
   },

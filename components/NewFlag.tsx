@@ -9,7 +9,10 @@ import Animated, {
   SlideOutUp,
   Keyframe,
   Easing,
+  FadeIn,
 } from "react-native-reanimated";
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const keyframe = new Keyframe({
   0: {
@@ -19,6 +22,7 @@ const keyframe = new Keyframe({
   100: {
     opacity: 1,
     transform: [{ translateY: 0 }],
+    easing: Easing.inOut(Easing.ease),
   },
 });
 
@@ -47,17 +51,26 @@ export default function NewFlag({
       exiting={SlideOutUp.duration(600)}
       style={styles.container}
     >
-      <Image style={styles.image} source={newFlagIcon} />
+      <Animated.Image
+        entering={FadeIn.delay(700).duration(700)}
+        style={styles.image}
+        source={newFlagIcon}
+      />
       <View style={styles.row}>
-        <Pressable
+        <AnimatedPressable
           onPress={() => setSelectedTab(optionsData[0])}
-          style={[
-            styles.col,
-            (selectedTab.name === "risk" || risk) && styles.selected,
-          ]}
+          style={styles.col}
+          entering={FadeIn.delay(300)}
         >
           <View style={styles.title}>
-            <Text style={styles.titleTxt}>{i18n.t("flag.riskCategory")}</Text>
+            <Text
+              style={[
+                styles.titleTxt,
+                (selectedTab.name === "risk" || risk) && styles.selected,
+              ]}
+            >
+              {i18n.t("flag.riskCategory")}
+            </Text>
           </View>
           <View style={styles.selection}>
             <Image
@@ -65,7 +78,14 @@ export default function NewFlag({
               source={{ uri: `${API_URI}${flagData.risk?.imgUrl}` }}
             />
           </View>
-          <View style={[styles.name, risk && styles.done]}>
+          <View
+            style={[
+              styles.name,
+              (selectedTab.name === "risk" || risk) && styles.selectedName,
+              ,
+              risk && styles.done,
+            ]}
+          >
             <Text
               numberOfLines={1}
               style={[styles.nameTxt, risk && styles.selectedTxt]}
@@ -73,16 +93,21 @@ export default function NewFlag({
               {risk ? risk.name : "?"}
             </Text>
           </View>
-        </Pressable>
-        <Pressable
+        </AnimatedPressable>
+        <AnimatedPressable
           onPress={() => setSelectedTab(optionsData[1])}
-          style={[
-            styles.col,
-            (selectedTab.name === "pest" || pest) && styles.selected,
-          ]}
+          style={styles.col}
+          entering={FadeIn.delay(300)}
         >
           <View style={styles.title}>
-            <Text style={styles.titleTxt}>{i18n.t("flag.pestType")}</Text>
+            <Text
+              style={[
+                styles.titleTxt,
+                (selectedTab.name === "pest" || pest) && styles.selected,
+              ]}
+            >
+              {i18n.t("flag.pestType")}
+            </Text>
           </View>
           <View style={styles.selection}>
             <Image
@@ -90,21 +115,37 @@ export default function NewFlag({
               source={{ uri: `${API_URI}${flagData.pest?.imgUrl}` }}
             />
           </View>
-          <View style={[styles.name, pest && styles.done]}>
-            <Text style={[styles.nameTxt, pest && styles.selectedTxt]}>
+          <View
+            style={[
+              styles.name,
+              (selectedTab.name === "pest" || pest) && styles.selectedName,
+              ,
+              pest && styles.done,
+            ]}
+          >
+            <Text
+              numberOfLines={2}
+              style={[styles.nameTxt, pest && styles.selectedTxt]}
+            >
               {pest ? pest.name : "?"}
             </Text>
           </View>
-        </Pressable>
-        <Pressable
+        </AnimatedPressable>
+        <AnimatedPressable
           onPress={() => setSelectedTab(optionsData[2])}
-          style={[
-            styles.col,
-            (selectedTab.name === "plantPart" || plantPart) && styles.selected,
-          ]}
+          style={styles.col}
+          entering={FadeIn.delay(300)}
         >
           <View style={styles.title}>
-            <Text style={styles.titleTxt}>{i18n.t("flag.plantPart")}</Text>
+            <Text
+              style={[
+                styles.titleTxt,
+                (selectedTab.name === "plantPart" || plantPart) &&
+                  styles.selected,
+              ]}
+            >
+              {i18n.t("flag.plantPart")}
+            </Text>
           </View>
           <View style={styles.selection}>
             <Image
@@ -112,27 +153,45 @@ export default function NewFlag({
               source={{ uri: `${API_URI}${flagData.plantPart?.imgUrl}` }}
             />
           </View>
-          <View style={[styles.name, plantPart && styles.done]}>
+          <View
+            style={[
+              styles.name,
+              (selectedTab.name === "plantPart" || plantPart) &&
+                styles.selectedName,
+              ,
+              plantPart && styles.done,
+            ]}
+          >
             <Text style={[styles.nameTxt, plantPart && styles.selectedTxt]}>
               {plantPart ? plantPart.name : "?"}
             </Text>
           </View>
-        </Pressable>
-        <Pressable
+        </AnimatedPressable>
+        <AnimatedPressable
           onPress={() => setSelectedTab(optionsData[3])}
-          style={[
-            styles.col,
-            (selectedTab.name === "location" ||
-              location.left.length > 0 ||
-              location.right.length > 0) &&
-              styles.selected,
-          ]}
+          style={styles.col}
+          entering={FadeIn.delay(300)}
         >
           <View style={styles.title}>
-            <Text style={styles.titleTxt}>{i18n.t("flag.location")}</Text>
+            <Text
+              style={[
+                styles.titleTxt,
+                selectedTab.name === "loaction" && styles.selected,
+              ]}
+            >
+              {i18n.t("flag.location")}
+            </Text>
           </View>
           <View style={styles.selection}>
-            <View style={styles.grid}>
+            <View
+              style={[
+                styles.grid,
+                (selectedTab.name === "location" ||
+                  location.left.length > 0 ||
+                  location.right.length > 0) &&
+                  styles.selectedGrid,
+              ]}
+            >
               <View style={styles.gridCol}>
                 {locations.map((item: string, index: number) => (
                   <View
@@ -162,6 +221,7 @@ export default function NewFlag({
           <View
             style={[
               styles.name,
+              selectedTab.name === "location" && styles.selectedName,
               (location.left.length > 0 || location.right.length > 0) &&
                 styles.done,
             ]}
@@ -191,7 +251,7 @@ export default function NewFlag({
               )}
             </Text>
           </View>
-        </Pressable>
+        </AnimatedPressable>
       </View>
     </Animated.View>
   );

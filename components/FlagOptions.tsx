@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable } from "react-native";
+import { Text, View, Image, Pressable, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
 import i18n from "../i18n/translations";
 import { flagOptionsStyles as styles } from "../styles";
@@ -9,7 +9,14 @@ import Animated, {
   SlideOutDown,
   Keyframe,
   FadeIn,
+  FadeOut,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
 } from "react-native-reanimated";
+import { duration } from "moment";
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const keyframe = new Keyframe({
   0: {
@@ -29,6 +36,7 @@ interface Props {
   flagData: flag;
   setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
   options: option[];
+  selectedTab: selectedTab;
 }
 
 export default function FlagOptions({
@@ -37,6 +45,7 @@ export default function FlagOptions({
   flagData,
   setCompleted,
   options,
+  selectedTab,
 }: Props) {
   const [selected, setSelected] = useState(0);
   useEffect(() => {
@@ -44,6 +53,42 @@ export default function FlagOptions({
       setSelected(flagData[data.name].id);
     }
   }, [data]);
+  const windowWidth = Dimensions.get("window").width;
+  const [indicatorPos, setIndicatorPos] = useState(0);
+  const [indicatorLinePos, setIndicatorLinePos] = useState(100);
+  useEffect(() => {
+    if (selectedTab.name === "risk") {
+      setIndicatorPos(-windowWidth / 3.2);
+    } else if (selectedTab.name === "pest") {
+      setIndicatorPos(-windowWidth / 10);
+    } else if (selectedTab.name === "plantPart") {
+      setIndicatorPos(windowWidth / 10);
+    } else if (selectedTab.name === "location") {
+      setIndicatorPos(windowWidth / 3.2);
+    } else {
+      setIndicatorPos(0);
+    }
+  }, [selectedTab]);
+  useEffect(() => {
+    const T = setInterval(() => {
+      setIndicatorLinePos((prev) => -prev);
+    }, 1000);
+    return () => {
+      clearInterval(T);
+    };
+  }, []);
+  const uas = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: withSpring(indicatorPos, { stiffness: 50 }) }],
+    };
+  });
+  const uasLine = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { translateY: withTiming(indicatorLinePos, { duration: 1000 }) },
+      ],
+    };
+  });
 
   const choose = (selection: option) => {
     setFlagData((prev) => {
@@ -84,6 +129,8 @@ export default function FlagOptions({
         }}
         style={styles.innerContainer}
       >
+        {/* <Animated.View style={[styles.indicatorLine, uas]}></Animated.View> */}
+        <Animated.View style={[styles.indicator, uas]}></Animated.View>
         <Animated.Text
           entering={keyframe.duration(400).delay(700)}
           style={styles.hint}
@@ -98,7 +145,9 @@ export default function FlagOptions({
             {!data.location ? (
               options?.map((option) => (
                 <View key={option.id} style={styles.optionContainer}>
-                  <Pressable
+                  <AnimatedPressable
+                    entering={FadeIn.delay(500)}
+                    exiting={FadeOut}
                     onPress={() => choose(option)}
                     style={[
                       styles.btn,
@@ -109,17 +158,24 @@ export default function FlagOptions({
                       source={{ uri: `${API_URI}${option.imgUrl}` }}
                       style={styles.image}
                     />
-                  </Pressable>
-                  <Text numberOfLines={1} style={styles.optionName}>
+                  </AnimatedPressable>
+                  <Animated.Text
+                    entering={FadeIn.delay(500)}
+                    exiting={FadeOut}
+                    numberOfLines={1}
+                    style={styles.optionName}
+                  >
                     {option.name}
-                  </Text>
+                  </Animated.Text>
                 </View>
               ))
             ) : (
               <View style={styles.locationGrid}>
                 <View style={styles.locationCol}>
                   {locations.map((item: string, index: number) => (
-                    <Pressable
+                    <AnimatedPressable
+                      entering={FadeIn.delay(500)}
+                      exiting={FadeOut}
                       onPress={() => addLocation(item, "left")}
                       key={index}
                       style={[
@@ -129,13 +185,15 @@ export default function FlagOptions({
                       ]}
                     >
                       <Text style={styles.optionName}>{item}</Text>
-                    </Pressable>
+                    </AnimatedPressable>
                   ))}
                   <Text style={styles.gridText}>{i18n.t("flag.left")}</Text>
                 </View>
                 <View style={styles.locationCol}>
                   {locations.map((item: string, index: number) => (
-                    <Pressable
+                    <AnimatedPressable
+                      entering={FadeIn.delay(500)}
+                      exiting={FadeOut}
                       onPress={() => addLocation(item, "right")}
                       key={index}
                       style={[
@@ -145,7 +203,7 @@ export default function FlagOptions({
                       ]}
                     >
                       <Text style={styles.optionName}>{item}</Text>
-                    </Pressable>
+                    </AnimatedPressable>
                   ))}
                   <Text style={styles.gridText}>{i18n.t("flag.right")}</Text>
                 </View>

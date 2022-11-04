@@ -164,6 +164,7 @@ export default function CreateFlagScreen({ navigation, route }) {
             setFlagData={setFlagData}
             data={selectedTab}
             options={options}
+            selectedTab={selectedTab}
           />
         ) : (
           <FlagReady
