@@ -93,7 +93,7 @@ export default StyleSheet.create({
     shadowOpacity: 0.43,
     shadowRadius: 9.51,
     elevation: 15,
-    marginBottom: 5,
+    marginBottom: 10,
   },
   image: {
     height: "55%",
@@ -121,7 +121,7 @@ export default StyleSheet.create({
   },
   locationBtn: {
     backgroundColor: colors.white,
-    width: "95%",
+    width: "92%",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
@@ -133,7 +133,7 @@ export default StyleSheet.create({
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     elevation: 10,
-    marginBottom: 10,
+    marginBottom: 7,
     paddingVertical: 10,
     borderWidth: 2,
     borderColor: colors.white,

@@ -18,7 +18,7 @@ export default function HomeScreen({ navigation }) {
           style={styles.btn}
           onPress={() => navigation.navigate("recentFlags")}
         >
-          <Image style={styles.image} source={recentFlagsIcon} />
+          <Image style={styles.image2} source={recentFlagsIcon} />
         </Pressable>
       </View>
     </View>

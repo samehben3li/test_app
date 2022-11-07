@@ -31,7 +31,7 @@ export default StyleSheet.create({
   },
   logoTitle: {
     fontFamily: type.regular,
-    fontSize: size.small,
+    fontSize: size.regular,
     fontWeight: "400",
   },
   logoContainer: {
@@ -39,11 +39,17 @@ export default StyleSheet.create({
   },
   btn: {
     width: 40,
+    height: 30,
     marginBottom: 10,
   },
   image: {
     height: 40,
     width: "auto",
+    resizeMode: "contain",
+  },
+  btnImage: {
+    height: "100%",
+    width: "100%",
     resizeMode: "contain",
   },
 });

@@ -1,4 +1,4 @@
-import { View, Pressable, Image } from "react-native";
+import { View, Pressable, Image, Text } from "react-native";
 import { screenSwitchStyles as styles } from "../styles";
 import { newFlagIcon, recentFlagsIcon } from "../assets";
 

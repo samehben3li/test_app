@@ -10,4 +10,5 @@ export const size = {
   regular: 11,
   small: 10,
   extraSmall: 8,
+  thin: 6,
 };

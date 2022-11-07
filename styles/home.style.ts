@@ -17,12 +17,12 @@ export default StyleSheet.create({
   },
   btn: {
     backgroundColor: colors.white,
-    width: "60%",
-    marginVertical: 10,
-    height: 60,
+    width: 220,
+    marginVertical: 6,
+    height: 70,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 5,
+    borderRadius: 6,
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
@@ -33,6 +33,10 @@ export default StyleSheet.create({
     elevation: 15,
   },
   image: {
+    width: "55%",
+    resizeMode: "contain",
+  },
+  image2: {
     width: "60%",
     resizeMode: "contain",
   },

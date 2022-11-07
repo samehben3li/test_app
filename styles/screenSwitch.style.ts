@@ -8,7 +8,6 @@ export default StyleSheet.create({
     backgroundColor: colors.black,
     // marginTop: -40,
     // paddingTop: 40,
-    zIndex: -1,
     borderBottomEndRadius: 40,
     borderBottomStartRadius: 40,
     flexDirection: "row",
