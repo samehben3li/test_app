@@ -173,6 +173,7 @@ export default function CreateFlagScreen({ navigation, route }) {
             setFlagData={setFlagData}
             setCompleted={setCompleted}
             flagData={flagData}
+            completed={completed}
           />
         )}
       </View>

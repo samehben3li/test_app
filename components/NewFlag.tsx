@@ -106,7 +106,7 @@ export default function NewFlag({
                 (selectedTab.name === "pest" || pest) && styles.selected,
               ]}
             >
-              {i18n.t("flag.pestType")}
+              {i18n.t("flag.type")}
             </Text>
           </View>
           <View style={styles.selection}>
@@ -176,7 +176,7 @@ export default function NewFlag({
             <Text
               style={[
                 styles.titleTxt,
-                selectedTab.name === "loaction" && styles.selected,
+                selectedTab.name === "location" && styles.selected,
               ]}
             >
               {i18n.t("flag.location")}

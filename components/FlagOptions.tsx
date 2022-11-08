@@ -14,7 +14,6 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
-import { duration } from "moment";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 

@@ -25,6 +25,7 @@ export default StyleSheet.create({
   image: {
     tintColor: colors.gold,
     height: "30%",
+    width: "100%",
     resizeMode: "contain",
     opacity: 0.5,
   },

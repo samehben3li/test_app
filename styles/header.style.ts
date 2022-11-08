@@ -19,7 +19,7 @@ export default StyleSheet.create({
       width: 0,
       height: 12,
     },
-    shadowOpacity: 0.58,
+    shadowOpacity: 0.3,
     shadowRadius: 16.0,
     elevation: 24,
   },
@@ -32,7 +32,6 @@ export default StyleSheet.create({
   logoTitle: {
     fontFamily: type.regular,
     fontSize: size.regular,
-    fontWeight: "400",
   },
   logoContainer: {
     width: 120,
@@ -40,7 +39,7 @@ export default StyleSheet.create({
   btn: {
     width: 40,
     height: 30,
-    marginBottom: 10,
+    marginBottom: 14,
   },
   image: {
     height: 40,

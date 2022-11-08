@@ -1,7 +1,7 @@
-import { View, Pressable, Image } from "react-native";
+import { View, Pressable, Image, Text } from "react-native";
 import { homeStyles as styles } from "../styles";
 import { Header } from "../components";
-import { newFlagIcon, recentFlagsIcon } from "../assets";
+import { newFlagIcon, recentFlagsIcon, flagIcon, recentIcon } from "../assets";
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -12,13 +12,15 @@ export default function HomeScreen({ navigation }) {
           style={styles.btn}
           onPress={() => navigation.navigate("createFlag")}
         >
-          <Image style={styles.image} source={newFlagIcon} />
+          <Image style={styles.image} source={flagIcon} />
+          <Text style={styles.btnText}>NEW FLAG</Text>
         </Pressable>
         <Pressable
           style={styles.btn}
           onPress={() => navigation.navigate("recentFlags")}
         >
-          <Image style={styles.image2} source={recentFlagsIcon} />
+          <Image style={styles.image2} source={recentIcon} />
+          <Text style={styles.btnText}>RECENT FLAGS</Text>
         </Pressable>
       </View>
     </View>

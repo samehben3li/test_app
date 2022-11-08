@@ -7,6 +7,22 @@ import GestureRecognizer from "react-native-swipe-gestures";
 import { flag } from "../screens/CreateFlag";
 import { CREATE_FLAG } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
+import Animated, {
+  SlideInDown,
+  SlideOutDown,
+  FadeIn,
+  SlideInUp,
+  StretchInY,
+  FadeInUp,
+  FadeInDown,
+  StretchInX,
+  Easing,
+  StretchOutX,
+  StretchOutY,
+  FadeOutDown,
+} from "react-native-reanimated";
+
+const AnimatedGesture = Animated.createAnimatedComponent(GestureRecognizer);
 
 interface Props {
   setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,6 +30,7 @@ interface Props {
   done: boolean;
   setDone: React.Dispatch<React.SetStateAction<boolean>>;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;
+  completed: boolean;
 }
 
 export default function FlagReady({
@@ -22,6 +39,7 @@ export default function FlagReady({
   setFlagData,
   setDone,
   done,
+  completed,
 }: Props) {
   const [createFlag] = useMutation(CREATE_FLAG);
   const [loading, setLoading] = useState(false);
@@ -65,42 +83,70 @@ export default function FlagReady({
       }
     }
   };
-  if (!done) {
-    return (
-      <View style={styles.container}>
-        <View style={styles.topPart}>
-          <View style={styles.triangle}></View>
-          <View style={styles.helpContainer}>
-            <View style={styles.header}>
-              <Image source={lunaHelperIcon} style={styles.imgWide} />
-              <Image source={helpIcon} style={styles.imgIcon} />
-            </View>
-            <Text style={styles.helpText}>
-              {i18n.t("flagReady.makeChangesHelp")}
-            </Text>
+  return !done && completed ? (
+    <Animated.View style={styles.container}>
+      <Animated.View
+        entering={StretchInY.springify()}
+        exiting={StretchOutY}
+        style={styles.topPart}
+      >
+        <View style={styles.triangle}></View>
+        <View style={styles.helpContainer}>
+          <View style={styles.header}>
+            <Animated.Image
+              entering={StretchInX.delay(500).springify()}
+              exiting={StretchOutX.delay(500).springify()}
+              source={lunaHelperIcon}
+              style={styles.imgWide}
+            />
+            <Animated.Image
+              entering={FadeInDown.delay(1000).easing(Easing.ease)}
+              exiting={FadeOutDown.delay(1000).easing(Easing.ease)}
+              source={helpIcon}
+              style={styles.imgIcon}
+            />
           </View>
-        </View>
-        <GestureRecognizer
-          onSwipeDown={() => setCompleted(false)}
-          style={styles.bottomPart}
-        >
-          <Text style={styles.confirmText}>
-            {i18n.t("flagReady.confirmSelection")}
-          </Text>
-          <Pressable
-            onPress={submit}
-            style={[
-              styles.btn,
-              {
-                opacity: !loading ? 1 : 0.5,
-              },
-            ]}
+          <Animated.Text
+            entering={FadeInDown.delay(1100).easing(Easing.ease)}
+            exiting={FadeOutDown.delay(1100).easing(Easing.ease)}
+            style={styles.helpText}
           >
-            <Text style={styles.btnText}>{i18n.t("flagReady.createFlag")}</Text>
-          </Pressable>
-          <Text style={styles.hint}>{i18n.t("flagReady.swipeHint")}</Text>
-        </GestureRecognizer>
-      </View>
-    );
-  }
+            {i18n.t("flagReady.makeChangesHelp")}
+          </Animated.Text>
+        </View>
+      </Animated.View>
+      <AnimatedGesture
+        entering={SlideInDown.duration(600)}
+        exiting={SlideOutDown.duration(600)}
+        onSwipeDown={() => setCompleted(false)}
+        style={styles.bottomPart}
+      >
+        <Animated.Text
+          entering={FadeInDown.delay(1200).easing(Easing.ease)}
+          style={styles.confirmText}
+        >
+          {i18n.t("flagReady.confirmSelection")}
+        </Animated.Text>
+        <Pressable
+          onPress={submit}
+          style={[
+            styles.btn,
+            {
+              opacity: !loading ? 1 : 0.5,
+            },
+          ]}
+        >
+          <Text style={styles.btnText}>{i18n.t("flagReady.createFlag")}</Text>
+        </Pressable>
+        <Animated.Text
+          entering={SlideInDown.delay(1300).easing(Easing.ease)}
+          style={styles.hint}
+        >
+          {i18n.t("flagReady.swipeHint")}
+        </Animated.Text>
+      </AnimatedGesture>
+    </Animated.View>
+  ) : (
+    <></>
+  );
 }

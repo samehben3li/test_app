@@ -17,7 +17,7 @@
   },
   "flag": {
     "riskCategory": "RISK CATEGORY",
-    "pestType": "PEST TYPE",
+    "type": "TYPE",
     "plantPart": "PLANT PART",
     "location": "LOCATION",
     "top": "TOP",
