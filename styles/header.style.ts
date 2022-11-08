@@ -32,6 +32,8 @@ export default StyleSheet.create({
   logoTitle: {
     fontFamily: type.regular,
     fontSize: size.regular,
+    height: 13,
+    color: colors.black,
   },
   logoContainer: {
     width: 120,
