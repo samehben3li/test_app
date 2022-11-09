@@ -7,18 +7,18 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
+        "apiUrl": "http://44.241.151.158:3000/"
       }
     },
     "preview": {
       "distribution": "internal",
       "env": {
-        "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
+        "apiUrl": "http://44.241.151.158:3000/"
       }
     },
     "production": {
       "env": {
-        "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
+        "apiUrl": "http://44.241.151.158:3000/"
       }
     },
     "simulator": {
@@ -29,7 +29,7 @@
         "buildType": "apk"
       },
       "env": {
-        "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
+        "apiUrl": "http://44.241.151.158:3000/"
       },
       "channel": "test"
     }
