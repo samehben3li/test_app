@@ -34,9 +34,14 @@ export default StyleSheet.create({
     fontSize: size.regular,
     height: 13,
     color: colors.black,
+    width: "100%",
+    textAlign: "left",
+    position: "relative",
+    padding: 0,
   },
   logoContainer: {
     width: 120,
+    height: 52,
   },
   btn: {
     width: 40,

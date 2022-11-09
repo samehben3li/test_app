@@ -20,7 +20,8 @@ export default StyleSheet.create({
   },
   topPart: {
     flex: 1,
-    width: "80%",
+    width: 300,
+    height: 100,
   },
   triangle: {
     width: 0,
@@ -61,9 +62,9 @@ export default StyleSheet.create({
     width: "100%",
   },
   helpText: {
-    width: "90%",
+    width: "80%",
     fontFamily: type.bold,
-    fontSize: size.small,
+    fontSize: size.regular,
   },
   bottomPart: {
     flex: 1,

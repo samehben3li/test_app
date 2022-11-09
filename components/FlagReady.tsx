@@ -10,19 +10,36 @@ import { useMutation } from "@apollo/client";
 import Animated, {
   SlideInDown,
   SlideOutDown,
-  FadeIn,
-  SlideInUp,
   StretchInY,
-  FadeInUp,
-  FadeInDown,
-  StretchInX,
   Easing,
   StretchOutX,
   StretchOutY,
   FadeOutDown,
+  Keyframe,
 } from "react-native-reanimated";
 
 const AnimatedGesture = Animated.createAnimatedComponent(GestureRecognizer);
+
+const keyframe = new Keyframe({
+  0: {
+    opacity: 0,
+    transform: [{ translateY: 10 }],
+  },
+  100: {
+    opacity: 1,
+    transform: [{ translateY: 0 }],
+  },
+});
+const keyframe2 = new Keyframe({
+  0: {
+    width: 0,
+    height: 0,
+  },
+  100: {
+    height: 50,
+    width: 150,
+  },
+});
 
 interface Props {
   setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
@@ -94,20 +111,20 @@ export default function FlagReady({
         <View style={styles.helpContainer}>
           <View style={styles.header}>
             <Animated.Image
-              entering={StretchInX.delay(500).springify()}
+              entering={keyframe2.delay(500)}
               exiting={StretchOutX.delay(500).springify()}
               source={lunaHelperIcon}
               style={styles.imgWide}
             />
             <Animated.Image
-              entering={FadeInDown.delay(1000).easing(Easing.ease)}
+              entering={keyframe.duration(400).delay(1000)}
               exiting={FadeOutDown.delay(1000).easing(Easing.ease)}
               source={helpIcon}
               style={styles.imgIcon}
             />
           </View>
           <Animated.Text
-            entering={FadeInDown.delay(1100).easing(Easing.ease)}
+            entering={keyframe.duration(400).delay(1100)}
             exiting={FadeOutDown.delay(1100).easing(Easing.ease)}
             style={styles.helpText}
           >
@@ -122,7 +139,7 @@ export default function FlagReady({
         style={styles.bottomPart}
       >
         <Animated.Text
-          entering={FadeInDown.delay(1200).easing(Easing.ease)}
+          entering={keyframe.duration(400).delay(1200)}
           style={styles.confirmText}
         >
           {i18n.t("flagReady.confirmSelection")}

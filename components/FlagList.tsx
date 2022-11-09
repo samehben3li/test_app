@@ -40,7 +40,7 @@ export default function FlagList() {
             </View>
             <View style={styles.grid}>
               <FlagCol item={item.riskCategory} name="flag.riskCategory" />
-              <FlagCol item={item.riskCategoryType} name="flag.pestType" />
+              <FlagCol item={item.riskCategoryType} name="flag.type" />
               <FlagCol item={item.plantPart} name="flag.plantPart" />
               <View style={styles.col}>
                 <View style={styles.title}>
