@@ -30,7 +30,8 @@
       },
       "env": {
         "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
-      }
+      },
+      "channel": "test"
     }
   },
   "submit": {

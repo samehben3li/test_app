@@ -14,9 +14,12 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/935bfe04-32c2-4c7b-a5f8-815128fc55c4"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ranadev.tomatotrolley",
@@ -37,6 +40,9 @@
         "projectId": "935bfe04-32c2-4c7b-a5f8-815128fc55c4"
       },
       "apiUrl": "http://iunutomatotrolleybackend-env.eba-8e2p38fp.us-east-2.elasticbeanstalk.com/"
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
