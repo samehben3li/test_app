@@ -13,7 +13,7 @@ i18n.enableFallback = true;
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [fontsLoaded, error] = useFonts({
-    medium: require("./assets/fonts/gotham/GothamMedium.ttf"),
+    medium: require("./assets/fonts/gotham/Gotham-Book.otf"),
     bold: require("./assets/fonts/gotham/Gotham-Bold.otf"),
     black: require("./assets/fonts/gotham/Gotham-Black.otf"),
   });

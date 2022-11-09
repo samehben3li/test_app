@@ -30,7 +30,7 @@ export default StyleSheet.create({
     backgroundColor: colors.black,
   },
   logoTitle: {
-    fontWeight: "600",
+    fontFamily: type.regular,
     fontSize: size.regular,
     height: 13,
     color: colors.black,
@@ -38,7 +38,6 @@ export default StyleSheet.create({
     textAlign: "left",
     position: "relative",
     padding: 0,
-    letterSpacing: 0.5,
   },
   logoContainer: {
     width: 120,
