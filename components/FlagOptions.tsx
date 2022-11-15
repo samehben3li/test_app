@@ -5,8 +5,8 @@ import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
 import GestureRecognizer from "react-native-swipe-gestures";
 import Animated, { SlideInDown, SlideOutDown } from "react-native-reanimated";
+import { API_URI } from "../utils/config";
 
-const API_URI = process.env.apiUrl;
 interface Props {
   data: selectedTab;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;

@@ -4,8 +4,7 @@ import { newFlagStyles as styles } from "../styles";
 import { newFlagIcon } from "../assets";
 import { selectedTab, flag } from "../screens/CreateFlag";
 import { optionsData } from "../data/options";
-
-const API_URI = process.env.apiUrl;
+import { API_URI } from "../utils/config";
 
 interface Props {
   setSelectedTab: React.Dispatch<React.SetStateAction<selectedTab>>;

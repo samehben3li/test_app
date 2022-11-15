@@ -36,7 +36,7 @@
       "eas": {
         "projectId": "935bfe04-32c2-4c7b-a5f8-815128fc55c4"
       },
-      "apiUrl": "https://tomato-trolley.herokuapp.com/"
+      "apiUrl": "http://44.241.151.158:3000/"
     }
   }
 }
