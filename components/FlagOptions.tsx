@@ -1,9 +1,9 @@
 import { Text, View, Image, Pressable, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
-import i18n from "../i18n/translations";
 import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
 import GestureRecognizer from "react-native-swipe-gestures";
+import LocationsCol from "./LocationsCol";
 import Animated, {
   SlideInDown,
   SlideOutDown,
@@ -12,12 +12,11 @@ import Animated, {
   FadeOut,
   useAnimatedStyle,
   withSpring,
-  withTiming,
 } from "react-native-reanimated";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-const keyframe = new Keyframe({
+export const keyframe = new Keyframe({
   0: {
     opacity: 0,
     transform: [{ translateY: 10 }],
@@ -47,6 +46,7 @@ export default function FlagOptions({
   selectedTab,
 }: Props) {
   const [selected, setSelected] = useState(0);
+
   useEffect(() => {
     if (flagData[data.name]) {
       setSelected(flagData[data.name].id);
@@ -55,6 +55,7 @@ export default function FlagOptions({
   const windowWidth = Dimensions.get("window").width;
   const [indicatorPos, setIndicatorPos] = useState(0);
   const [indicatorLinePos, setIndicatorLinePos] = useState(100);
+
   useEffect(() => {
     if (selectedTab.name === "risk") {
       setIndicatorPos(-windowWidth / 3.2);
@@ -68,6 +69,7 @@ export default function FlagOptions({
       setIndicatorPos(0);
     }
   }, [selectedTab]);
+
   useEffect(() => {
     const T = setInterval(() => {
       setIndicatorLinePos((prev) => -prev);
@@ -76,16 +78,10 @@ export default function FlagOptions({
       clearInterval(T);
     };
   }, []);
+
   const uas = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: withSpring(indicatorPos, { stiffness: 50 }) }],
-    };
-  });
-  const uasLine = useAnimatedStyle(() => {
-    return {
-      transform: [
-        { translateY: withTiming(indicatorLinePos, { duration: 1000 }) },
-      ],
     };
   });
 
@@ -95,6 +91,7 @@ export default function FlagOptions({
     });
     setSelected(selection.id);
   };
+
   const addLocation = (location: string, side: string) => {
     let arr = flagData.location[side];
     const index = arr.indexOf(location);
@@ -108,11 +105,6 @@ export default function FlagOptions({
       return { ...prev, location: newValue };
     });
   };
-  const locations = [
-    i18n.t("flag.top"),
-    i18n.t("flag.middle"),
-    i18n.t("flag.bottom"),
-  ];
   return (
     <Animated.View
       entering={SlideInDown.duration(600)}
@@ -170,42 +162,16 @@ export default function FlagOptions({
               ))
             ) : (
               <View style={styles.locationGrid}>
-                <View style={styles.locationCol}>
-                  {locations.map((item: string, index: number) => (
-                    <AnimatedPressable
-                      entering={FadeIn.delay(500)}
-                      exiting={FadeOut}
-                      onPress={() => addLocation(item, "left")}
-                      key={index}
-                      style={[
-                        styles.locationBtn,
-                        flagData.location.left.includes(item) &&
-                          styles.selected,
-                      ]}
-                    >
-                      <Text style={styles.optionName}>{item}</Text>
-                    </AnimatedPressable>
-                  ))}
-                  <Text style={styles.gridText}>{i18n.t("flag.left")}</Text>
-                </View>
-                <View style={styles.locationCol}>
-                  {locations.map((item: string, index: number) => (
-                    <AnimatedPressable
-                      entering={FadeIn.delay(500)}
-                      exiting={FadeOut}
-                      onPress={() => addLocation(item, "right")}
-                      key={index}
-                      style={[
-                        styles.locationBtn,
-                        flagData.location.right.includes(item) &&
-                          styles.selected,
-                      ]}
-                    >
-                      <Text style={styles.optionName}>{item}</Text>
-                    </AnimatedPressable>
-                  ))}
-                  <Text style={styles.gridText}>{i18n.t("flag.right")}</Text>
-                </View>
+                <LocationsCol
+                  addLocation={addLocation}
+                  side="left"
+                  flagData={flagData}
+                />
+                <LocationsCol
+                  addLocation={addLocation}
+                  side="right"
+                  flagData={flagData}
+                />
               </View>
             )}
           </View>

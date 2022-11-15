@@ -50,7 +50,7 @@ export default StyleSheet.create({
     backgroundColor: colors.done,
     flex: 1,
     marginHorizontal: 6,
-    borderRadius: 5,
+    borderRadius: 4,
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
@@ -67,6 +67,8 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: colors.white,
+    borderTopEndRadius: 3,
+    borderTopStartRadius: 3,
   },
   selection: {
     flex: 2,
