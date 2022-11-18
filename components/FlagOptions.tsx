@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable, Dimensions } from "react-native";
+import { View, Image, Pressable, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
 import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
@@ -13,19 +13,10 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
+import keyframe from "./FlagOptions.animation";
+import { SvgUri } from "react-native-svg";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-
-export const keyframe = new Keyframe({
-  0: {
-    opacity: 0,
-    transform: [{ translateY: 10 }],
-  },
-  100: {
-    opacity: 1,
-    transform: [{ translateY: 0 }],
-  },
-});
 
 const API_URI = process.env.apiUrl;
 interface Props {
@@ -36,6 +27,8 @@ interface Props {
   options: option[];
   selectedTab: selectedTab;
 }
+
+const windowWidth = Dimensions.get("window").width;
 
 export default function FlagOptions({
   data,
@@ -52,7 +45,6 @@ export default function FlagOptions({
       setSelected(flagData[data.name].id);
     }
   }, [data]);
-  const windowWidth = Dimensions.get("window").width;
   const [indicatorPos, setIndicatorPos] = useState(0);
   const [indicatorLinePos, setIndicatorLinePos] = useState(100);
 
@@ -145,9 +137,11 @@ export default function FlagOptions({
                       selected === option.id && styles.selected,
                     ]}
                   >
-                    <Image
-                      source={{ uri: `${API_URI}${option.imgUrl}` }}
+                    <SvgUri
+                      height={"55%"}
+                      width={"100%"}
                       style={styles.image}
+                      uri={`${API_URI}${option.imgUrl}`}
                     />
                   </AnimatedPressable>
                   <Animated.Text

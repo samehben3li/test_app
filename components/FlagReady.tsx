@@ -7,7 +7,7 @@ import GestureRecognizer from "react-native-swipe-gestures";
 import { flag } from "../screens/CreateFlag";
 import { CREATE_FLAG } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
-import { keyframe } from "./FlagOptions";
+import { keyframe } from "./FlagOptions.animation";
 import Animated, {
   SlideInDown,
   SlideOutDown,

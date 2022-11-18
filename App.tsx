@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import AuthProvider from "./context/authContext";
 import Main from "./screens/Main";
 import { useFonts } from "expo-font";
@@ -11,7 +9,6 @@ i18n.locale = Localization.locale;
 i18n.enableFallback = true;
 
 export default function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
   const [fontsLoaded, error] = useFonts({
     medium: require("./assets/fonts/gotham/Gotham-Book.otf"),
     bold: require("./assets/fonts/gotham/Gotham-Bold.otf"),

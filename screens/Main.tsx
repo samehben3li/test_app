@@ -12,6 +12,7 @@ import MainNavigator from "./MainNavigator";
 import LoginScreen from "./Login";
 import { AuthContext } from "../context/authContext";
 import { authData, authContextType } from "../types/interfaces";
+import fetch from "cross-fetch";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const apiUrl = process.env.apiUrl;
 
 const httpLink = createHttpLink({
   uri: apiUrl,
+  fetch,
 });
 
 const serverSetup = (auth: authData | null) => {
