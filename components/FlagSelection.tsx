@@ -1,9 +1,10 @@
 import { selectedTab, option } from "../screens/CreateFlag";
-import { Text, View, Image, Pressable } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import i18n from "../i18n/translations";
 import { newFlagStyles as styles } from "../styles";
 import { optionsData } from "../data/options";
 import Animated, { FadeIn } from "react-native-reanimated";
+import { SvgUri } from "react-native-svg";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 const API_URI = process.env.apiUrl;
@@ -47,10 +48,7 @@ const FlagSelection = ({
         </Text>
       </View>
       <View style={styles.selection}>
-        <Image
-          style={styles.selectionImage}
-          source={{ uri: `${API_URI}${option?.imgUrl}` }}
-        />
+        <SvgUri height={30} width={100} uri={`${API_URI}${option?.imgUrl}`} />
       </View>
       <View
         style={[

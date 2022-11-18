@@ -1,5 +1,5 @@
 import React from "react";
-import renderer, { act } from "react-test-renderer";
+import renderer from "react-test-renderer";
 import CreateFlag from "../../screens/CreateFlag";
 import { MockedProvider } from "@apollo/client/testing";
 import AuthProvider from "../../context/authContext";
@@ -10,10 +10,8 @@ jest.mock("react-native-reanimated", () => {
     ...jest.requireActual("react-native-reanimated/src/reanimated2/mock"),
   };
 });
-
 describe("CreateFlag Screen", () => {
   it("renders without crashing", () => {
-    jest.useFakeTimers();
     const mocks = [
       {
         request: {
@@ -94,9 +92,6 @@ describe("CreateFlag Screen", () => {
         </MockedProvider>
       )
       .toJSON();
-    act(() => {
-      jest.runAllTimers();
-    });
-    expect(rendered).toBeTruthy();
+    expect(rendered).toMatchSnapshot();
   });
 });

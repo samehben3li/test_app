@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationsCol Component renders without crashing 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "height": "100%",
+    }
+  }
+>
+  <View
+    accessible={true}
+    animatedStyle={
+      Object {
+        "value": Object {},
+      }
+    }
+    collapsable={false}
+    entering={
+      FadeIn {
+        "build": [Function],
+        "delayV": 500,
+        "randomizeDelay": false,
+      }
+    }
+    exiting={[Function]}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "borderColor": "#fff",
+        "borderRadius": 5,
+        "borderWidth": 2,
+        "elevation": 10,
+        "flex": 1,
+        "justifyContent": "center",
+        "marginBottom": 7,
+        "paddingVertical": 10,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 5,
+          "width": 0,
+        },
+        "shadowOpacity": 0.34,
+        "shadowRadius": 6.27,
+        "width": "92%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "black",
+          "fontSize": 10,
+        }
+      }
+    >
+      TOP
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    animatedStyle={
+      Object {
+        "value": Object {},
+      }
+    }
+    collapsable={false}
+    entering={
+      FadeIn {
+        "build": [Function],
+        "delayV": 500,
+        "randomizeDelay": false,
+      }
+    }
+    exiting={[Function]}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "borderColor": "#fff",
+        "borderRadius": 5,
+        "borderWidth": 2,
+        "elevation": 10,
+        "flex": 1,
+        "justifyContent": "center",
+        "marginBottom": 7,
+        "paddingVertical": 10,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 5,
+          "width": 0,
+        },
+        "shadowOpacity": 0.34,
+        "shadowRadius": 6.27,
+        "width": "92%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "black",
+          "fontSize": 10,
+        }
+      }
+    >
+      MIDDLE
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    animatedStyle={
+      Object {
+        "value": Object {},
+      }
+    }
+    collapsable={false}
+    entering={
+      FadeIn {
+        "build": [Function],
+        "delayV": 500,
+        "randomizeDelay": false,
+      }
+    }
+    exiting={[Function]}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "borderColor": "#fff",
+        "borderRadius": 5,
+        "borderWidth": 2,
+        "elevation": 10,
+        "flex": 1,
+        "justifyContent": "center",
+        "marginBottom": 7,
+        "paddingVertical": 10,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 5,
+          "width": 0,
+        },
+        "shadowOpacity": 0.34,
+        "shadowRadius": 6.27,
+        "width": "92%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "black",
+          "fontSize": 10,
+        }
+      }
+    >
+      BOTTOM
+    </Text>
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "#D8D8D8",
+        "fontFamily": "black",
+        "fontSize": 10,
+        "marginTop": 10,
+      }
+    }
+  >
+    [missing "en.flag.undefined" translation]
+  </Text>
+</View>
+`;

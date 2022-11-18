@@ -29,7 +29,7 @@ const LocationsCol = ({ side, addLocation, flagData }: locationsColProps) => {
           key={index}
           style={[
             styles.locationBtn,
-            flagData.location[side].includes(item) && styles.selected,
+            flagData.location[side]?.includes(item) && styles.selected,
           ]}
         >
           <Text style={styles.optionName}>{item}</Text>

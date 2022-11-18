@@ -1,0 +1,698 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewFlag Component renders without crashing 1`] = `
+<View
+  animatedStyle={
+    Object {
+      "value": Object {},
+    }
+  }
+  collapsable={false}
+  entering={
+    Keyframe {
+      "build": [Function],
+      "definitions": Object {
+        "0": Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": -100,
+            },
+          ],
+        },
+        "100": Object {
+          "easing": [Function],
+          "opacity": 1,
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+          ],
+        },
+      },
+      "durationV": 600,
+    }
+  }
+  exiting={
+    SlideOutUp {
+      "build": [Function],
+      "durationV": 600,
+      "randomizeDelay": false,
+    }
+  }
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "backgroundColor": "#fff",
+      "borderRadius": 15,
+      "elevation": 24,
+      "flex": 1,
+      "justifyContent": "center",
+      "margin": 20,
+      "marginBottom": 40,
+      "padding": 15,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 12,
+        "width": 0,
+      },
+      "shadowOpacity": 0.3,
+      "shadowRadius": 16,
+      "zIndex": 9,
+    }
+  }
+>
+  <Image
+    animatedStyle={
+      Object {
+        "value": Object {},
+      }
+    }
+    collapsable={false}
+    entering={
+      FadeIn {
+        "build": [Function],
+        "delayV": 700,
+        "durationV": 700,
+        "randomizeDelay": false,
+      }
+    }
+    source={1}
+    style={
+      Object {
+        "height": 25,
+        "marginBottom": 13,
+        "marginLeft": 5,
+        "resizeMode": "contain",
+        "width": 100,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      animatedStyle={
+        Object {
+          "value": Object {},
+        }
+      }
+      collapsable={false}
+      entering={
+        FadeIn {
+          "build": [Function],
+          "delayV": 300,
+          "randomizeDelay": false,
+        }
+      }
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 5,
+          "elevation": 20,
+          "flex": 1,
+          "marginHorizontal": 4,
+          "opacity": 1,
+          "shadowColor": "#000",
+          "shadowOffset": Object {
+            "height": 10,
+            "width": 0,
+          },
+          "shadowOpacity": 0.3,
+          "shadowRadius": 13.16,
+          "zIndex": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "borderBottomColor": "#cccccc",
+            "borderBottomWidth": 2,
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#cccccc",
+                "fontFamily": "bold",
+                "fontSize": 10,
+                "lineHeight": 15,
+                "textAlign": "center",
+                "width": "90%",
+              },
+              null,
+            ]
+          }
+        >
+          RISK CATEGORY
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 2,
+            "justifyContent": "center",
+          }
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#cccccc",
+              "borderBottomEndRadius": 5,
+              "borderBottomStartRadius": 5,
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            null,
+            undefined,
+            null,
+          ]
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#fff",
+                "fontFamily": "black",
+                "fontSize": 15,
+              },
+              null,
+            ]
+          }
+        >
+          ?
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      animatedStyle={
+        Object {
+          "value": Object {},
+        }
+      }
+      collapsable={false}
+      entering={
+        FadeIn {
+          "build": [Function],
+          "delayV": 300,
+          "randomizeDelay": false,
+        }
+      }
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 5,
+          "elevation": 20,
+          "flex": 1,
+          "marginHorizontal": 4,
+          "opacity": 1,
+          "shadowColor": "#000",
+          "shadowOffset": Object {
+            "height": 10,
+            "width": 0,
+          },
+          "shadowOpacity": 0.3,
+          "shadowRadius": 13.16,
+          "zIndex": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "borderBottomColor": "#cccccc",
+            "borderBottomWidth": 2,
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#cccccc",
+                "fontFamily": "bold",
+                "fontSize": 10,
+                "lineHeight": 15,
+                "textAlign": "center",
+                "width": "90%",
+              },
+              null,
+            ]
+          }
+        >
+          TYPE
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 2,
+            "justifyContent": "center",
+          }
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#cccccc",
+              "borderBottomEndRadius": 5,
+              "borderBottomStartRadius": 5,
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            null,
+            undefined,
+            null,
+          ]
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#fff",
+                "fontFamily": "black",
+                "fontSize": 15,
+              },
+              null,
+            ]
+          }
+        >
+          ?
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      animatedStyle={
+        Object {
+          "value": Object {},
+        }
+      }
+      collapsable={false}
+      entering={
+        FadeIn {
+          "build": [Function],
+          "delayV": 300,
+          "randomizeDelay": false,
+        }
+      }
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 5,
+          "elevation": 20,
+          "flex": 1,
+          "marginHorizontal": 4,
+          "opacity": 1,
+          "shadowColor": "#000",
+          "shadowOffset": Object {
+            "height": 10,
+            "width": 0,
+          },
+          "shadowOpacity": 0.3,
+          "shadowRadius": 13.16,
+          "zIndex": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "borderBottomColor": "#cccccc",
+            "borderBottomWidth": 2,
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#cccccc",
+                "fontFamily": "bold",
+                "fontSize": 10,
+                "lineHeight": 15,
+                "textAlign": "center",
+                "width": "90%",
+              },
+              null,
+            ]
+          }
+        >
+          PLANT PART
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 2,
+            "justifyContent": "center",
+          }
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#cccccc",
+              "borderBottomEndRadius": 5,
+              "borderBottomStartRadius": 5,
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            null,
+            undefined,
+            null,
+          ]
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#fff",
+                "fontFamily": "black",
+                "fontSize": 15,
+              },
+              null,
+            ]
+          }
+        >
+          ?
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      animatedStyle={
+        Object {
+          "value": Object {},
+        }
+      }
+      collapsable={false}
+      entering={
+        FadeIn {
+          "build": [Function],
+          "delayV": 300,
+          "randomizeDelay": false,
+        }
+      }
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 5,
+          "elevation": 20,
+          "flex": 1,
+          "marginHorizontal": 4,
+          "opacity": 1,
+          "shadowColor": "#000",
+          "shadowOffset": Object {
+            "height": 10,
+            "width": 0,
+          },
+          "shadowOpacity": 0.3,
+          "shadowRadius": 13.16,
+          "zIndex": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "borderBottomColor": "#cccccc",
+            "borderBottomWidth": 2,
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#cccccc",
+                "fontFamily": "bold",
+                "fontSize": 10,
+                "lineHeight": 15,
+                "textAlign": "center",
+                "width": "90%",
+              },
+              false,
+            ]
+          }
+        >
+          LOCATION
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 2,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "borderRadius": 4,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "height": "80%",
+                "opacity": 0.4,
+                "overflow": "hidden",
+                "width": "70%",
+              },
+              Object {
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderWidth": 1,
+                    "flex": 1,
+                  },
+                  Object {
+                    "backgroundColor": "#FFB955",
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderWidth": 1,
+                    "flex": 1,
+                  },
+                  false,
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderWidth": 1,
+                    "flex": 1,
+                  },
+                  false,
+                ]
+              }
+            />
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderWidth": 1,
+                    "flex": 1,
+                  },
+                  false,
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderWidth": 1,
+                    "flex": 1,
+                  },
+                  false,
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderWidth": 1,
+                    "flex": 1,
+                  },
+                  Object {
+                    "backgroundColor": "#FFB955",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#cccccc",
+              "borderBottomEndRadius": 5,
+              "borderBottomStartRadius": 5,
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            false,
+            Object {
+              "backgroundColor": "#5CE166",
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#fff",
+                "fontFamily": "black",
+                "fontSize": 10,
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#000",
+                "fontSize": 10,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          LEFT: 
+          T
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#fff",
+                "fontFamily": "black",
+                "fontSize": 10,
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#000",
+                "fontSize": 10,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          RIGHT: 
+          B
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

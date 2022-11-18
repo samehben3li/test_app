@@ -1,4 +1,4 @@
-import { View, Image } from "react-native";
+import { View } from "react-native";
 import { useState, useEffect } from "react";
 import {
   Header,

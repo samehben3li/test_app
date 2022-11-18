@@ -7,7 +7,8 @@ import GestureRecognizer from "react-native-swipe-gestures";
 import { flag } from "../screens/CreateFlag";
 import { CREATE_FLAG } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
-import { keyframe } from "./FlagOptions.animation";
+import keyframe from "./FlagOptions.animation";
+import keyframe2 from "./FlagReady.animation";
 import Animated, {
   SlideInDown,
   SlideOutDown,
@@ -16,21 +17,9 @@ import Animated, {
   StretchOutX,
   StretchOutY,
   FadeOutDown,
-  Keyframe,
 } from "react-native-reanimated";
 
 const AnimatedGesture = Animated.createAnimatedComponent(GestureRecognizer);
-
-const keyframe2 = new Keyframe({
-  0: {
-    width: 0,
-    height: 0,
-  },
-  100: {
-    height: 50,
-    width: 150,
-  },
-});
 
 interface Props {
   setCompleted: React.Dispatch<React.SetStateAction<boolean>>;

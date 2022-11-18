@@ -1,4 +1,4 @@
-import { View, Image, Pressable, Dimensions } from "react-native";
+import { View, Pressable, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
 import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
@@ -7,7 +7,6 @@ import LocationsCol from "./LocationsCol";
 import Animated, {
   SlideInDown,
   SlideOutDown,
-  Keyframe,
   FadeIn,
   FadeOut,
   useAnimatedStyle,
@@ -115,7 +114,7 @@ export default function FlagOptions({
         {/* <Animated.View style={[styles.indicatorLine, uas]}></Animated.View> */}
         <Animated.View style={[styles.indicator, uas]}></Animated.View>
         <Animated.Text
-          entering={keyframe.duration(400).delay(700)}
+          entering={keyframe.duration(400)?.delay(700)}
           style={styles.hint}
         >
           {data.hint}
@@ -140,7 +139,6 @@ export default function FlagOptions({
                     <SvgUri
                       height={"55%"}
                       width={"100%"}
-                      style={styles.image}
                       uri={`${API_URI}${option.imgUrl}`}
                     />
                   </AnimatedPressable>

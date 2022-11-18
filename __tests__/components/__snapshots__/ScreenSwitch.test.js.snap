@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScreenSwitch Component renders without crashing 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#000",
+      "borderBottomEndRadius": 40,
+      "borderBottomStartRadius": 40,
+      "flexDirection": "row",
+      "height": 60,
+    }
+  }
+>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "height": "100%",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Array [
+          Object {
+            "height": "30%",
+            "opacity": 0.5,
+            "resizeMode": "contain",
+            "tintColor": "#FFB955",
+            "width": "100%",
+          },
+          Object {
+            "opacity": 1,
+          },
+        ]
+      }
+    />
+  </View>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "height": "100%",
+          "justifyContent": "center",
+        },
+        Object {
+          "borderLeftColor": "#F3B25580",
+          "borderLeftWidth": 2,
+        },
+      ]
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Array [
+          Object {
+            "height": "30%",
+            "opacity": 0.5,
+            "resizeMode": "contain",
+            "tintColor": "#FFB955",
+            "width": "100%",
+          },
+          false,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
