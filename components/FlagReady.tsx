@@ -83,7 +83,8 @@ export default function FlagReady({
         },
       });
     } catch (err) {
-      err instanceof Error && setLoading(false);
+      setLoading(false);
+      err instanceof Error && alert(err.message);
     }
   };
   return (
