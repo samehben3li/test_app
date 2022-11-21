@@ -17,7 +17,6 @@ import { SvgUri } from "react-native-svg";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-const API_URI = process.env.apiUrl;
 interface Props {
   data: selectedTab;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;
@@ -136,11 +135,7 @@ export default function FlagOptions({
                       selected === option.id && styles.selected,
                     ]}
                   >
-                    <SvgUri
-                      height={"55%"}
-                      width={"100%"}
-                      uri={`${API_URI}${option.imgUrl}`}
-                    />
+                    <SvgUri height={"55%"} width={"100%"} uri={option.imgUrl} />
                   </AnimatedPressable>
                   <Animated.Text
                     entering={FadeIn.delay(500)}

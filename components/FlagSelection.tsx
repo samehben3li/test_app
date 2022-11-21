@@ -7,7 +7,6 @@ import Animated, { FadeIn } from "react-native-reanimated";
 import { SvgUri } from "react-native-svg";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-const API_URI = process.env.apiUrl;
 
 interface selectionProps {
   setSelectedTab: React.Dispatch<React.SetStateAction<selectedTab>>;
@@ -48,7 +47,7 @@ const FlagSelection = ({
         </Text>
       </View>
       <View style={styles.selection}>
-        <SvgUri height={30} width={100} uri={`${API_URI}${option?.imgUrl}`} />
+        <SvgUri height={30} width={100} uri={option?.imgUrl} />
       </View>
       <View
         style={[
