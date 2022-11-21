@@ -33,7 +33,7 @@ interface Props {
   data: selectedTab;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;
   flagData: flag;
-  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  setReady: React.Dispatch<React.SetStateAction<boolean>>;
   options: option[];
   selectedTab: selectedTab;
 }
@@ -42,19 +42,21 @@ export default function FlagOptions({
   data,
   setFlagData,
   flagData,
-  setCompleted,
+  setReady,
   options,
   selectedTab,
 }: Props) {
+  const windowWidth = Dimensions.get("window").width;
   const [selected, setSelected] = useState(0);
+  const [indicatorPos, setIndicatorPos] = useState(0);
+  const [indicatorLinePos, setIndicatorLinePos] = useState(100);
+
   useEffect(() => {
     if (flagData[data.name]) {
       setSelected(flagData[data.name].id);
     }
   }, [data]);
-  const windowWidth = Dimensions.get("window").width;
-  const [indicatorPos, setIndicatorPos] = useState(0);
-  const [indicatorLinePos, setIndicatorLinePos] = useState(100);
+
   useEffect(() => {
     if (selectedTab.name === "risk") {
       setIndicatorPos(-windowWidth / 3.2);
@@ -68,24 +70,19 @@ export default function FlagOptions({
       setIndicatorPos(0);
     }
   }, [selectedTab]);
+
   useEffect(() => {
-    const T = setInterval(() => {
+    const indicatorInterval = setInterval(() => {
       setIndicatorLinePos((prev) => -prev);
     }, 1000);
     return () => {
-      clearInterval(T);
+      clearInterval(indicatorInterval);
     };
   }, []);
+
   const uas = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: withSpring(indicatorPos, { stiffness: 50 }) }],
-    };
-  });
-  const uasLine = useAnimatedStyle(() => {
-    return {
-      transform: [
-        { translateY: withTiming(indicatorLinePos, { duration: 1000 }) },
-      ],
     };
   });
 
@@ -95,6 +92,7 @@ export default function FlagOptions({
     });
     setSelected(selection.id);
   };
+
   const addLocation = (location: string, side: string) => {
     let arr = flagData.location[side];
     const index = arr.indexOf(location);
@@ -108,11 +106,13 @@ export default function FlagOptions({
       return { ...prev, location: newValue };
     });
   };
+
   const locations = [
     i18n.t("flag.top"),
     i18n.t("flag.middle"),
     i18n.t("flag.bottom"),
   ];
+
   return (
     <Animated.View
       entering={SlideInDown.duration(600)}
@@ -123,7 +123,7 @@ export default function FlagOptions({
         onSwipeDown={() => {
           const { risk, plantPart, location, pest } = flagData;
           if (risk && plantPart && location && pest) {
-            setCompleted(true);
+            setReady(true);
           }
         }}
         style={styles.innerContainer}

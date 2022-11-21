@@ -42,21 +42,21 @@ const keyframe2 = new Keyframe({
 });
 
 interface Props {
-  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  setReady: React.Dispatch<React.SetStateAction<boolean>>;
   flagData: flag;
   done: boolean;
   setDone: React.Dispatch<React.SetStateAction<boolean>>;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;
-  completed: boolean;
+  ready: boolean;
 }
 
 export default function FlagReady({
-  setCompleted,
+  setReady,
   flagData,
   setFlagData,
   setDone,
   done,
-  completed,
+  ready,
 }: Props) {
   const [createFlag] = useMutation(CREATE_FLAG);
   const [loading, setLoading] = useState(false);
@@ -100,7 +100,7 @@ export default function FlagReady({
       }
     }
   };
-  return !done && completed ? (
+  return !done && ready ? (
     <Animated.View style={styles.container}>
       <Animated.View
         entering={StretchInY.springify()}
@@ -135,7 +135,7 @@ export default function FlagReady({
       <AnimatedGesture
         entering={SlideInDown.duration(600)}
         exiting={SlideOutDown.duration(600)}
-        onSwipeDown={() => setCompleted(false)}
+        onSwipeDown={() => setReady(false)}
         style={styles.bottomPart}
       >
         <Animated.Text

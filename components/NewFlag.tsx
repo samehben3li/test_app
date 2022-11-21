@@ -233,9 +233,9 @@ export default function NewFlag({
                   styles.selectedTxt,
               ]}
             >
-              LEFT:{" "}
+              {i18n.t("flag.left")}:
               {location.left.map(
-                (item: string, index: number) => `${item.charAt(0)}`
+                (item: string, index: number) => ` ${item.charAt(0)}`
               )}
             </Text>
             <Text
@@ -245,9 +245,9 @@ export default function NewFlag({
                   styles.selectedTxt,
               ]}
             >
-              RIGHT:{" "}
+              {i18n.t("flag.right")}:
               {location.right.map(
-                (item: string, index: number) => `${item.charAt(0)}`
+                (item: string, index: number) => ` ${item.charAt(0)}`
               )}
             </Text>
           </View>

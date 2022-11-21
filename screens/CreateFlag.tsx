@@ -85,16 +85,17 @@ export default function CreateFlagScreen({ navigation, route }) {
       right: [],
     },
   });
-  const [completed, setCompleted] = useState(false);
+  const [ready, setReady] = useState(false);
   const [done, setDone] = useState(false);
   const risks = useQuery(GET_RISKS);
   const plantParts = useQuery(GET_PLANT_PARTS);
+
   useEffect(() => {
     let timer: any;
     if (done) {
       timer = setTimeout(() => {
         setDone(false);
-        setCompleted(false);
+        setReady(false);
         setSelectedTab(optionsData[0]);
       }, 3000);
     }
@@ -102,6 +103,7 @@ export default function CreateFlagScreen({ navigation, route }) {
       clearTimeout(timer);
     };
   }, [done]);
+
   useEffect(() => {
     if (risks.data) {
       if (selectedTab.name === "risk") {
@@ -124,6 +126,7 @@ export default function CreateFlagScreen({ navigation, route }) {
       }
     }
   }, [selectedTab, risks]);
+
   useEffect(() => {
     const currentIndex = optionsData.findIndex(
       (item) => item.name === selectedTab.name
@@ -132,6 +135,7 @@ export default function CreateFlagScreen({ navigation, route }) {
       setSelectedTab(optionsData[currentIndex + 1]);
     }
   }, [flagData]);
+
   return (
     <View style={styles.container}>
       <Header home={false} />
@@ -157,9 +161,9 @@ export default function CreateFlagScreen({ navigation, route }) {
             setSelectedTab={setSelectedTab}
           />
         )}
-        {!completed ? (
+        {!ready ? (
           <FlagOptions
-            setCompleted={setCompleted}
+            setReady={setReady}
             flagData={flagData}
             setFlagData={setFlagData}
             data={selectedTab}
@@ -171,9 +175,9 @@ export default function CreateFlagScreen({ navigation, route }) {
             done={done}
             setDone={setDone}
             setFlagData={setFlagData}
-            setCompleted={setCompleted}
+            setReady={setReady}
             flagData={flagData}
-            completed={completed}
+            ready={ready}
           />
         )}
       </View>

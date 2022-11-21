@@ -76,13 +76,13 @@ export default function FlagList() {
                 </View>
                 <View style={styles.name}>
                   <Text style={styles.locationNameTxt}>
-                    LEFT:
+                    {i18n.t("flag.left")} :
                     {item.location?.left.map(
                       (item: string, index: number) => ` ${item.charAt(0)}`
                     )}
                   </Text>
                   <Text style={styles.locationNameTxt}>
-                    RIGHT:
+                    {i18n.t("flag.right")} :
                     {item.location?.right.map(
                       (item: string, index: number) => ` ${item.charAt(0)}`
                     )}
