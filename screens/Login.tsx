@@ -26,13 +26,13 @@ const FieldError = ({
   isFieldInError,
   getErrorsInField,
   state,
-  filedName,
+  fieldName,
 }: any) => {
   return (
     <View style={styles.error}>
-      {isFieldInError(filedName) &&
+      {isFieldInError(fieldName) &&
         state &&
-        getErrorsInField(filedName).map(
+        getErrorsInField(fieldName).map(
           (errorMessage: string, index: number) => (
             <Text style={styles.errorText} key={index}>
               {errorMessage}
@@ -125,7 +125,7 @@ const LoginScreen = () => {
         isFieldInError={isFieldInError}
         getErrorsInField={getErrorsInField}
         state={email}
-        filedName="email"
+        fieldName="email"
       />
       <TextInput
         value={password}
@@ -138,7 +138,7 @@ const LoginScreen = () => {
         isFieldInError={isFieldInError}
         getErrorsInField={getErrorsInField}
         state={password}
-        filedName="password"
+        fieldName="password"
       />
       <SubmitButton
         loading={loading}

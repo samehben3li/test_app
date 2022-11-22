@@ -1,31 +1,13 @@
-import { View, Pressable, Image } from "react-native";
+import { View } from "react-native";
 import { screenSwitchStyles as styles } from "../styles";
 import { newFlagIcon, recentFlagsIcon } from "../assets";
-
-const Button = ({
-  fn,
-  route,
-  image,
-  name,
-  style,
-}: {
-  fn: () => void;
+import Button from "./Button";
+interface Props {
+  navigation: any;
   route: any;
-  image: any;
-  name: string;
-  style: any;
-}) => {
-  return (
-    <Pressable style={style} onPress={fn}>
-      <Image
-        style={[styles.image, route.name === name && styles.selected]}
-        source={image}
-      />
-    </Pressable>
-  );
-};
+}
 
-export default function ScreenSwitch({ navigation, route }) {
+export default function ScreenSwitch({ navigation, route }: Props) {
   return (
     <View style={styles.container}>
       <Button
@@ -34,6 +16,8 @@ export default function ScreenSwitch({ navigation, route }) {
         fn={() => navigation.navigate("createFlag")}
         name="createFlag"
         style={styles.btn}
+        globalStyles={styles}
+        variant="screenSwitch"
       />
       <Button
         image={recentFlagsIcon}
@@ -41,6 +25,8 @@ export default function ScreenSwitch({ navigation, route }) {
         fn={() => navigation.navigate("recentFlags")}
         name="recentFlags"
         style={[styles.btn, styles.btnBorder]}
+        globalStyles={styles}
+        variant="screenSwitch"
       />
     </View>
   );

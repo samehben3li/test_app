@@ -154,12 +154,12 @@ export default function NewFlag({
           >
             <LocationsText
               side={location.left}
-              name="LEFT:"
+              name={`${i18n.t("flag.left")}:`}
               location={location}
             />
             <LocationsText
               side={location.right}
-              name="RIGHT:"
+              name={`${i18n.t("flag.right")}:`}
               location={location}
             />
           </View>

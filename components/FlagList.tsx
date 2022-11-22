@@ -31,10 +31,10 @@ const GridCol = ({ item, side }: { item: flag; side: string }) => {
   );
 };
 
-const LocationsText = ({ arr }: { arr: string[] }) => {
+const LocationsText = ({ arr, side }: { arr: string[]; side: string }) => {
   return (
     <Text style={styles.locationNameTxt}>
-      LEFT:
+      {side}
       {arr.map((item: string, index: number) => ` ${item.charAt(0)}`)}
     </Text>
   );
@@ -53,8 +53,14 @@ const LocationCol = ({ item }: { item: flag }) => {
         </View>
       </View>
       <View style={styles.name}>
-        <LocationsText arr={item.location?.left} />
-        <LocationsText arr={item.location?.right} />
+        <LocationsText
+          arr={item.location?.left}
+          side={`${i18n.t("flag.left")}:`}
+        />
+        <LocationsText
+          arr={item.location?.right}
+          side={`${i18n.t("flag.right")}:`}
+        />
       </View>
     </View>
   );
@@ -69,9 +75,12 @@ const FlagDate = ({
   data: any;
   index: number;
 }) => {
-  return new Date(Number(item.createdAt)).getDate() <
-    new Date(Number(data?.getFlags[index - 1]?.createdAt)).getDate() ||
-    index === 0 ? (
+  const currentFalgDate = new Date(Number(item.createdAt)).getDate();
+  const previousFlagDate = new Date(
+    Number(data?.getFlags[index - 1]?.createdAt)
+  ).getDate();
+  const isDefferentDay = currentFalgDate < previousFlagDate || index === 0;
+  return isDefferentDay ? (
     <View style={styles.day}>
       <Text style={styles.dayText}>
         {moment(Number(item.createdAt)).format("MMM D, YYYY")}
@@ -83,11 +92,12 @@ const FlagDate = ({
 };
 
 const FlagsGrid = ({ item }: { item: flag }) => {
+  const { riskCategory, riskCategoryType, plantPart } = item;
   return (
     <View style={styles.grid}>
-      <FlagCol item={item.riskCategory} name="flag.riskCategory" />
-      <FlagCol item={item.riskCategoryType} name="flag.type" />
-      <FlagCol item={item.plantPart} name="flag.plantPart" />
+      <FlagCol item={riskCategory} name="flag.riskCategory" />
+      <FlagCol item={riskCategoryType} name="flag.type" />
+      <FlagCol item={plantPart} name="flag.plantPart" />
       <LocationCol item={item} />
     </View>
   );
