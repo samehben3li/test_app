@@ -19,6 +19,7 @@ export default function HomeScreen({ navigation }: Props) {
           fn={() => navigation.navigate("createFlag")}
           variant="home"
           globalStyles={styles}
+          name="home.new_flag"
         />
         <Button
           style={styles.image2}
@@ -26,6 +27,7 @@ export default function HomeScreen({ navigation }: Props) {
           fn={() => navigation.navigate("recentFlags")}
           variant="home"
           globalStyles={styles}
+          name="home.recent_flags"
         />
       </View>
     </View>

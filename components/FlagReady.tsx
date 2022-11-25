@@ -18,6 +18,7 @@ import Animated, {
   FadeOutDown,
   Keyframe,
 } from "react-native-reanimated";
+import Toast from "react-native-root-toast";
 
 const AnimatedGesture = Animated.createAnimatedComponent(GestureRecognizer);
 
@@ -84,7 +85,10 @@ export default function FlagReady({
       });
     } catch (err) {
       setLoading(false);
-      err instanceof Error && alert(err.message);
+      err instanceof Error &&
+        Toast.show(err.message, {
+          duration: Toast.durations.LONG,
+        });
     }
   };
   return (

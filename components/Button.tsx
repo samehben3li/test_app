@@ -1,4 +1,5 @@
 import { Pressable, Image, Text } from "react-native";
+import i18n from "../i18n/translations";
 
 const Button = ({
   fn,
@@ -16,13 +17,13 @@ const Button = ({
   variant: string;
   route?: any;
   image?: any;
-  name?: string;
+  name: string;
   globalStyles: any;
 }) => {
   return variant === "home" ? (
     <Pressable style={globalStyles.btn} onPress={fn}>
       <Image style={style} source={icon} />
-      <Text style={globalStyles.btnText}>NEW FLAG</Text>
+      <Text style={globalStyles.btnText}>{i18n.t(name)}</Text>
     </Pressable>
   ) : (
     <Pressable style={style} onPress={fn}>

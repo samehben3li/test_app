@@ -75,12 +75,12 @@ const FlagDate = ({
   data: any;
   index: number;
 }) => {
-  const currentFalgDate = new Date(Number(item.createdAt)).getDate();
+  const currentFlagDate = new Date(Number(item.createdAt)).getDate();
   const previousFlagDate = new Date(
     Number(data?.getFlags[index - 1]?.createdAt)
   ).getDate();
-  const isDefferentDay = currentFalgDate < previousFlagDate || index === 0;
-  return isDefferentDay ? (
+  const isDifferentDay = currentFlagDate < previousFlagDate || index === 0;
+  return isDifferentDay ? (
     <View style={styles.day}>
       <Text style={styles.dayText}>
         {moment(Number(item.createdAt)).format("MMM D, YYYY")}

@@ -6,6 +6,7 @@ import { useFonts } from "expo-font";
 import LoadingScreen from "./screens/Loading";
 import * as Localization from "expo-localization";
 import i18n from "./i18n/translations";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 i18n.locale = Localization.locale;
 i18n.enableFallback = true;
@@ -23,7 +24,9 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <Main />
+      <RootSiblingParent>
+        <Main />
+      </RootSiblingParent>
     </AuthProvider>
   );
 }

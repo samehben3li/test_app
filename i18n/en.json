@@ -36,5 +36,9 @@
     "NOT_LOGGED_IN": "Not logged in",
     "INVALID_TOKEN": "Invalid token",
     "INCORRECT_CREDENTIALS": "Wrong credentials"
+  },
+  "home": {
+    "new_flag": "NEW FLAG",
+    "recent_flags": "RECENT FLAGS"
   }
 }
