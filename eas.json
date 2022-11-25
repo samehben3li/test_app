@@ -7,18 +7,18 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "apiUrl": "http://44.241.151.158:3000/"
+        "apiUrl": "http://tomato-trolley-backend.byrana.xyz:3000/"
       }
     },
     "preview": {
       "distribution": "internal",
       "env": {
-        "apiUrl": "http://44.241.151.158:3000/"
+        "apiUrl": "http://tomato-trolley-backend.byrana.xyz:3000/"
       }
     },
     "production": {
       "env": {
-        "apiUrl": "http://44.241.151.158:3000/"
+        "apiUrl": "http://tomato-trolley-backend.byrana.xyz:3000/"
       }
     },
     "simulator": {
@@ -29,7 +29,7 @@
         "buildType": "apk"
       },
       "env": {
-        "apiUrl": "http://44.241.151.158:3000/"
+        "apiUrl": "http://tomato-trolley-backend.byrana.xyz:3000/"
       }
     }
   },
