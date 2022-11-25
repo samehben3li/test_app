@@ -85,8 +85,12 @@ export default function CreateFlagScreen({ navigation, route }) {
       right: [],
     },
   });
+  // whether the flag ready to submit or not (if all options submitted it is ready)
   const [ready, setReady] = useState(false);
+
+  // if the flag is submitted this will be temporarily true to desplay success screen
   const [done, setDone] = useState(false);
+
   const risks = useQuery(GET_RISKS);
   const plantParts = useQuery(GET_PLANT_PARTS);
 
