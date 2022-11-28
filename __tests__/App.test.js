@@ -5,7 +5,7 @@ import App from "../App";
 describe("App", () => {
   it("renders without crashing", () => {
     const rendered = renderer.create(<App />).toJSON();
-    expect(rendered).toBeTruthy();
+    expect(rendered).toMatchSnapshot();
   });
 });
 // test("home snapshot", () => {

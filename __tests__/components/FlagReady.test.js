@@ -9,18 +9,6 @@ jest.mock("react-native-reanimated", () => {
     ...jest.requireActual("react-native-reanimated/src/reanimated2/mock"),
   };
 });
-jest.mock("../../components/FlagReady.animation", () => {
-  return {
-    0: {
-      opacity: 0,
-      transform: [{ translateY: 10 }],
-    },
-    100: {
-      opacity: 1,
-      transform: [{ translateY: 0 }],
-    },
-  };
-});
 
 describe("FlagReady Component", () => {
   it("renders without crashing", () => {
@@ -29,6 +17,8 @@ describe("FlagReady Component", () => {
         <MockedProvider>
           <AuthProvider value={{}}>
             <FlagReady
+              done={false}
+              completed={true}
               flagData={{
                 risk: null,
                 pest: null,

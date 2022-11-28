@@ -15,6 +15,6 @@ describe("FlagList Component", () => {
         </MockedProvider>
       )
       .toJSON();
-    expect(rendered).toBeTruthy();
+    expect(rendered).toMatchSnapshot();
   });
 });

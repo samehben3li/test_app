@@ -15,6 +15,6 @@ describe("Header Component", () => {
         </MockedProvider>
       )
       .toJSON();
-    expect(rendered).toBeTruthy();
+    expect(rendered).toMatchSnapshot();
   });
 });

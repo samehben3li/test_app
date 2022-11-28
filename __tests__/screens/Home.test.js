@@ -15,6 +15,6 @@ describe("Home Screen", () => {
         </MockedProvider>
       )
       .toJSON();
-    expect(rendered).toBeTruthy();
+    expect(rendered).toMatchSnapshot();
   });
 });

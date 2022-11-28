@@ -15,6 +15,6 @@ describe("RecentFlags Screen", () => {
         </MockedProvider>
       )
       .toJSON();
-    expect(rendered).toBeTruthy();
+    expect(rendered).toMatchSnapshot();
   });
 });

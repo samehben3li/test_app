@@ -92,6 +92,7 @@ exports[`FlagOptions Component renders without crashing 1`] = `
       <Text
         entering={
           Object {
+            "delay": [Function],
             "duration": [Function],
           }
         }

@@ -10,13 +10,6 @@ jest.mock("react-native-reanimated", () => {
     ...jest.requireActual("react-native-reanimated/src/reanimated2/mock"),
   };
 });
-// jest.mock(_reactNativeReanimated.Keyframe, () => {
-//   return {
-//     default: jest.fn().mockImplementation(() => ({
-//       someMethod: () => {},
-//     })),
-//   };
-// });
 
 describe("FlagOptions Component", () => {
   it("renders without crashing", () => {
