@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import { useState } from "react";
 import i18n from "../i18n/translations";
 import { flagReadyStyles as styles } from "../styles";
@@ -7,6 +7,7 @@ import GestureRecognizer from "react-native-swipe-gestures";
 import { flag } from "../screens/CreateFlag";
 import { CREATE_FLAG } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
+import { keyframe } from "./FlagOptions";
 import Animated, {
   SlideInDown,
   SlideOutDown,
@@ -17,19 +18,10 @@ import Animated, {
   FadeOutDown,
   Keyframe,
 } from "react-native-reanimated";
+import Toast from "react-native-root-toast";
 
 const AnimatedGesture = Animated.createAnimatedComponent(GestureRecognizer);
 
-const keyframe = new Keyframe({
-  0: {
-    opacity: 0,
-    transform: [{ translateY: 10 }],
-  },
-  100: {
-    opacity: 1,
-    transform: [{ translateY: 0 }],
-  },
-});
 const keyframe2 = new Keyframe({
   0: {
     width: 0,
@@ -60,77 +52,109 @@ export default function FlagReady({
 }: Props) {
   const [createFlag] = useMutation(CREATE_FLAG);
   const [loading, setLoading] = useState(false);
+  const { risk, plantPart, location, pest } = flagData;
+  const inputValues = {
+    riskCategory: {
+      name: risk?.name,
+      imgUrl: risk?.imgUrl,
+    },
+    riskCategoryType: {
+      name: pest?.name,
+      imgUrl: pest?.imgUrl,
+    },
+    plantPart: {
+      name: plantPart?.name,
+      imgUrl: plantPart?.imgUrl,
+    },
+    location: location,
+  };
   const submit = async () => {
     setLoading(true);
-    const { risk, plantPart, location, pest } = flagData;
-    const inputValues = {
-      riskCategory: {
-        name: risk?.name,
-        imgUrl: risk?.imgUrl,
-      },
-      riskCategoryType: {
-        name: pest?.name,
-        imgUrl: pest?.imgUrl,
-      },
-      plantPart: {
-        name: plantPart?.name,
-        imgUrl: plantPart?.imgUrl,
-      },
-      location: location,
-    };
     try {
-      const data = await createFlag({ variables: inputValues });
-      if (data) {
-        setLoading(false);
-        setDone(true);
-        setFlagData({
-          risk: null,
-          pest: null,
-          plantPart: null,
-          location: {
-            left: [],
-            right: [],
-          },
-        });
-      }
+      await createFlag({ variables: inputValues });
+      setLoading(false);
+      setDone(true);
+      setFlagData({
+        risk: null,
+        pest: null,
+        plantPart: null,
+        location: {
+          left: [],
+          right: [],
+        },
+      });
     } catch (err) {
-      if (err instanceof Error) {
-        setLoading(false);
-        alert(err.message);
-      }
+      setLoading(false);
+      err instanceof Error &&
+        Toast.show(err.message, {
+          duration: Toast.durations.LONG,
+        });
     }
   };
-  return !done && ready ? (
-    <Animated.View style={styles.container}>
-      <Animated.View
-        entering={StretchInY.springify()}
-        exiting={StretchOutY}
-        style={styles.topPart}
-      >
-        <View style={styles.triangle}></View>
-        <View style={styles.helpContainer}>
-          <View style={styles.header}>
-            <Animated.Image
-              entering={keyframe2.delay(500)}
-              exiting={StretchOutX.delay(500).springify()}
-              source={lunaHelperIcon}
-              style={styles.imgWide}
-            />
-            <Animated.Image
-              entering={keyframe.duration(400).delay(1000)}
-              exiting={FadeOutDown.delay(1000).easing(Easing.ease)}
-              source={helpIcon}
-              style={styles.imgIcon}
-            />
+  return (
+    !done &&
+    completed && (
+      <Animated.View style={styles.container}>
+        <Animated.View
+          entering={StretchInY.springify()}
+          exiting={StretchOutY}
+          style={styles.topPart}
+        >
+          <View style={styles.triangle}></View>
+          <View style={styles.helpContainer}>
+            <View style={styles.header}>
+              <Animated.Image
+                entering={keyframe2.delay(500)}
+                exiting={StretchOutX.delay(500).springify()}
+                source={lunaHelperIcon}
+                style={styles.imgWide}
+              />
+              <Animated.Image
+                entering={keyframe.duration(400).delay(1000)}
+                exiting={FadeOutDown.delay(1000).easing(Easing.ease)}
+                source={helpIcon}
+                style={styles.imgIcon}
+              />
+            </View>
+            <Animated.Text
+              entering={keyframe.duration(400).delay(1100)}
+              exiting={FadeOutDown.delay(1100).easing(Easing.ease)}
+              style={styles.helpText}
+            >
+              {i18n.t("flagReady.makeChangesHelp")}
+            </Animated.Text>
           </View>
+        </Animated.View>
+        <AnimatedGesture
+          entering={SlideInDown.duration(600)}
+          exiting={SlideOutDown.duration(600)}
+          onSwipeDown={() => setCompleted(false)}
+          style={styles.bottomPart}
+        >
           <Animated.Text
-            entering={keyframe.duration(400).delay(1100)}
-            exiting={FadeOutDown.delay(1100).easing(Easing.ease)}
-            style={styles.helpText}
+            entering={keyframe.duration(400).delay(1200)}
+            style={styles.confirmText}
           >
-            {i18n.t("flagReady.makeChangesHelp")}
+            {i18n.t("flagReady.confirmSelection")}
           </Animated.Text>
-        </View>
+          <Pressable
+            onPress={submit}
+            style={[
+              styles.btn,
+              {
+                opacity: !loading ? 1 : 0.5,
+              },
+            ]}
+          >
+            <Text style={styles.btnText}>{i18n.t("flagReady.createFlag")}</Text>
+          </Pressable>
+          <Animated.Text
+            entering={SlideInDown.delay(1300).easing(Easing.ease)}
+            style={styles.hint}
+          >
+            {i18n.t("flagReady.swipeHint")}
+          </Animated.Text>
+        </AnimatedGesture>
       </Animated.View>
       <AnimatedGesture
         entering={SlideInDown.duration(600)}

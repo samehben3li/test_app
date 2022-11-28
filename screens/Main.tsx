@@ -11,17 +11,17 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainNavigator from "./MainNavigator";
 import LoginScreen from "./Login";
 import { AuthContext } from "../context/authContext";
-import { authContextType } from "../types/interfaces";
+import { authData, authContextType } from "../types/interfaces";
 
 const Stack = createNativeStackNavigator();
 
 const apiUrl = process.env.apiUrl;
-export default function Main() {
-  const { auth } = useContext(AuthContext) as authContextType;
-  const httpLink = createHttpLink({
-    uri: apiUrl,
-  });
 
+const httpLink = createHttpLink({
+  uri: apiUrl,
+});
+
+const serverSetup = (auth: authData | null) => {
   const authLink = setContext((_, { headers }) => {
     const token = auth?.accessToken;
     return {
@@ -36,6 +36,14 @@ export default function Main() {
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
   });
+  return client;
+};
+
+export default function Main() {
+  const { auth } = useContext(AuthContext) as authContextType;
+
+  const client = serverSetup(auth);
+
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>

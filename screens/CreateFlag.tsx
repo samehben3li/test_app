@@ -163,6 +163,7 @@ export default function CreateFlagScreen({ navigation, route }) {
             selectedTab={selectedTab}
             flagData={flagData}
             setSelectedTab={setSelectedTab}
+            setCompleted={setCompleted}
           />
         )}
         {!ready ? (
