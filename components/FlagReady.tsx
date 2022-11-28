@@ -34,21 +34,21 @@ const keyframe2 = new Keyframe({
 });
 
 interface Props {
-  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  setReady: React.Dispatch<React.SetStateAction<boolean>>;
   flagData: flag;
   done: boolean;
   setDone: React.Dispatch<React.SetStateAction<boolean>>;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;
-  completed: boolean;
+  ready: boolean;
 }
 
 export default function FlagReady({
-  setCompleted,
+  setReady,
   flagData,
   setFlagData,
   setDone,
   done,
-  completed,
+  ready,
 }: Props) {
   const [createFlag] = useMutation(CREATE_FLAG);
   const [loading, setLoading] = useState(false);
@@ -156,6 +156,38 @@ export default function FlagReady({
           </Animated.Text>
         </AnimatedGesture>
       </Animated.View>
-    )
+      <AnimatedGesture
+        entering={SlideInDown.duration(600)}
+        exiting={SlideOutDown.duration(600)}
+        onSwipeDown={() => setReady(false)}
+        style={styles.bottomPart}
+      >
+        <Animated.Text
+          entering={keyframe.duration(400).delay(1200)}
+          style={styles.confirmText}
+        >
+          {i18n.t("flagReady.confirmSelection")}
+        </Animated.Text>
+        <Pressable
+          onPress={submit}
+          style={[
+            styles.btn,
+            {
+              opacity: !loading ? 1 : 0.5,
+            },
+          ]}
+        >
+          <Text style={styles.btnText}>{i18n.t("flagReady.createFlag")}</Text>
+        </Pressable>
+        <Animated.Text
+          entering={SlideInDown.delay(1300).easing(Easing.ease)}
+          style={styles.hint}
+        >
+          {i18n.t("flagReady.swipeHint")}
+        </Animated.Text>
+      </AnimatedGesture>
+    </Animated.View>
+  ) : (
+    <></>
   );
 }
