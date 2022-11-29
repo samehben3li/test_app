@@ -2,8 +2,9 @@
   "expo": {
     "name": "TomatoTrolley",
     "slug": "tomato-trolley",
-    "owner": "mohamed_azaza",
-    "version": "1.0.0",
+    "privacy": "unlisted",
+    "owner": "iunu-tomato-trolley-team",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -12,27 +13,33 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true
-      }
+      },
+      "bundleIdentifier": "com.ranadev.tomatotrolley",
+      "buildNumber": "7"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.ranadev.tomatotrolley"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "locales": {
       "en": "./i18n/en.json"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "935bfe04-32c2-4c7b-a5f8-815128fc55c4"
+      },
+      "apiUrl": "http://tomato-trolley-backend.byrana.xyz/"
     }
   }
 }

@@ -1,0 +1,46 @@
+{
+  "cli": {
+    "version": ">= 2.6.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "apiUrl": "http://tomato-trolley-backend.byrana.xyz/"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "apiUrl": "http://tomato-trolley-backend.byrana.xyz/"
+      }
+    },
+    "production": {
+      "env": {
+        "apiUrl": "http://tomato-trolley-backend.byrana.xyz/"
+      }
+    },
+    "simulator": {
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "apiUrl": "http://tomato-trolley-backend.byrana.xyz/"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "mohamed@ranadev.io",
+        "ascAppId": "6444107839",
+        "appleTeamId": "VRS8UATJ32",
+        "sku": "tomato-trolley"
+      }
+    }
+  }
+}

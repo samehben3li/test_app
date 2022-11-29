@@ -1,31 +1,89 @@
-import { Text, View, Image, Pressable } from "react-native";
+import { Text, View, Image, Pressable, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
-import i18n from "../i18n/tanslations";
 import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
 import GestureRecognizer from "react-native-swipe-gestures";
+import LocationsCol from "./LocationsCol";
+import Animated, {
+  SlideInDown,
+  SlideOutDown,
+  Keyframe,
+  FadeIn,
+  FadeOut,
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
+import i18n from "../i18n/translations";
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+export const keyframe = new Keyframe({
+  0: {
+    opacity: 0,
+    transform: [{ translateY: 10 }],
+  },
+  100: {
+    opacity: 1,
+    transform: [{ translateY: 0 }],
+  },
+});
 
 interface Props {
   data: selectedTab;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;
   flagData: flag;
-  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  setReady: React.Dispatch<React.SetStateAction<boolean>>;
+  options: option[];
+  selectedTab: selectedTab;
 }
 
 export default function FlagOptions({
   data,
   setFlagData,
   flagData,
-  setCompleted,
+  setReady,
+  options,
+  selectedTab,
 }: Props) {
+  const windowWidth = Dimensions.get("window").width;
   const [selected, setSelected] = useState(0);
-  const [touchY, setTouchY] = useState(0);
+  const [indicatorPos, setIndicatorPos] = useState(0);
+  const [indicatorLinePos, setIndicatorLinePos] = useState(100);
 
   useEffect(() => {
     if (flagData[data.name]) {
       setSelected(flagData[data.name].id);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (selectedTab.name === "risk") {
+      setIndicatorPos(-windowWidth / 3.2);
+    } else if (selectedTab.name === "pest") {
+      setIndicatorPos(-windowWidth / 10);
+    } else if (selectedTab.name === "plantPart") {
+      setIndicatorPos(windowWidth / 10);
+    } else if (selectedTab.name === "location") {
+      setIndicatorPos(windowWidth / 3.2);
+    } else {
+      setIndicatorPos(0);
+    }
+  }, [selectedTab]);
+
+  useEffect(() => {
+    const indicatorInterval = setInterval(() => {
+      setIndicatorLinePos((prev) => -prev);
+    }, 1000);
+    return () => {
+      clearInterval(indicatorInterval);
+    };
+  }, []);
+
+  const uas = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: withSpring(indicatorPos, { stiffness: 50 }) }],
+    };
+  });
 
   const choose = (selection: option) => {
     setFlagData((prev) => {
@@ -48,68 +106,84 @@ export default function FlagOptions({
     });
   };
 
-  const locations = [i18n.t("top"), i18n.t("middle"), i18n.t("bottom")];
+  const locations = [
+    i18n.t("flag.top"),
+    i18n.t("flag.middle"),
+    i18n.t("flag.bottom"),
+  ];
 
   return (
-    <GestureRecognizer
-      onSwipeDown={() => setCompleted(true)}
+    <Animated.View
+      entering={SlideInDown.duration(600)}
+      exiting={SlideOutDown.duration(600)}
       style={styles.container}
     >
-      <Text style={styles.hint}>{data.hint}</Text>
-      <View style={styles.optionsContainer}>
-        <Text style={styles.title}>{data.title}</Text>
-        <View style={styles.options}>
-          {!data.location ? (
-            data.options?.map((option) => (
-              <View key={option.id} style={styles.optionContainer}>
-                <Pressable
-                  onPress={() => choose(option)}
-                  style={[
-                    styles.btn,
-                    selected === option.id && styles.selected,
-                  ]}
-                >
-                  <Image source={option.icon} style={styles.image} />
-                </Pressable>
-                <Text style={styles.optionName}>{option.name}</Text>
-              </View>
-            ))
-          ) : (
-            <View style={styles.locationGrid}>
-              <View style={styles.locationCol}>
-                {locations.map((item: string, index: number) => (
-                  <Pressable
-                    onPress={() => addLocation(item, "left")}
-                    key={index}
+      <GestureRecognizer
+        onSwipeDown={() => {
+          const { risk, plantPart, location, pest } = flagData;
+          if (risk && plantPart && location && pest) {
+            setReady(true);
+          }
+        }}
+        style={styles.innerContainer}
+      >
+        {/* <Animated.View style={[styles.indicatorLine, uas]}></Animated.View> */}
+        <Animated.View style={[styles.indicator, uas]}></Animated.View>
+        <Animated.Text
+          entering={keyframe.duration(400).delay(700)}
+          style={styles.hint}
+        >
+          {data.hint}
+        </Animated.Text>
+        <View style={styles.optionsContainer}>
+          <Animated.Text entering={SlideInDown} style={styles.title}>
+            {data.title}
+          </Animated.Text>
+          <View style={styles.options}>
+            {!data.location ? (
+              options?.map((option) => (
+                <View key={option.id} style={styles.optionContainer}>
+                  <AnimatedPressable
+                    entering={FadeIn.delay(500)}
+                    exiting={FadeOut}
+                    onPress={() => choose(option)}
                     style={[
-                      styles.locationBtn,
-                      flagData.location.left.includes(item) && styles.selected,
+                      styles.btn,
+                      selected === option.id && styles.selected,
                     ]}
                   >
-                    <Text style={styles.optionName}>{item}</Text>
-                  </Pressable>
-                ))}
-                <Text style={styles.gridText}>{i18n.t("left")}</Text>
-              </View>
-              <View style={styles.locationCol}>
-                {locations.map((item: string, index: number) => (
-                  <Pressable
-                    onPress={() => addLocation(item, "right")}
-                    key={index}
-                    style={[
-                      styles.locationBtn,
-                      flagData.location.right.includes(item) && styles.selected,
-                    ]}
+                    <Image
+                      source={{ uri: `${option.imgUrl}` }}
+                      style={styles.image}
+                    />
+                  </AnimatedPressable>
+                  <Animated.Text
+                    entering={FadeIn.delay(500)}
+                    exiting={FadeOut}
+                    numberOfLines={1}
+                    style={styles.optionName}
                   >
-                    <Text style={styles.optionName}>{item}</Text>
-                  </Pressable>
-                ))}
-                <Text style={styles.gridText}>{i18n.t("right")}</Text>
+                    {option.name}
+                  </Animated.Text>
+                </View>
+              ))
+            ) : (
+              <View style={styles.locationGrid}>
+                <LocationsCol
+                  addLocation={addLocation}
+                  side="left"
+                  flagData={flagData}
+                />
+                <LocationsCol
+                  addLocation={addLocation}
+                  side="right"
+                  flagData={flagData}
+                />
               </View>
-            </View>
-          )}
+            )}
+          </View>
         </View>
-      </View>
-    </GestureRecognizer>
+      </GestureRecognizer>
+    </Animated.View>
   );
 }

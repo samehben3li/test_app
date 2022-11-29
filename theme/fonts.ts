@@ -1,12 +1,14 @@
 export const type = {
-  bold: "Poppins_700Bold",
-  semiBold: "Poppins_600SemiBold",
-  regular: "Poppins_400Regular",
+  bold: "black",
+  semiBold: "bold",
+  regular: "medium",
 };
 export const size = {
   large: 40,
   medium: 20,
   light: 15,
-  small: 12,
+  regular: 11,
+  small: 10,
   extraSmall: 8,
+  thin: 6,
 };

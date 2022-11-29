@@ -21,7 +21,6 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 7,
     marginTop: 15,
-    fontFamily: type.regular,
   },
   submit: {
     borderRadius: 7,
@@ -42,7 +41,7 @@ export default StyleSheet.create({
     marginVertical: 5,
   },
   errorText: {
-    color: colors.primary2,
+    color: colors.red,
     fontSize: size.small,
   },
   errorContainer: {

@@ -1,32 +1,22 @@
-import { API_URI } from "@env";
 import { useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
 import AuthProvider from "./context/authContext";
 import Main from "./screens/Main";
-import {
-  Poppins_400Regular,
-  Poppins_600SemiBold,
-  Poppins_700Bold,
-} from "@expo-google-fonts/poppins";
 import { useFonts } from "expo-font";
 import LoadingScreen from "./screens/Loading";
 import * as Localization from "expo-localization";
 import i18n from "./i18n/translations";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 i18n.locale = Localization.locale;
 i18n.enableFallback = true;
 
-const client = new ApolloClient({
-  uri: API_URI,
-  cache: new InMemoryCache(),
-});
-
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [fontsLoaded, error] = useFonts({
-    Poppins_400Regular,
-    Poppins_600SemiBold,
-    Poppins_700Bold,
+    medium: require("./assets/fonts/gotham/Gotham-Book.otf"),
+    bold: require("./assets/fonts/gotham/Gotham-Bold.otf"),
+    black: require("./assets/fonts/gotham/Gotham-Black.otf"),
   });
   if (!fontsLoaded) {
     return <LoadingScreen />;
@@ -34,9 +24,9 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <ApolloProvider client={client}>
+      <RootSiblingParent>
         <Main />
-      </ApolloProvider>
+      </RootSiblingParent>
     </AuthProvider>
   );
 }

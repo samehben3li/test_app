@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "../theme/colors";
-// import { type, size } from "../theme/fonts";
+import { type, size } from "../theme/fonts";
 
 export default StyleSheet.create({
   container: {
@@ -17,23 +17,35 @@ export default StyleSheet.create({
   },
   btn: {
     backgroundColor: colors.white,
-    width: "60%",
-    marginVertical: 10,
-    height: 60,
+    width: 220,
+    marginVertical: 6,
+    height: 70,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 5,
-    shadowColor: colors.primary3,
+    flexDirection: "row",
+    borderRadius: 6,
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
-      height: 12,
+      height: 7,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 75,
-    elevation: 20,
+    shadowOpacity: 0.2,
+    shadowRadius: 9.51,
+    elevation: 15,
   },
   image: {
-    width: "60%",
+    height: 25,
+    width: 25,
     resizeMode: "contain",
+  },
+  image2: {
+    height: 22,
+    width: 22,
+    resizeMode: "contain",
+  },
+  btnText: {
+    marginLeft: 10,
+    fontFamily: type.semiBold,
+    fontSize: size.regular,
   },
 });

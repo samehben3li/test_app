@@ -7,11 +7,15 @@ const Stack = createNativeStackNavigator();
 
 const MainNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false, animation: "none" }}>
-      <Stack.Screen name="home" component={HomeScreen} />
-      <Stack.Screen name="createFlag" component={CreateFlagScreen} />
-      <Stack.Screen name="recentFlags" component={RecentFlagsScreen} />
-    </Stack.Navigator>
+    <>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false, animation: "none" }}
+      >
+        <Stack.Screen name="home" component={HomeScreen} />
+        <Stack.Screen name="recentFlags" component={RecentFlagsScreen} />
+        <Stack.Screen name="createFlag" component={CreateFlagScreen} />
+      </Stack.Navigator>
+    </>
   );
 };
 

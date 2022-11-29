@@ -1,25 +1,34 @@
-import { View, Pressable, Image } from "react-native";
+import { View } from "react-native";
 import { homeStyles as styles } from "../styles";
 import { Header } from "../components";
-import { newFlagIcon, recentFlagsIcon } from "../assets";
+import { flagIcon, recentIcon } from "../assets";
+import Button from "../components/Button";
 
-export default function HomeScreen({ navigation }) {
+interface Props {
+  navigation: any;
+}
+
+export default function HomeScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
-      <Header />
+      <Header home={true} />
       <View style={styles.main}>
-        <Pressable
-          style={styles.btn}
-          onPress={() => navigation.navigate("createFlag")}
-        >
-          <Image style={styles.image} source={newFlagIcon} />
-        </Pressable>
-        <Pressable
-          style={styles.btn}
-          onPress={() => navigation.navigate("recentFlags")}
-        >
-          <Image style={styles.image} source={recentFlagsIcon} />
-        </Pressable>
+        <Button
+          style={styles.image}
+          icon={flagIcon}
+          fn={() => navigation.navigate("createFlag")}
+          variant="home"
+          globalStyles={styles}
+          name="home.new_flag"
+        />
+        <Button
+          style={styles.image2}
+          icon={recentIcon}
+          fn={() => navigation.navigate("recentFlags")}
+          variant="home"
+          globalStyles={styles}
+          name="home.recent_flags"
+        />
       </View>
     </View>
   );

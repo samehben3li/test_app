@@ -14,5 +14,31 @@
   },
   "loading": {
     "loading": "Loading..."
+  },
+  "flag": {
+    "riskCategory": "RISK CATEGORY",
+    "type": "TYPE",
+    "plantPart": "PLANT PART",
+    "location": "LOCATION",
+    "top": "TOP",
+    "bottom": "BOTTOM",
+    "middle": "MIDDLE",
+    "left": "LEFT",
+    "right": "RIGHT"
+  },
+  "flagReady": {
+    "makeChangesHelp": "If you need to make any changes, tap the buttons above to be taken back to that section",
+    "confirmSelection": "Please confirm that the submission above is correct",
+    "createFlag": "CREATE FLAG",
+    "swipeHint": "Swipe down to cancel"
+  },
+  "errors": {
+    "NOT_LOGGED_IN": "Not logged in",
+    "INVALID_TOKEN": "Invalid token",
+    "INCORRECT_CREDENTIALS": "Wrong credentials"
+  },
+  "home": {
+    "new_flag": "NEW FLAG",
+    "recent_flags": "RECENT FLAGS"
   }
 }
