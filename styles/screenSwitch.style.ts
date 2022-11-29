@@ -8,7 +8,6 @@ export default StyleSheet.create({
     backgroundColor: colors.black,
     // marginTop: -40,
     // paddingTop: 40,
-    zIndex: -1,
     borderBottomEndRadius: 40,
     borderBottomStartRadius: 40,
     flexDirection: "row",
@@ -26,9 +25,11 @@ export default StyleSheet.create({
   image: {
     tintColor: colors.gold,
     height: "30%",
+    width: "100%",
     resizeMode: "contain",
+    opacity: 0.5,
   },
   selected: {
-    opacity: 0.5,
+    opacity: 1,
   },
 });

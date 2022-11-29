@@ -19,9 +19,9 @@ export default StyleSheet.create({
       width: 0,
       height: 12,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 75,
-    elevation: 40,
+    shadowOpacity: 0.3,
+    shadowRadius: 16.0,
+    elevation: 24,
   },
   bg: {
     width: "100%",
@@ -31,18 +31,32 @@ export default StyleSheet.create({
   },
   logoTitle: {
     fontFamily: type.regular,
-    fontSize: size.small,
+    fontSize: size.regular,
+    height: 13,
+    color: colors.black,
+    width: "100%",
+    textAlign: "left",
+    position: "relative",
+    padding: 0,
   },
   logoContainer: {
     width: 120,
+    height: 52,
+    padding: 0,
   },
   btn: {
     width: 40,
-    marginBottom: 10,
+    height: 30,
+    marginBottom: 14,
   },
   image: {
     height: 40,
     width: "auto",
+    resizeMode: "contain",
+  },
+  btnImage: {
+    height: "100%",
+    width: "100%",
     resizeMode: "contain",
   },
 });

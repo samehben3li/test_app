@@ -8,10 +8,11 @@ const colors = {
   errorBg: "#FFE7E7",
   red: "#f44336",
   black: "#000",
-  blackOp: "#00000080",
-  gold: "#F3B255",
+  blackOp: "#D8D8D8",
+  gold: "#FFB955",
   goldOp: "#F3B25580",
   done: "#5CE166",
+  disabled: "#cccccc",
 };
 
 export default colors;

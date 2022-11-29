@@ -5,3 +5,5 @@ export { default as FlagReady } from "./FlagReady";
 export { default as NewFlag } from "./NewFlag";
 export { default as ScreenSwitch } from "./ScreenSwitch";
 export { default as FlagCol } from "./FlagCol";
+export { default as FlagSelection } from "./FlagSelection";
+export { default as LocationsCol } from "./LocationsCol";

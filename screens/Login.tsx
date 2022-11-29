@@ -9,6 +9,60 @@ import { authContextType } from "../types/interfaces";
 import colors from "../theme/colors";
 import i18n from "../i18n/translations";
 
+const errorRefresh = (
+  error: string,
+  setError: React.Dispatch<React.SetStateAction<string>>
+) => {
+  let timer: any;
+  if (error) {
+    timer = setTimeout(() => setError(""), 5000);
+  }
+  return () => {
+    clearTimeout(timer);
+  };
+};
+
+const FieldError = ({
+  isFieldInError,
+  getErrorsInField,
+  state,
+  fieldName,
+}: any) => {
+  return (
+    <View style={styles.error}>
+      {isFieldInError(fieldName) &&
+        state &&
+        getErrorsInField(fieldName).map(
+          (errorMessage: string, index: number) => (
+            <Text style={styles.errorText} key={index}>
+              {errorMessage}
+            </Text>
+          )
+        )}
+    </View>
+  );
+};
+
+const SubmitButton = ({ loading, submitHandler, isFormValid }: any) => {
+  return (
+    <Pressable
+      style={({ pressed }) => [
+        {
+          backgroundColor: pressed ? colors.primary1dark : colors.primary1,
+          opacity: isFormValid ? 1 : 0.7,
+        },
+        styles.submit,
+      ]}
+      onPress={submitHandler}
+      disabled={!isFormValid || loading}
+    >
+      <Text style={styles.submitText}>
+        {loading ? "..." : i18n.t("login.login")}
+      </Text>
+    </Pressable>
+  );
+};
+
 const LoginScreen = () => {
   const [loginUser] = useMutation(LOGIN);
   const { setAuth } = useContext(AuthContext) as authContextType;
@@ -33,32 +87,24 @@ const LoginScreen = () => {
     },
   });
   useEffect(() => {
-    let timer: any;
-    if (error) {
-      timer = setTimeout(() => setError(""), 5000);
-    }
-    return () => {
-      clearTimeout(timer);
-    };
+    errorRefresh(error, setError);
   }, [error]);
 
   const submitHandler = async () => {
-    if (isFormValid) {
-      try {
-        setLoading(true);
-        const data = await loginUser({ variables: { email, password } });
-        setAuth(data.data.login);
-        setLoading(false);
-      } catch (err) {
-        if (err instanceof Error) {
-          setLoading(false);
-          setError(
-            i18n.t(`errors.${err.message}`, { defaultValue: err.message })
-          );
-        }
-      }
+    try {
+      setLoading(true);
+      const data = await loginUser({ variables: { email, password } });
+      setAuth(data.data.login);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      err instanceof Error &&
+        setError(
+          i18n.t(`errors.${err.message}`, { defaultValue: err.message })
+        );
     }
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{i18n.t("login.welcome")}</Text>
@@ -75,17 +121,12 @@ const LoginScreen = () => {
         style={styles.input}
         placeholder={i18n.t("login.email")}
       />
-      <View style={styles.error}>
-        {isFieldInError("email") &&
-          email &&
-          getErrorsInField("email").map(
-            (errorMessage: string, index: number) => (
-              <Text style={styles.errorText} key={index}>
-                {errorMessage}
-              </Text>
-            )
-          )}
-      </View>
+      <FieldError
+        isFieldInError={isFieldInError}
+        getErrorsInField={getErrorsInField}
+        state={email}
+        fieldName="email"
+      />
       <TextInput
         value={password}
         onChangeText={(text) => setPassword(text)}
@@ -93,32 +134,17 @@ const LoginScreen = () => {
         secureTextEntry={true}
         placeholder={i18n.t("login.password")}
       />
-      <View style={styles.error}>
-        {isFieldInError("password") &&
-          password &&
-          getErrorsInField("password").map(
-            (errorMessage: string, index: number) => (
-              <Text style={styles.errorText} key={index}>
-                {errorMessage}
-              </Text>
-            )
-          )}
-      </View>
-      <Pressable
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed ? colors.primary1dark : colors.primary1,
-            opacity: isFormValid ? 1 : 0.7,
-          },
-          styles.submit,
-        ]}
-        onPress={submitHandler}
-        disabled={!isFormValid || loading}
-      >
-        <Text style={styles.submitText}>
-          {loading ? "..." : i18n.t("login.login")}
-        </Text>
-      </Pressable>
+      <FieldError
+        isFieldInError={isFieldInError}
+        getErrorsInField={getErrorsInField}
+        state={password}
+        fieldName="password"
+      />
+      <SubmitButton
+        loading={loading}
+        submitHandler={submitHandler}
+        isFormValid={isFormValid}
+      />
     </View>
   );
 };

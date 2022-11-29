@@ -13,14 +13,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ranadev.tomatotrolley",
-      "buildNumber": "3"
+      "buildNumber": "7"
     },
     "android": {
       "adaptiveIcon": {

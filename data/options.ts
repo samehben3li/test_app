@@ -22,74 +22,8 @@ export const optionsData = [
   },
   {
     name: "location",
-    title: "Location",
+    title: "LOCATION",
     hint: "Please choose the affected location on the plant, Select multiple locations if needed",
     location: true,
-  },
-];
-
-export const list = [
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
-  },
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
-  },
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
-  },
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
-  },
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
-  },
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
-  },
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
-  },
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
-  },
-  {
-    risk: "PEST",
-    type: "RUSSET MITES",
-    part: "LEAF",
-    location: "LEFT: M \n RIGHT: T, B",
-    date: "12:07PM",
   },
 ];

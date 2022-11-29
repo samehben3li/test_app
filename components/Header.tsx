@@ -23,7 +23,7 @@ const Header = ({ home }: Props) => {
           <Text style={styles.logoTitle}>{i18n.t("header.TomatoTrolley")}</Text>
         </View>
         <Pressable style={styles.btn} onPress={submitHandler}>
-          <Image style={styles.image} source={exitIcon} />
+          <Image style={styles.btnImage} source={exitIcon} />
         </Pressable>
       </View>
     </View>
