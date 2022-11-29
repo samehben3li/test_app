@@ -27,7 +27,6 @@ export const keyframe = new Keyframe({
   },
 });
 
-const API_URI = process.env.apiUrl;
 interface Props {
   data: selectedTab;
   setFlagData: React.Dispatch<React.SetStateAction<flag>>;

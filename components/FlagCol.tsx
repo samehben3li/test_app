@@ -2,8 +2,7 @@ import { Text, View, Image } from "react-native";
 import { flagListStyles as styles } from "../styles";
 import i18n from "../i18n/translations";
 import { flagTab } from "../types/interfaces";
-
-const API_URI = process.env.apiUrl;
+import { API_URI } from "../utils/config";
 
 interface Props {
   name: string;
