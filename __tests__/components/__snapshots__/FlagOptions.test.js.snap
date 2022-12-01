@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlagOptions Component renders without crashing 1`] = `
+<View
+  entering={600}
+  exiting={600}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFB955",
+      "borderTopEndRadius": 40,
+      "borderTopLeftRadius": 40,
+      "flex": 2,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    onSwipeDown={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "height": "100%",
+        "justifyContent": "center",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "borderBottomColor": "#FFB955",
+            "borderBottomWidth": 15,
+            "borderColor": "transparent",
+            "borderLeftWidth": 15,
+            "borderRightWidth": 15,
+            "height": 0,
+            "position": "absolute",
+            "top": -15,
+            "width": 0,
+          },
+          Object {
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <Text
+      entering={700}
+      style={
+        Object {
+          "fontFamily": "black",
+          "fontSize": 11,
+          "marginTop": 10,
+          "paddingVertical": 10,
+          "textAlign": "center",
+          "width": "90%",
+        }
+      }
+    >
+      selectedHint
+    </Text>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#000",
+          "borderRadius": 10,
+          "flex": 1,
+          "marginVertical": 10,
+          "padding": 2,
+          "width": "90%",
+        }
+      }
+    >
+      <Text
+        entering={
+          Object {
+            "delay": [Function],
+            "duration": [Function],
+          }
+        }
+        style={
+          Object {
+            "color": "#fff",
+            "fontFamily": "black",
+            "fontSize": 20,
+            "paddingVertical": 15,
+            "textAlign": "center",
+          }
+        }
+      >
+        selectedTilte
+      </Text>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#fff",
+            "borderRadius": 8,
+            "flex": 1,
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "justifyContent": "flex-start",
+            "overflow": "hidden",
+            "padding": 15,
+            "width": "100%",
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

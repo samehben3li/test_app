@@ -20,7 +20,7 @@
         "CFBundleAllowMixedLocalizations": true
       },
       "bundleIdentifier": "com.ranadev.tomatotrolley",
-      "buildNumber": "7"
+      "buildNumber": "9"
     },
     "android": {
       "adaptiveIcon": {
@@ -39,7 +39,7 @@
       "eas": {
         "projectId": "935bfe04-32c2-4c7b-a5f8-815128fc55c4"
       },
-      "apiUrl": "http://tomato-trolley-backend.byrana.xyz/"
+      "apiUrl": "https://tomato-trolley-backend.byrana.xyz/"
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable, Dimensions } from "react-native";
+import { View, Pressable, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
 import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
@@ -7,26 +7,16 @@ import LocationsCol from "./LocationsCol";
 import Animated, {
   SlideInDown,
   SlideOutDown,
-  Keyframe,
   FadeIn,
   FadeOut,
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
+import keyframe from "./FlagOptions.animation";
+import { SvgUri } from "react-native-svg";
 import i18n from "../i18n/translations";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-
-export const keyframe = new Keyframe({
-  0: {
-    opacity: 0,
-    transform: [{ translateY: 10 }],
-  },
-  100: {
-    opacity: 1,
-    transform: [{ translateY: 0 }],
-  },
-});
 
 interface Props {
   data: selectedTab;
@@ -37,6 +27,8 @@ interface Props {
   selectedTab: selectedTab;
 }
 
+const windowWidth = Dimensions.get("window").width;
+
 export default function FlagOptions({
   data,
   setFlagData,
@@ -45,10 +37,8 @@ export default function FlagOptions({
   options,
   selectedTab,
 }: Props) {
-  const windowWidth = Dimensions.get("window").width;
   const [selected, setSelected] = useState(0);
   const [indicatorPos, setIndicatorPos] = useState(0);
-  const [indicatorLinePos, setIndicatorLinePos] = useState(100);
 
   useEffect(() => {
     if (flagData[data.name]) {
@@ -69,15 +59,6 @@ export default function FlagOptions({
       setIndicatorPos(0);
     }
   }, [selectedTab]);
-
-  useEffect(() => {
-    const indicatorInterval = setInterval(() => {
-      setIndicatorLinePos((prev) => -prev);
-    }, 1000);
-    return () => {
-      clearInterval(indicatorInterval);
-    };
-  }, []);
 
   const uas = useAnimatedStyle(() => {
     return {
@@ -130,7 +111,7 @@ export default function FlagOptions({
         {/* <Animated.View style={[styles.indicatorLine, uas]}></Animated.View> */}
         <Animated.View style={[styles.indicator, uas]}></Animated.View>
         <Animated.Text
-          entering={keyframe.duration(400).delay(700)}
+          entering={keyframe.duration(400)?.delay(700)}
           style={styles.hint}
         >
           {data.hint}
@@ -152,10 +133,7 @@ export default function FlagOptions({
                       selected === option.id && styles.selected,
                     ]}
                   >
-                    <Image
-                      source={{ uri: `${option.imgUrl}` }}
-                      style={styles.image}
-                    />
+                    <SvgUri height={"55%"} width={"100%"} uri={option.imgUrl} />
                   </AnimatedPressable>
                   <Animated.Text
                     entering={FadeIn.delay(500)}
