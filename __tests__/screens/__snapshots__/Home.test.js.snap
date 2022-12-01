@@ -34,7 +34,7 @@ exports[`Home Screen renders without crashing 1`] = `
           "justifyContent": "space-between",
           "paddingBottom": 30,
           "paddingHorizontal": 40,
-          "shadowColor": "#000",
+          "shadowColor": undefined,
           "shadowOffset": Object {
             "height": 12,
             "width": 0,
@@ -234,7 +234,7 @@ exports[`Home Screen renders without crashing 1`] = `
           }
         }
       >
-        NEW FLAG
+        RECENT FLAGS
       </Text>
     </View>
   </View>
