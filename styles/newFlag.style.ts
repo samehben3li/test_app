@@ -131,4 +131,29 @@ export default StyleSheet.create({
   gridSelected: {
     backgroundColor: colors.gold,
   },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+    marginBottom: 5,
+  },
+  flagName: {
+    backgroundColor: colors.gold,
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+    marginTop: -3,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  flagNameText: {
+    fontFamily: type.bold,
+    fontSize: size.regular,
+  },
+  shapeIcon: {
+    height: 20,
+    resizeMode: "contain",
+  },
 });

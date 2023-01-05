@@ -7,3 +7,4 @@ export { default as flagIcon } from "./flag.png";
 export { default as helpIcon } from "./help.png";
 export { default as lunaHelperIcon } from "./lunaHelper.png";
 export { default as recentIcon } from "./recent.png";
+export { default as shapeIcon } from "./Shape.png";

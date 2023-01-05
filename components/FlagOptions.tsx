@@ -1,4 +1,4 @@
-import { View, Pressable, Dimensions } from "react-native";
+import { View, Pressable, Dimensions, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
@@ -120,7 +120,11 @@ export default function FlagOptions({
           <Animated.Text entering={SlideInDown} style={styles.title}>
             {data.title}
           </Animated.Text>
-          <View style={styles.options}>
+          <ScrollView
+            style={styles.options}
+            contentContainerStyle={styles.scroll}
+            persistentScrollbar={true}
+          >
             {!data.location ? (
               options?.map((option) => (
                 <View key={option.id} style={styles.optionContainer}>
@@ -147,19 +151,30 @@ export default function FlagOptions({
               ))
             ) : (
               <View style={styles.locationGrid}>
-                <LocationsCol
-                  addLocation={addLocation}
-                  side="left"
-                  flagData={flagData}
-                />
-                <LocationsCol
-                  addLocation={addLocation}
-                  side="right"
-                  flagData={flagData}
-                />
+                {flagData.plantPart?.name !== "FRUIT" ? (
+                  <>
+                    <LocationsCol
+                      addLocation={addLocation}
+                      side="left"
+                      flagData={flagData}
+                    />
+                    <LocationsCol
+                      addLocation={addLocation}
+                      side="right"
+                      flagData={flagData}
+                    />
+                  </>
+                ) : (
+                  <LocationsCol
+                    addLocation={addLocation}
+                    side="left"
+                    flagData={flagData}
+                    single
+                  />
+                )}
               </View>
             )}
-          </View>
+          </ScrollView>
         </View>
       </GestureRecognizer>
     </Animated.View>

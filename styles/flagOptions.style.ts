@@ -66,17 +66,23 @@ export default StyleSheet.create({
     borderRadius: 8,
     flexDirection: "row",
     width: "100%",
-    overflow: "hidden",
     flexWrap: "wrap",
-    padding: 15,
+    padding: 10,
+  },
+  scroll: {
+    width: "100%",
+    flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "flex-start",
+    paddingBottom: 10,
   },
   optionContainer: {
     width: "33%",
     height: "50%",
     paddingHorizontal: 8,
     alignItems: "center",
+    marginBottom: 10,
   },
   btn: {
     backgroundColor: colors.white,
@@ -138,6 +144,9 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.white,
     flex: 1,
+  },
+  locationBtnSingle: {
+    width: "50%",
   },
   gridText: {
     fontFamily: type.bold,

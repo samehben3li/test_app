@@ -8,7 +8,7 @@ export const optionsData = [
   },
   {
     name: "pest",
-    title: "PEST TYPE",
+    title: "TYPE",
     hint: "Please choose the type of pest that you've identified",
     location: false,
     options: [],
