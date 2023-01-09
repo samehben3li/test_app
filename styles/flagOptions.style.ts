@@ -67,7 +67,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     flexWrap: "wrap",
-    padding: 10,
+    padding: 0,
   },
   scroll: {
     width: "100%",
@@ -117,8 +117,15 @@ export default StyleSheet.create({
   },
   locationGrid: {
     width: "100%",
-    flexDirection: "row",
     height: "100%",
+    alignItems: "center",
+  },
+  locationOptions: {
+    width: "100%",
+    height: "72%",
+    flexDirection: "row",
+    paddingVertical: 5,
+    paddingHorizontal: 15,
   },
   locationCol: {
     flex: 1,
@@ -153,5 +160,26 @@ export default StyleSheet.create({
     fontSize: size.small,
     color: colors.blackOp,
     marginTop: 10,
+  },
+  submitBtn: {
+    backgroundColor: colors.done,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 15,
+    paddingHorizontal: 50,
+    elevation: 5,
+    borderRadius: 5,
+    width: "90%",
+    flexDirection: "row",
+  },
+  btnText: {
+    fontFamily: type.semiBold,
+    fontSize: size.light,
+  },
+  flagIcon: {
+    height: 20,
+    width: 20,
+    resizeMode: "contain",
+    marginRight: 10,
   },
 });

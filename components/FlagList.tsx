@@ -51,26 +51,18 @@ const LocationCol = ({ item }: { item: flag }) => {
       <View style={styles.selection}>
         <View style={styles.locationGrid}>
           <GridCol side="left" item={item} />
-          {item.plantPart?.name !== "FRUIT" && (
-            <GridCol side="right" item={item} />
-          )}
+          <GridCol side="right" item={item} />
         </View>
       </View>
       <View style={styles.name}>
-        {item.plantPart?.name !== "FRUIT" ? (
-          <>
-            <LocationsText
-              arr={item.location?.left}
-              side={`${i18n.t("flag.left")}:`}
-            />
-            <LocationsText
-              arr={item.location?.right}
-              side={`${i18n.t("flag.right")}:`}
-            />
-          </>
-        ) : (
-          <LocationsText arr={item.location?.left} side="" />
-        )}
+        <LocationsText
+          arr={item.location?.left}
+          side={`${i18n.t("flag.left")}:`}
+        />
+        <LocationsText
+          arr={item.location?.right}
+          side={`${i18n.t("flag.right")}:`}
+        />
       </View>
     </View>
   );

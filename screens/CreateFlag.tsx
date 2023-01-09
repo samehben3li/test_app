@@ -38,25 +38,25 @@ export interface flag {
 
 const entering = new Keyframe({
   0: {
-    width: 200,
+    width: 80,
     transform: [{ translateX: 0 }, { scale: 1 }, { translateY: 0 }],
     borderRadius: 10,
     opacity: 1,
   },
-  20: {
-    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 0 }],
+  5: {
+    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 300 }],
     width: 80,
     borderRadius: 50,
     easing: Easing.ease,
   },
-  70: {
-    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 0 }],
+  30: {
+    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 300 }],
     width: 80,
     borderRadius: 50,
     opacity: 1,
   },
   100: {
-    transform: [{ translateX: -300 }, { scale: 0 }, { translateY: -2500 }],
+    transform: [{ translateX: -250 }, { scale: 0 }, { translateY: -2500 }],
     opacity: 0,
     easing: Easing.ease,
   },
@@ -166,25 +166,27 @@ export default function CreateFlagScreen({ navigation, route }) {
             setCompleted={setReady}
           />
         )}
-        {!ready ? (
-          <FlagOptions
-            setReady={setReady}
-            flagData={flagData}
-            setFlagData={setFlagData}
-            data={selectedTab}
-            options={options}
-            selectedTab={selectedTab}
-          />
-        ) : (
-          <FlagReady
-            done={done}
-            setDone={setDone}
-            setFlagData={setFlagData}
-            setReady={setReady}
-            flagData={flagData}
-            ready={ready}
-          />
-        )}
+        {
+          !done && (
+            <FlagOptions
+              setReady={setReady}
+              flagData={flagData}
+              setFlagData={setFlagData}
+              data={selectedTab}
+              options={options}
+              selectedTab={selectedTab}
+              setDone={setDone}
+            />
+          )
+          // <FlagReady
+          //   done={done}
+          //   setDone={setDone}
+          //   setFlagData={setFlagData}
+          //   setReady={setReady}
+          //   flagData={flagData}
+          //   ready={ready}
+          // />
+        }
       </View>
     </View>
   );

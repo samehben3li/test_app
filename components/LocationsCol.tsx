@@ -39,10 +39,11 @@ const LocationsCol = ({
             single && styles.locationBtnSingle,
           ]}
         >
-          <Text style={styles.optionName}>{item}</Text>
+          <Text
+            style={styles.optionName}
+          >{`${side.toUpperCase()} - ${item}`}</Text>
         </AnimatedPressable>
       ))}
-      {!single && <Text style={styles.gridText}>{i18n.t(`flag.${side}`)}</Text>}
     </View>
   );
 };

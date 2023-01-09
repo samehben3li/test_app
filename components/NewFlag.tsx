@@ -149,9 +149,7 @@ export default function NewFlag({
               ]}
             >
               <GridCol side={flagData.location.left} />
-              {flagData.plantPart?.name !== "FRUIT" && (
-                <GridCol side={flagData.location.right} />
-              )}
+              <GridCol side={flagData.location.right} />
             </View>
           </View>
           <View
@@ -162,22 +160,16 @@ export default function NewFlag({
                 styles.done,
             ]}
           >
-            {flagData.plantPart?.name !== "FRUIT" ? (
-              <>
-                <LocationsText
-                  side={location.left}
-                  name={`${i18n.t("flag.left")}:`}
-                  location={location}
-                />
-                <LocationsText
-                  side={location.right}
-                  name={`${i18n.t("flag.right")}:`}
-                  location={location}
-                />
-              </>
-            ) : (
-              <LocationsText side={location.left} name="" location={location} />
-            )}
+            <LocationsText
+              side={location.left}
+              name={`${i18n.t("flag.left")}:`}
+              location={location}
+            />
+            <LocationsText
+              side={location.right}
+              name={`${i18n.t("flag.right")}:`}
+              location={location}
+            />
           </View>
         </AnimatedPressable>
       </View>
