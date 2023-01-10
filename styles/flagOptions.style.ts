@@ -119,6 +119,7 @@ export default StyleSheet.create({
     width: "100%",
     height: "100%",
     alignItems: "center",
+    justifyContent: "center",
   },
   locationOptions: {
     width: "100%",
@@ -169,7 +170,7 @@ export default StyleSheet.create({
     paddingHorizontal: 50,
     elevation: 5,
     borderRadius: 5,
-    width: "90%",
+    width: "88%",
     flexDirection: "row",
   },
   btnText: {

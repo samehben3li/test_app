@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
 import {
   Header,
@@ -35,7 +35,8 @@ export interface flag {
     right: string[];
   };
 }
-
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 const entering = new Keyframe({
   0: {
     width: 80,
@@ -44,19 +45,23 @@ const entering = new Keyframe({
     opacity: 1,
   },
   5: {
-    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 300 }],
+    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 0 }],
     width: 80,
     borderRadius: 50,
     easing: Easing.ease,
   },
   30: {
-    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 300 }],
+    transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 0 }],
     width: 80,
     borderRadius: 50,
     opacity: 1,
   },
   100: {
-    transform: [{ translateX: -250 }, { scale: 0 }, { translateY: -2500 }],
+    transform: [
+      { translateX: -windowWidth },
+      { scale: 0 },
+      { translateY: -windowHeight * 4 },
+    ],
     opacity: 0,
     easing: Easing.ease,
   },
@@ -101,7 +106,7 @@ export default function CreateFlagScreen({ navigation, route }) {
         setDone(false);
         setReady(false);
         setSelectedTab(optionsData[0]);
-      }, 3000);
+      }, 2000);
     }
     return () => {
       clearTimeout(timer);
