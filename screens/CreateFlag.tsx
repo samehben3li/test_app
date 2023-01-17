@@ -171,27 +171,17 @@ export default function CreateFlagScreen({ navigation, route }) {
             setCompleted={setReady}
           />
         )}
-        {
-          !done && (
-            <FlagOptions
-              setReady={setReady}
-              flagData={flagData}
-              setFlagData={setFlagData}
-              data={selectedTab}
-              options={options}
-              selectedTab={selectedTab}
-              setDone={setDone}
-            />
-          )
-          // <FlagReady
-          //   done={done}
-          //   setDone={setDone}
-          //   setFlagData={setFlagData}
-          //   setReady={setReady}
-          //   flagData={flagData}
-          //   ready={ready}
-          // />
-        }
+        {!done && (
+          <FlagOptions
+            setReady={setReady}
+            flagData={flagData}
+            setFlagData={setFlagData}
+            data={selectedTab}
+            options={options}
+            selectedTab={selectedTab}
+            setDone={setDone}
+          />
+        )}
       </View>
     </View>
   );

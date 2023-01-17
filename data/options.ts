@@ -1,29 +1,30 @@
+import i18n from "../i18n/translations";
 export const optionsData = [
   {
     name: "risk",
-    title: "RISK CATEGORY",
-    hint: "Please choose the type of flag that you want to start",
+    title: i18n.t("flag.riskCategory"),
+    hint: i18n.t("options.riskCategoryHint"),
     location: false,
     options: [],
   },
   {
     name: "pest",
-    title: "TYPE",
-    hint: "Please choose the type of pest that you've identified",
+    title: i18n.t("flag.type"),
+    hint: i18n.t("options.typeHint"),
     location: false,
     options: [],
   },
   {
     name: "plantPart",
-    title: "PLANT PART",
-    hint: "Please choose the part that has been affected.",
+    title: i18n.t("flag.plantPart"),
+    hint: i18n.t("options.plantPartHint"),
     location: false,
     options: [],
   },
   {
     name: "location",
-    title: "LOCATION",
-    hint: "Please choose the affected location on the plant, Select multiple locations if needed",
+    title: i18n.t("flag.location"),
+    hint: i18n.t("options.locationHint"),
     location: true,
   },
 ];

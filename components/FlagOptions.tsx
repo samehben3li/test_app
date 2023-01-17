@@ -25,6 +25,7 @@ import i18n from "../i18n/translations";
 import { CREATE_FLAG } from "../requests/mutations";
 import { useMutation } from "@apollo/client";
 import { flagIcon } from "../assets";
+import Toast from "react-native-root-toast";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -141,9 +142,16 @@ export default function FlagOptions({
         });
       }
     } catch (err) {
+      setLoading(false);
       if (err instanceof Error) {
-        setLoading(false);
-        alert(err.message);
+        let toast = Toast.show(err.message, {
+          duration: Toast.durations.LONG,
+          position: Toast.positions.BOTTOM,
+          shadow: true,
+          animation: true,
+          hideOnPress: true,
+          delay: 0,
+        });
       }
     }
   };
