@@ -1,7 +1,7 @@
-import { Text, View, Pressable } from "react-native";
+import { Text, View, Pressable, Image } from "react-native";
 import i18n from "../i18n/translations";
 import { newFlagStyles as styles } from "../styles";
-import { newFlagIcon } from "../assets";
+import { newFlagIcon, shapeIcon } from "../assets";
 import { selectedTab, flag } from "../screens/CreateFlag";
 import { optionsData } from "../data/options";
 import FlagSelection from "./FlagSelection";
@@ -22,7 +22,9 @@ const LocationsText = ({ location, side, name }: any) => {
       ]}
     >
       {`${name} `}
-      {side.map((item: string, index: number) => `${item.charAt(0)}`)}
+      {side.map((item: string, index: number) =>
+        index !== 0 ? `,${item.charAt(0)}` : item.charAt(0)
+      )}
     </Text>
   );
 };
@@ -79,11 +81,17 @@ export default function NewFlag({
       exiting={SlideOutUp.duration(600)}
       style={styles.container}
     >
-      <Animated.Image
-        entering={FadeIn.delay(700).duration(700)}
-        style={styles.image}
-        source={newFlagIcon}
-      />
+      <View style={styles.header}>
+        <Animated.Image
+          entering={FadeIn.delay(700).duration(700)}
+          style={styles.image}
+          source={newFlagIcon}
+        />
+        <View style={styles.flagName}>
+          <Image source={shapeIcon} style={styles.shapeIcon} />
+          <Text style={styles.flagNameText}>POSTS 6 - 7 | ROW 12</Text>
+        </View>
+      </View>
       <View style={styles.row}>
         <FlagSelection
           selectedTab={selectedTab}

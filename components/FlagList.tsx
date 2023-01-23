@@ -1,7 +1,7 @@
 import { Text, View, ScrollView, Image } from "react-native";
 import i18n from "../i18n/translations";
 import { flagListStyles as styles } from "../styles";
-import { flagIcon } from "../assets";
+import { flagIcon, shapeIcon } from "../assets";
 import { GET_FLAGS } from "../requests/queries";
 import { useQuery } from "@apollo/client";
 import moment from "moment";
@@ -35,7 +35,9 @@ const LocationsText = ({ arr, side }: { arr: string[]; side: string }) => {
   return (
     <Text style={styles.locationNameTxt}>
       {side}
-      {arr.map((item: string, index: number) => ` ${item.charAt(0)}`)}
+      {arr.map((item: string, index: number) =>
+        index !== 0 ? `,${item.charAt(0)}` : item.charAt(0)
+      )}
     </Text>
   );
 };
@@ -65,7 +67,6 @@ const LocationCol = ({ item }: { item: flag }) => {
     </View>
   );
 };
-
 const FlagDate = ({
   item,
   data,
@@ -115,10 +116,16 @@ export default function FlagList() {
           <FlagDate item={item} index={index} data={data} />
           <View style={styles.flagContainer}>
             <View style={styles.header}>
-              <Image source={flagIcon} style={styles.img} />
-              <Text style={styles.date}>
-                {moment(Number(item.createdAt)).format("hh:mm A")}
-              </Text>
+              <View style={styles.flagTime}>
+                <Image source={flagIcon} style={styles.img} />
+                <Text style={styles.date}>
+                  {moment(Number(item.createdAt)).format("hh:mm A")}
+                </Text>
+              </View>
+              <View style={styles.flagName}>
+                <Image source={shapeIcon} style={styles.shapeIcon} />
+                <Text style={styles.flagNameText}>POSTS 6 - 7 | ROW 12</Text>
+              </View>
             </View>
             <FlagsGrid item={item} />
           </View>

@@ -34,6 +34,30 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 5,
+    width: "100%",
+    justifyContent: "space-between",
+  },
+  flagTime: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  flagName: {
+    backgroundColor: colors.gold,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    borderRadius: 20,
+    marginTop: -3,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  flagNameText: {
+    fontFamily: type.bold,
+    fontSize: size.extraSmall,
+  },
+  shapeIcon: {
+    height: 10,
+    resizeMode: "contain",
   },
   date: {
     fontSize: size.small,

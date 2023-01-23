@@ -66,17 +66,23 @@ export default StyleSheet.create({
     borderRadius: 8,
     flexDirection: "row",
     width: "100%",
-    overflow: "hidden",
     flexWrap: "wrap",
-    padding: 15,
+    padding: 0,
+  },
+  scroll: {
+    width: "100%",
+    flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "flex-start",
+    paddingBottom: 10,
   },
   optionContainer: {
     width: "33%",
     height: "50%",
     paddingHorizontal: 8,
     alignItems: "center",
+    marginBottom: 10,
   },
   btn: {
     backgroundColor: colors.white,
@@ -111,8 +117,16 @@ export default StyleSheet.create({
   },
   locationGrid: {
     width: "100%",
-    flexDirection: "row",
     height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  locationOptions: {
+    width: "100%",
+    height: "72%",
+    flexDirection: "row",
+    paddingVertical: 5,
+    paddingHorizontal: 15,
   },
   locationCol: {
     flex: 1,
@@ -139,10 +153,34 @@ export default StyleSheet.create({
     borderColor: colors.white,
     flex: 1,
   },
+  locationBtnSingle: {
+    width: "50%",
+  },
   gridText: {
     fontFamily: type.bold,
     fontSize: size.small,
     color: colors.blackOp,
     marginTop: 10,
+  },
+  submitBtn: {
+    backgroundColor: colors.done,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 15,
+    paddingHorizontal: 50,
+    elevation: 5,
+    borderRadius: 5,
+    width: "88%",
+    flexDirection: "row",
+  },
+  btnText: {
+    fontFamily: type.semiBold,
+    fontSize: size.light,
+  },
+  flagIcon: {
+    height: 20,
+    width: 20,
+    resizeMode: "contain",
+    marginRight: 10,
   },
 });

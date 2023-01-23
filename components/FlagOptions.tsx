@@ -1,4 +1,11 @@
-import { View, Pressable, Dimensions } from "react-native";
+import {
+  View,
+  Dimensions,
+  ScrollView,
+  Pressable,
+  Text,
+  Image,
+} from "react-native";
 import { useState, useEffect } from "react";
 import { flagOptionsStyles as styles } from "../styles";
 import { selectedTab, flag, option } from "../screens/CreateFlag";
@@ -15,6 +22,10 @@ import Animated, {
 import keyframe from "./FlagOptions.animation";
 import { SvgUri } from "react-native-svg";
 import i18n from "../i18n/translations";
+import { CREATE_FLAG } from "../requests/mutations";
+import { useMutation } from "@apollo/client";
+import { flagIcon } from "../assets";
+import Toast from "react-native-root-toast";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -25,6 +36,7 @@ interface Props {
   setReady: React.Dispatch<React.SetStateAction<boolean>>;
   options: option[];
   selectedTab: selectedTab;
+  setDone: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const windowWidth = Dimensions.get("window").width;
@@ -36,9 +48,12 @@ export default function FlagOptions({
   setReady,
   options,
   selectedTab,
+  setDone,
 }: Props) {
   const [selected, setSelected] = useState(0);
   const [indicatorPos, setIndicatorPos] = useState(0);
+  const [createFlag] = useMutation(CREATE_FLAG);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (flagData[data.name]) {
@@ -93,21 +108,61 @@ export default function FlagOptions({
     i18n.t("flag.bottom"),
   ];
 
+  const submit = async () => {
+    setLoading(true);
+    const { risk, plantPart, location, pest } = flagData;
+    const inputValues = {
+      riskCategory: {
+        name: risk?.name,
+        imgUrl: risk?.imgUrl,
+      },
+      riskCategoryType: {
+        name: pest?.name,
+        imgUrl: pest?.imgUrl,
+      },
+      plantPart: {
+        name: plantPart?.name,
+        imgUrl: plantPart?.imgUrl,
+      },
+      location: location,
+    };
+    try {
+      const data = await createFlag({ variables: inputValues });
+      if (data) {
+        setLoading(false);
+        setDone(true);
+        setFlagData({
+          risk: null,
+          pest: null,
+          plantPart: null,
+          location: {
+            left: [],
+            right: [],
+          },
+        });
+      }
+    } catch (err) {
+      setLoading(false);
+      if (err instanceof Error) {
+        let toast = Toast.show(err.message, {
+          duration: Toast.durations.LONG,
+          position: Toast.positions.BOTTOM,
+          shadow: true,
+          animation: true,
+          hideOnPress: true,
+          delay: 0,
+        });
+      }
+    }
+  };
+
   return (
     <Animated.View
       entering={SlideInDown.duration(600)}
       exiting={SlideOutDown.duration(600)}
       style={styles.container}
     >
-      <GestureRecognizer
-        onSwipeDown={() => {
-          const { risk, plantPart, location, pest } = flagData;
-          if (risk && plantPart && location && pest) {
-            setReady(true);
-          }
-        }}
-        style={styles.innerContainer}
-      >
+      <View style={styles.innerContainer}>
         {/* <Animated.View style={[styles.indicatorLine, uas]}></Animated.View> */}
         <Animated.View style={[styles.indicator, uas]}></Animated.View>
         <Animated.Text
@@ -120,7 +175,11 @@ export default function FlagOptions({
           <Animated.Text entering={SlideInDown} style={styles.title}>
             {data.title}
           </Animated.Text>
-          <View style={styles.options}>
+          <ScrollView
+            style={styles.options}
+            contentContainerStyle={styles.scroll}
+            persistentScrollbar={true}
+          >
             {!data.location ? (
               options?.map((option) => (
                 <View key={option.id} style={styles.optionContainer}>
@@ -147,21 +206,37 @@ export default function FlagOptions({
               ))
             ) : (
               <View style={styles.locationGrid}>
-                <LocationsCol
-                  addLocation={addLocation}
-                  side="left"
-                  flagData={flagData}
-                />
-                <LocationsCol
-                  addLocation={addLocation}
-                  side="right"
-                  flagData={flagData}
-                />
+                <View style={styles.locationOptions}>
+                  <LocationsCol
+                    addLocation={addLocation}
+                    side="left"
+                    flagData={flagData}
+                  />
+                  <LocationsCol
+                    addLocation={addLocation}
+                    side="right"
+                    flagData={flagData}
+                  />
+                </View>
+                <Pressable
+                  onPress={submit}
+                  style={[
+                    styles.submitBtn,
+                    {
+                      opacity: !loading ? 1 : 0.5,
+                    },
+                  ]}
+                >
+                  <Image style={styles.flagIcon} source={flagIcon} />
+                  <Text style={styles.btnText}>
+                    {i18n.t("flagReady.createFlag")}
+                  </Text>
+                </Pressable>
               </View>
             )}
-          </View>
+          </ScrollView>
         </View>
-      </GestureRecognizer>
+      </View>
     </Animated.View>
   );
 }

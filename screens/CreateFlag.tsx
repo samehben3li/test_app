@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
 import {
   Header,
@@ -35,28 +35,33 @@ export interface flag {
     right: string[];
   };
 }
-
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 const entering = new Keyframe({
   0: {
-    width: 200,
+    width: 80,
     transform: [{ translateX: 0 }, { scale: 1 }, { translateY: 0 }],
     borderRadius: 10,
     opacity: 1,
   },
-  20: {
+  5: {
     transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 0 }],
     width: 80,
     borderRadius: 50,
     easing: Easing.ease,
   },
-  70: {
+  30: {
     transform: [{ translateX: 65 }, { scale: 1 }, { translateY: 0 }],
     width: 80,
     borderRadius: 50,
     opacity: 1,
   },
   100: {
-    transform: [{ translateX: -300 }, { scale: 0 }, { translateY: -2500 }],
+    transform: [
+      { translateX: -windowWidth },
+      { scale: 0 },
+      { translateY: -windowHeight * 4 },
+    ],
     opacity: 0,
     easing: Easing.ease,
   },
@@ -101,7 +106,7 @@ export default function CreateFlagScreen({ navigation, route }) {
         setDone(false);
         setReady(false);
         setSelectedTab(optionsData[0]);
-      }, 3000);
+      }, 2000);
     }
     return () => {
       clearTimeout(timer);
@@ -166,7 +171,7 @@ export default function CreateFlagScreen({ navigation, route }) {
             setCompleted={setReady}
           />
         )}
-        {!ready ? (
+        {!done && (
           <FlagOptions
             setReady={setReady}
             flagData={flagData}
@@ -174,15 +179,7 @@ export default function CreateFlagScreen({ navigation, route }) {
             data={selectedTab}
             options={options}
             selectedTab={selectedTab}
-          />
-        ) : (
-          <FlagReady
-            done={done}
             setDone={setDone}
-            setFlagData={setFlagData}
-            setReady={setReady}
-            flagData={flagData}
-            ready={ready}
           />
         )}
       </View>

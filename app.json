@@ -20,7 +20,7 @@
         "CFBundleAllowMixedLocalizations": true
       },
       "bundleIdentifier": "com.ranadev.tomatotrolley",
-      "buildNumber": "10"
+      "buildNumber": "13"
     },
     "android": {
       "adaptiveIcon": {

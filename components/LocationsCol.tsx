@@ -10,6 +10,7 @@ interface locationsColProps {
   side: string;
   flagData: flag;
   addLocation: (location: string, side: string) => void;
+  single?: boolean;
 }
 
 const locations = [
@@ -18,7 +19,12 @@ const locations = [
   i18n.t("flag.bottom"),
 ];
 
-const LocationsCol = ({ side, addLocation, flagData }: locationsColProps) => {
+const LocationsCol = ({
+  side,
+  addLocation,
+  flagData,
+  single,
+}: locationsColProps) => {
   return (
     <View style={styles.locationCol}>
       {locations.map((item: string, index: number) => (
@@ -30,12 +36,14 @@ const LocationsCol = ({ side, addLocation, flagData }: locationsColProps) => {
           style={[
             styles.locationBtn,
             flagData.location[side]?.includes(item) && styles.selected,
+            single && styles.locationBtnSingle,
           ]}
         >
-          <Text style={styles.optionName}>{item}</Text>
+          <Text
+            style={styles.optionName}
+          >{`${side.toUpperCase()} - ${item}`}</Text>
         </AnimatedPressable>
       ))}
-      <Text style={styles.gridText}>{i18n.t(`flag.${side}`)}</Text>
     </View>
   );
 };
